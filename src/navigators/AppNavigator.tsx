@@ -1,24 +1,28 @@
-import React from 'react';
+import { FC } from 'react';
 import { createNativeStackNavigator, NativeStackNavigationProp } from '@react-navigation/native-stack';
 
 import { ProfileScreen } from 'src/screens/app/ProfileScreen';
+import { useCurrentUser } from '../contexts/AuthProvider';
 
 export type AppStackParamList = {
-  Home: undefined;
+  Profile: undefined;
 };
 
 export type AppNavProps<T extends keyof AppStackParamList> = NativeStackNavigationProp<AppStackParamList, T>;
 
 const Stack = createNativeStackNavigator<AppStackParamList>();
 
-export const AppNavigator: React.FC = () => {
+export const AppNavigator: FC = (): JSX.Element => {
+  const user = useCurrentUser();
+
   return (
     <Stack.Navigator>
       <Stack.Screen
-        name={'Home'}
+        name={'Profile'}
         component={ProfileScreen}
         options={{
           headerShown: true,
+          title: `@${user.username}`,
         }}
       />
     </Stack.Navigator>

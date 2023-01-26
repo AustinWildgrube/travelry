@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-import { Avatar, Button, H1, Paragraph, Text, XStack, YStack } from 'tamagui';
+import { Avatar, Button, H1, Text, XStack, YStack } from 'tamagui';
 
 import { useAuth, useCurrentUser } from '../../contexts/AuthProvider';
 import { supabase } from '../../services/supabaseClient';
@@ -28,52 +28,46 @@ export function Header(): JSX.Element {
   }, [user]);
 
   return (
-    <>
-      <Paragraph als="center" mt="$2">
-        @{user.username}
-      </Paragraph>
+    <YStack mt="$4">
+      <Avatar size="$10" als="center" circular>
+        <Avatar.Image src={avatarUrl} accessibilityLabel={`${user.full_name}'s profile image`} />
+        <Avatar.Fallback delayMs={600} backgroundColor="$blue10" />
+      </Avatar>
 
-      <YStack mt="$6">
-        <Avatar size="$10" als="center" circular>
-          <Avatar.Image src={avatarUrl} accessibilityLabel={`${user.full_name}'s profile image`} />
-          <Avatar.Fallback delayMs={600} backgroundColor="$blue10" />
-        </Avatar>
+      <H1 size="$8" als="center" mt="$4">
+        {user.full_name}
+      </H1>
 
-        <H1 size="$8" als="center" mt="$4">
-          {user.full_name}
-        </H1>
+      <Text ta="center" mt="$2">
+        {user.bio}
+      </Text>
 
-        <Text ta="center" mt="$2">
-          {user.bio}
-        </Text>
+      <Button onPress={logout} size="$2" mt="$2" chromeless>
+        Edit Profile
+      </Button>
 
-        <Button onPress={logout} size="$2" mt="$2" chromeless>
-            Edit Profile
-        </Button>
+      <XStack jc="space-around" mt="$4">
+        <YStack>
+          <Text>Posts</Text>
+          <Text ta="center" mt="$2">
+            {user.account_stat.trip_count}
+          </Text>
+        </YStack>
 
-        <XStack jc="space-around" mt="$4">
-          <YStack>
-            <Text>Posts</Text>
-            <Text ta="center" mt="$2">
-              {user.account_stat.trip_count}
-            </Text>
-          </YStack>
+        <YStack>
+          <Text>Followers</Text>
+          <Text ta="center" mt="$2">
+            {user.account_stat.followers_count}
+          </Text>
+        </YStack>
 
-          <YStack>
-            <Text>Followers</Text>
-            <Text ta="center" mt="$2">
-              {user.account_stat.followers_count}
-            </Text>
-          </YStack>
-
-          <YStack>
-            <Text>Following</Text>
-            <Text ta="center" mt="$2">
-              {user.account_stat.following_count}
-            </Text>
-          </YStack>
-        </XStack>
-      </YStack>
-    </>
+        <YStack>
+          <Text>Following</Text>
+          <Text ta="center" mt="$2">
+            {user.account_stat.following_count}
+          </Text>
+        </YStack>
+      </XStack>
+    </YStack>
   );
 }
