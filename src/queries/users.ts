@@ -22,6 +22,7 @@ export const getUserProfile = async (id: string) => {
       .from('account')
       .select(
         `
+          id,
           username, 
           full_name,
           avatar_url, 
@@ -35,7 +36,9 @@ export const getUserProfile = async (id: string) => {
       )
       .eq('id', id);
 
-    if (error) throw new Error(`Error ${error.code}: ${error.message}`);
+    if (error) {
+      throw new Error(`Error ${error.code}: ${error.message}`);
+    }
 
     if (data !== null) {
       return data[0] as UserProfile;
@@ -47,5 +50,6 @@ export const getUserProfile = async (id: string) => {
 
     console.error(error);
   }
+
   return null;
 };

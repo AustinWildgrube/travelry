@@ -1,11 +1,14 @@
 import { FC } from 'react';
 
-import { Header, Layout } from 'src/components';
+import { ScrollView } from 'tamagui';
+
+import { Header, Images } from 'src/components';
 
 export const ProfileScreen: FC = (): JSX.Element => {
   return (
-    <Layout>
+    <ScrollView pl="$4" pr="$4">
       <Header />
-    </Layout>
+      <Images />
+    </ScrollView>
   );
 };

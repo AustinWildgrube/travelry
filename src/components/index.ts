@@ -7,3 +7,4 @@ export { Form } from './authentication/Form';
 
 // profile
 export { Header } from './profile/Header';
+export { Images } from './profile/Images';
