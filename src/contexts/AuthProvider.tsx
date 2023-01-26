@@ -3,7 +3,7 @@ import { Alert } from 'react-native';
 
 import { supabase } from 'src/services/supabaseClient';
 import { getUserProfile } from 'src/queries/users';
-import { useSupabaseMutation } from 'src/hooks/use-supabase';
+import { useSupabaseMutation } from 'src/hooks/useSupabase';
 import type { UserProfile } from 'src/queries/users';
 
 interface AuthContextProps {
