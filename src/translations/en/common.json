@@ -1,0 +1,8 @@
+{
+  "helloWorld": "Hello",
+  "required": "This field is required",
+  "login": "Login",
+  "logout": "Logout",
+  "register": "Sign up",
+  "update": "Update"
+}

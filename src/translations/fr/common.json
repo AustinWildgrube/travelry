@@ -1,0 +1,8 @@
+{
+  "helloWorld": "Bonjour",
+  "required": "Ce champ est requis",
+  "login": "Connexion",
+  "logout": "Déconnexion",
+  "register": "Inscription",
+  "update": "Mettre à jour"
+}
