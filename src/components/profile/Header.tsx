@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-import { Avatar, Button, H1, Text, XStack, YStack } from 'tamagui';
+import { Avatar, Button, H1, Separator, Text, XStack, YStack } from 'tamagui';
 
 import { useAuth, useCurrentUser } from '../../contexts/AuthProvider';
 import { supabase } from '../../services/supabaseClient';
@@ -28,7 +28,7 @@ export function Header(): JSX.Element {
   }, [user]);
 
   return (
-    <YStack mt="$4">
+    <YStack mt="$4" mb="$4">
       <Avatar size="$10" als="center" circular>
         <Avatar.Image src={avatarUrl} accessibilityLabel={`${user.full_name}'s profile image`} />
         <Avatar.Fallback delayMs={600} backgroundColor="$blue10" />
@@ -42,11 +42,11 @@ export function Header(): JSX.Element {
         {user.bio}
       </Text>
 
-      <Button onPress={logout} size="$2" mt="$2" chromeless>
+      <Button onPress={logout} size="$2" mt="$2" p={0} chromeless>
         Edit Profile
       </Button>
 
-      <XStack jc="space-around" mt="$4">
+      <XStack jc="space-around" mt="$4" mb="$6">
         <YStack>
           <Text>Posts</Text>
           <Text ta="center" mt="$2">
@@ -68,6 +68,8 @@ export function Header(): JSX.Element {
           </Text>
         </YStack>
       </XStack>
+
+      <Separator />
     </YStack>
   );
 }
