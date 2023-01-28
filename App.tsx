@@ -7,7 +7,7 @@ import { useFonts } from 'expo-font';
 
 import { ThemeProvider, useTheme, getNavigatorTheme } from 'src/themes';
 import { AuthProvider, useAuth } from 'src/contexts/AuthProvider';
-import { Layout, Spinner } from 'src/components';
+import { Spinner } from 'src/components';
 import { AppNavigator } from 'src/navigators/AppNavigator';
 import { AuthNavigator } from 'src/navigators/AuthNavigator';
 import config from './tamagui.config';
@@ -27,16 +27,12 @@ const App = (): JSX.Element | null => {
     <TamaguiProvider config={config}>
       <ThemeProvider>
         <AuthProvider>
-          <Layout>
-            <Root />
-          </Layout>
+          <Root />
         </AuthProvider>
       </ThemeProvider>
     </TamaguiProvider>
   );
 };
-
-export default App;
 
 const Root = () => {
   const { theme } = useTheme();
@@ -56,3 +52,5 @@ const Root = () => {
     </NavigationContainer>
   );
 };
+
+export default App;
