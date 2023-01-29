@@ -1,4 +1,4 @@
-import { supabase } from '../services/supabaseClient';
+import { supabase } from 'src/services/supabaseClient';
 
 export const downloadSupabaseMedia = (bucket: string, path: string): string => {
   try {

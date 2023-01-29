@@ -7,15 +7,15 @@ import { useSupabaseMutation } from 'src/hooks/useSupabase';
 import type { UserProfile } from 'src/queries/users';
 
 interface AuthContextProps {
-  loading: boolean;
-  currentUser: UserProfile | null;
-  loginWithEmailAndPassword: (email: string, password: string) => Promise<void>;
-  logout: () => void;
-  registerWithEmailAndPassword: (email: string, password: string) => Promise<void>;
-  updateCurrentUser: (fields: Partial<Omit<UserProfile, 'id' | 'email'>>) => void;
+  loading?: boolean;
+  currentUser?: UserProfile | null;
+  loginWithEmailAndPassword?: (email: string, password: string) => Promise<void>;
+  logout?: () => void;
+  registerWithEmailAndPassword?: (email: string, password: string) => Promise<void>;
+  updateCurrentUser?: (fields: Partial<Omit<UserProfile, 'id' | 'email'>>) => void;
 }
 
-const AuthContext = createContext<AuthContextProps | undefined>(undefined);
+export const AuthContext = createContext<AuthContextProps | undefined>(undefined);
 
 export const AuthProvider = ({ children }: any) => {
   const [currentUser, setCurrentUser] = useState<UserProfile | null>(null);

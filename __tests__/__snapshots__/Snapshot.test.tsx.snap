@@ -1,0 +1,1411 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`snapshot test should properly display the authentication screen 1`] = `
+<View
+  style={
+    [
+      {
+        "alignItems": "center",
+        "display": "flex",
+        "flex": 1,
+        "flexBasis": "auto",
+        "flexDirection": "column",
+        "flexShrink": 0,
+        "justifyContent": "center",
+        "minHeight": 0,
+        "minWidth": 0,
+        "position": "relative",
+      },
+    ]
+  }
+>
+  <View
+    style={
+      [
+        {
+          "alignItems": "stretch",
+          "backgroundColor": "rgba(252,252,252,1.00)",
+          "borderBottomLeftRadius": 34,
+          "borderBottomRightRadius": 34,
+          "borderTopLeftRadius": 34,
+          "borderTopRightRadius": 34,
+          "display": "flex",
+          "flexBasis": "auto",
+          "flexDirection": "column",
+          "flexShrink": 0,
+          "minHeight": 0,
+          "minWidth": 0,
+          "paddingBottom": 32,
+          "paddingLeft": 39,
+          "paddingRight": 39,
+          "paddingTop": 32,
+          "position": "relative",
+          "shadowColor": "rgb(0,0,0)",
+          "shadowOffset": {
+            "height": 4,
+            "width": 0,
+          },
+          "shadowOpacity": 0.1,
+          "shadowRadius": 26,
+          "width": 350,
+        },
+      ]
+    }
+  >
+    <Text
+      fontFamily="$body"
+      style={
+        [
+          {
+            "color": "rgba(23,23,23,1.00)",
+            "display": "flex",
+            "fontFamily": "InterBold",
+            "fontSize": 18,
+            "letterSpacing": 0,
+            "lineHeight": 30,
+            "marginBottom": 2,
+            "opacity": 0.8,
+          },
+        ]
+      }
+      suppressHighlighting={true}
+    >
+      Log in to your account
+    </Text>
+    <View
+      pointerEvents="none"
+      style={
+        [
+          {
+            "alignItems": "stretch",
+            "display": "flex",
+            "flexBasis": "auto",
+            "flexShrink": 0,
+            "height": 18,
+            "minHeight": 18,
+            "minWidth": 18,
+            "position": "relative",
+            "width": 18,
+          },
+        ]
+      }
+    />
+    <View
+      style={
+        [
+          {
+            "alignItems": "stretch",
+            "display": "flex",
+            "flexBasis": "auto",
+            "flexDirection": "row",
+            "flexShrink": 0,
+            "justifyContent": "space-evenly",
+            "minHeight": 0,
+            "minWidth": 0,
+            "position": "relative",
+          },
+        ]
+      }
+    >
+      <View
+        focusable={true}
+        onBlur={[Function]}
+        onClick={[Function]}
+        onFocus={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        size="$5"
+        style={
+          [
+            {
+              "alignItems": "center",
+              "backgroundColor": "rgba(0,0,0,0.01)",
+              "borderBottomColor": "rgba(226,226,226,1.00)",
+              "borderBottomLeftRadius": 10,
+              "borderBottomRightRadius": 10,
+              "borderBottomStyle": "solid",
+              "borderBottomWidth": 1,
+              "borderLeftColor": "rgba(226,226,226,1.00)",
+              "borderLeftStyle": "solid",
+              "borderLeftWidth": 1,
+              "borderRightColor": "rgba(226,226,226,1.00)",
+              "borderRightStyle": "solid",
+              "borderRightWidth": 1,
+              "borderTopColor": "rgba(226,226,226,1.00)",
+              "borderTopLeftRadius": 10,
+              "borderTopRightRadius": 10,
+              "borderTopStyle": "solid",
+              "borderTopWidth": 1,
+              "display": "flex",
+              "flexBasis": "auto",
+              "flexDirection": "row",
+              "flexShrink": 0,
+              "flexWrap": "nowrap",
+              "height": 52,
+              "justifyContent": "center",
+              "minHeight": 0,
+              "minWidth": 0,
+              "paddingLeft": 24,
+              "paddingRight": 24,
+              "position": "relative",
+            },
+          ]
+        }
+      >
+        <Image
+          height={20}
+          source={
+            {
+              "uri": "https://qwvsfvhphdefqfyuuhlb.supabase.co/storage/v1/object/public/logos/Google%20logo.png",
+            }
+          }
+          style={
+            [
+              {
+                "height": 20,
+                "position": "relative",
+                "width": 20,
+                "zIndex": 1,
+              },
+            ]
+          }
+          width={20}
+        />
+      </View>
+      <View
+        pointerEvents="none"
+        style={
+          [
+            {
+              "alignItems": "stretch",
+              "display": "flex",
+              "flexBasis": "auto",
+              "flexShrink": 0,
+              "height": 18,
+              "minHeight": 18,
+              "minWidth": 18,
+              "position": "relative",
+              "width": 18,
+            },
+          ]
+        }
+      />
+      <View
+        focusable={true}
+        onBlur={[Function]}
+        onClick={[Function]}
+        onFocus={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        size="$5"
+        style={
+          [
+            {
+              "alignItems": "center",
+              "backgroundColor": "rgba(0,0,0,0.01)",
+              "borderBottomColor": "rgba(226,226,226,1.00)",
+              "borderBottomLeftRadius": 10,
+              "borderBottomRightRadius": 10,
+              "borderBottomStyle": "solid",
+              "borderBottomWidth": 1,
+              "borderLeftColor": "rgba(226,226,226,1.00)",
+              "borderLeftStyle": "solid",
+              "borderLeftWidth": 1,
+              "borderRightColor": "rgba(226,226,226,1.00)",
+              "borderRightStyle": "solid",
+              "borderRightWidth": 1,
+              "borderTopColor": "rgba(226,226,226,1.00)",
+              "borderTopLeftRadius": 10,
+              "borderTopRightRadius": 10,
+              "borderTopStyle": "solid",
+              "borderTopWidth": 1,
+              "display": "flex",
+              "flexBasis": "auto",
+              "flexDirection": "row",
+              "flexShrink": 0,
+              "flexWrap": "nowrap",
+              "height": 52,
+              "justifyContent": "center",
+              "minHeight": 0,
+              "minWidth": 0,
+              "paddingLeft": 24,
+              "paddingRight": 24,
+              "position": "relative",
+            },
+          ]
+        }
+      >
+        <Image
+          height={22}
+          resizeMode="contain"
+          source={
+            {
+              "uri": "https://qwvsfvhphdefqfyuuhlb.supabase.co/storage/v1/object/public/logos/Apple%20logo.png",
+            }
+          }
+          style={
+            [
+              {
+                "height": 22,
+                "position": "relative",
+                "width": 22,
+                "zIndex": 1,
+              },
+            ]
+          }
+          width={22}
+        />
+      </View>
+      <View
+        pointerEvents="none"
+        style={
+          [
+            {
+              "alignItems": "stretch",
+              "display": "flex",
+              "flexBasis": "auto",
+              "flexShrink": 0,
+              "height": 18,
+              "minHeight": 18,
+              "minWidth": 18,
+              "position": "relative",
+              "width": 18,
+            },
+          ]
+        }
+      />
+      <View
+        focusable={true}
+        onBlur={[Function]}
+        onClick={[Function]}
+        onFocus={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        size="$5"
+        style={
+          [
+            {
+              "alignItems": "center",
+              "backgroundColor": "rgba(0,0,0,0.01)",
+              "borderBottomColor": "rgba(226,226,226,1.00)",
+              "borderBottomLeftRadius": 10,
+              "borderBottomRightRadius": 10,
+              "borderBottomStyle": "solid",
+              "borderBottomWidth": 1,
+              "borderLeftColor": "rgba(226,226,226,1.00)",
+              "borderLeftStyle": "solid",
+              "borderLeftWidth": 1,
+              "borderRightColor": "rgba(226,226,226,1.00)",
+              "borderRightStyle": "solid",
+              "borderRightWidth": 1,
+              "borderTopColor": "rgba(226,226,226,1.00)",
+              "borderTopLeftRadius": 10,
+              "borderTopRightRadius": 10,
+              "borderTopStyle": "solid",
+              "borderTopWidth": 1,
+              "display": "flex",
+              "flexBasis": "auto",
+              "flexDirection": "row",
+              "flexShrink": 0,
+              "flexWrap": "nowrap",
+              "height": 52,
+              "justifyContent": "center",
+              "minHeight": 0,
+              "minWidth": 0,
+              "paddingLeft": 24,
+              "paddingRight": 24,
+              "position": "relative",
+            },
+          ]
+        }
+      >
+        <Image
+          height={22}
+          resizeMode="contain"
+          source={
+            {
+              "uri": "https://qwvsfvhphdefqfyuuhlb.supabase.co/storage/v1/object/public/logos/Discord%20logo.png",
+            }
+          }
+          style={
+            [
+              {
+                "height": 22,
+                "position": "relative",
+                "width": 25,
+                "zIndex": 1,
+              },
+            ]
+          }
+          width={25}
+        />
+      </View>
+    </View>
+    <View
+      pointerEvents="none"
+      style={
+        [
+          {
+            "alignItems": "stretch",
+            "display": "flex",
+            "flexBasis": "auto",
+            "flexShrink": 0,
+            "height": 18,
+            "minHeight": 18,
+            "minWidth": 18,
+            "position": "relative",
+            "width": 18,
+          },
+        ]
+      }
+    />
+    <View
+      style={
+        [
+          {
+            "alignItems": "center",
+            "display": "flex",
+            "flexBasis": "auto",
+            "flexDirection": "row",
+            "flexShrink": 0,
+            "justifyContent": "space-between",
+            "minHeight": 0,
+            "minWidth": 0,
+            "position": "relative",
+            "width": "100%",
+          },
+        ]
+      }
+    >
+      <View
+        style={
+          [
+            {
+              "alignItems": "stretch",
+              "backgroundColor": "rgba(0,0,0,1.00)",
+              "display": "flex",
+              "flexBasis": "auto",
+              "flexDirection": "column",
+              "flexShrink": 0,
+              "height": 2,
+              "minHeight": 0,
+              "minWidth": 0,
+              "opacity": 0.1,
+              "position": "relative",
+              "width": 104,
+            },
+          ]
+        }
+      />
+      <Text
+        fontFamily="$body"
+        style={
+          [
+            {
+              "color": "rgba(23,23,23,1.00)",
+              "display": "flex",
+              "fontFamily": "Inter",
+              "fontSize": 14,
+              "letterSpacing": 0,
+              "lineHeight": 25,
+              "opacity": 0.5,
+            },
+          ]
+        }
+        suppressHighlighting={true}
+      >
+        or
+      </Text>
+      <View
+        style={
+          [
+            {
+              "alignItems": "stretch",
+              "backgroundColor": "rgba(0,0,0,1.00)",
+              "display": "flex",
+              "flexBasis": "auto",
+              "flexDirection": "column",
+              "flexShrink": 0,
+              "height": 2,
+              "minHeight": 0,
+              "minWidth": 0,
+              "opacity": 0.1,
+              "position": "relative",
+              "width": 104,
+            },
+          ]
+        }
+      />
+    </View>
+    <View
+      pointerEvents="none"
+      style={
+        [
+          {
+            "alignItems": "stretch",
+            "display": "flex",
+            "flexBasis": "auto",
+            "flexShrink": 0,
+            "height": 18,
+            "minHeight": 18,
+            "minWidth": 18,
+            "position": "relative",
+            "width": 18,
+          },
+        ]
+      }
+    />
+    <TextInput
+      focusable={true}
+      onBlur={[Function]}
+      onChangeText={[Function]}
+      onFocus={[Function]}
+      outlineWidth={0}
+      placeholder="Email"
+      placeholderTextColor="rgba(226,226,226,1.00)"
+      size="$true"
+      style={
+        [
+          {
+            "backgroundColor": "rgba(252,252,252,1.00)",
+            "borderBottomColor": "rgba(232,232,232,1.00)",
+            "borderBottomLeftRadius": 9,
+            "borderBottomRightRadius": 9,
+            "borderBottomStyle": "solid",
+            "borderBottomWidth": 1,
+            "borderLeftColor": "rgba(232,232,232,1.00)",
+            "borderLeftStyle": "solid",
+            "borderLeftWidth": 1,
+            "borderRightColor": "rgba(232,232,232,1.00)",
+            "borderRightStyle": "solid",
+            "borderRightWidth": 1,
+            "borderTopColor": "rgba(232,232,232,1.00)",
+            "borderTopLeftRadius": 9,
+            "borderTopRightRadius": 9,
+            "borderTopStyle": "solid",
+            "borderTopWidth": 1,
+            "color": "rgba(23,23,23,1.00)",
+            "fontFamily": "Inter",
+            "fontSize": 15,
+            "height": 44,
+            "letterSpacing": 0,
+            "minWidth": 0,
+            "paddingLeft": 16,
+            "paddingRight": 16,
+          },
+        ]
+      }
+      textContentType="emailAddress"
+      value=""
+    />
+    <View
+      pointerEvents="none"
+      style={
+        [
+          {
+            "alignItems": "stretch",
+            "display": "flex",
+            "flexBasis": "auto",
+            "flexShrink": 0,
+            "height": 18,
+            "minHeight": 18,
+            "minWidth": 18,
+            "position": "relative",
+            "width": 18,
+          },
+        ]
+      }
+    />
+    <TextInput
+      focusable={true}
+      onBlur={[Function]}
+      onChangeText={[Function]}
+      onFocus={[Function]}
+      outlineWidth={0}
+      placeholder="Password"
+      placeholderTextColor="rgba(226,226,226,1.00)"
+      secureTextEntry={true}
+      size="$true"
+      style={
+        [
+          {
+            "backgroundColor": "rgba(252,252,252,1.00)",
+            "borderBottomColor": "rgba(232,232,232,1.00)",
+            "borderBottomLeftRadius": 9,
+            "borderBottomRightRadius": 9,
+            "borderBottomStyle": "solid",
+            "borderBottomWidth": 1,
+            "borderLeftColor": "rgba(232,232,232,1.00)",
+            "borderLeftStyle": "solid",
+            "borderLeftWidth": 1,
+            "borderRightColor": "rgba(232,232,232,1.00)",
+            "borderRightStyle": "solid",
+            "borderRightWidth": 1,
+            "borderTopColor": "rgba(232,232,232,1.00)",
+            "borderTopLeftRadius": 9,
+            "borderTopRightRadius": 9,
+            "borderTopStyle": "solid",
+            "borderTopWidth": 1,
+            "color": "rgba(23,23,23,1.00)",
+            "fontFamily": "Inter",
+            "fontSize": 15,
+            "height": 44,
+            "letterSpacing": 0,
+            "minWidth": 0,
+            "paddingLeft": 16,
+            "paddingRight": 16,
+          },
+        ]
+      }
+      textContentType="password"
+      value=""
+    />
+    <View
+      pointerEvents="none"
+      style={
+        [
+          {
+            "alignItems": "stretch",
+            "display": "flex",
+            "flexBasis": "auto",
+            "flexShrink": 0,
+            "height": 18,
+            "minHeight": 18,
+            "minWidth": 18,
+            "position": "relative",
+            "width": 18,
+          },
+        ]
+      }
+    />
+    <View
+      focusable={true}
+      onBlur={[Function]}
+      onClick={[Function]}
+      onFocus={[Function]}
+      onResponderGrant={[Function]}
+      onResponderMove={[Function]}
+      onResponderRelease={[Function]}
+      onResponderTerminate={[Function]}
+      onResponderTerminationRequest={[Function]}
+      onStartShouldSetResponder={[Function]}
+      size="$true"
+      style={
+        [
+          {
+            "alignItems": "center",
+            "backgroundColor": "rgba(17,17,17,1.00)",
+            "borderBottomColor": "rgba(0,0,0,0)",
+            "borderBottomLeftRadius": 9,
+            "borderBottomRightRadius": 9,
+            "borderBottomStyle": "solid",
+            "borderBottomWidth": 1,
+            "borderLeftColor": "rgba(0,0,0,0)",
+            "borderLeftStyle": "solid",
+            "borderLeftWidth": 1,
+            "borderRightColor": "rgba(0,0,0,0)",
+            "borderRightStyle": "solid",
+            "borderRightWidth": 1,
+            "borderTopColor": "rgba(0,0,0,0)",
+            "borderTopLeftRadius": 9,
+            "borderTopRightRadius": 9,
+            "borderTopStyle": "solid",
+            "borderTopWidth": 1,
+            "display": "flex",
+            "flexBasis": "auto",
+            "flexDirection": "row",
+            "flexShrink": 0,
+            "flexWrap": "nowrap",
+            "height": 44,
+            "justifyContent": "center",
+            "minHeight": 0,
+            "minWidth": 0,
+            "opacity": 1,
+            "paddingLeft": 18,
+            "paddingRight": 18,
+            "position": "relative",
+          },
+        ]
+      }
+    >
+      <Text
+        fontFamily="$body"
+        lineBreakMode="clip"
+        numberOfLines={1}
+        style={
+          [
+            {
+              "color": "rgba(252,252,252,1.00)",
+              "display": "flex",
+              "flexGrow": 0,
+              "flexShrink": 1,
+              "fontFamily": "Inter",
+              "fontSize": 15,
+              "letterSpacing": 0,
+              "lineHeight": 27,
+            },
+          ]
+        }
+        suppressHighlighting={true}
+      >
+        Sign In
+      </Text>
+    </View>
+    <View
+      pointerEvents="none"
+      style={
+        [
+          {
+            "alignItems": "stretch",
+            "display": "flex",
+            "flexBasis": "auto",
+            "flexShrink": 0,
+            "height": 18,
+            "minHeight": 18,
+            "minWidth": 18,
+            "position": "relative",
+            "width": 18,
+          },
+        ]
+      }
+    />
+    <View
+      style={
+        [
+          {
+            "alignItems": "stretch",
+            "display": "flex",
+            "flexBasis": "auto",
+            "flexDirection": "row",
+            "flexShrink": 0,
+            "minHeight": 0,
+            "minWidth": 0,
+            "position": "relative",
+          },
+        ]
+      }
+    >
+      <Text
+        fontFamily="$body"
+        style={
+          [
+            {
+              "color": "rgba(23,23,23,1.00)",
+              "display": "flex",
+              "fontFamily": "Inter",
+              "fontSize": 13,
+              "letterSpacing": 0,
+              "lineHeight": 24,
+              "marginRight": 7,
+              "opacity": 0.4,
+            },
+          ]
+        }
+        suppressHighlighting={true}
+      >
+        Don’t have an account?
+      </Text>
+      <View
+        accessibilityState={
+          {
+            "busy": undefined,
+            "checked": undefined,
+            "disabled": undefined,
+            "expanded": undefined,
+            "selected": undefined,
+          }
+        }
+        accessibilityValue={
+          {
+            "max": undefined,
+            "min": undefined,
+            "now": undefined,
+            "text": undefined,
+          }
+        }
+        accessible={true}
+        collapsable={false}
+        focusable={true}
+        onBlur={[Function]}
+        onClick={[Function]}
+        onFocus={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+      >
+        <Text
+          fontFamily="$body"
+          style={
+            [
+              {
+                "color": "rgba(23,23,23,1.00)",
+                "display": "flex",
+                "fontFamily": "InterBold",
+                "fontSize": 13,
+                "letterSpacing": 0,
+                "lineHeight": 24,
+                "opacity": 0.5,
+              },
+            ]
+          }
+          suppressHighlighting={true}
+        >
+          Sign up
+        </Text>
+      </View>
+    </View>
+  </View>
+</View>
+`;
+
+exports[`snapshot test should properly display the camera screen 1`] = `
+<View
+  style={
+    {
+      "flex": 1,
+    }
+  }
+>
+  <ViewManagerAdapter_ExponentCamera
+    onCameraReady={[Function]}
+    onFacesDetected={[Function]}
+    onMountError={[Function]}
+    onPictureSaved={[Function]}
+    proxiedProperties={
+      {
+        "autoFocus": undefined,
+        "faceDetectorSettings": {},
+        "flashMode": undefined,
+        "focusDepth": 0,
+        "type": undefined,
+        "whiteBalance": undefined,
+        "zoom": 0,
+      }
+    }
+    style={
+      {
+        "flex": 1,
+      }
+    }
+  >
+    <View
+      style={
+        {
+          "flex": 1,
+          "flexDirection": "row",
+          "justifyContent": "space-between",
+          "marginHorizontal": 20,
+          "marginTop": 60,
+        }
+      }
+    >
+      <View
+        accessibilityState={
+          {
+            "busy": undefined,
+            "checked": undefined,
+            "disabled": undefined,
+            "expanded": undefined,
+            "selected": undefined,
+          }
+        }
+        accessibilityValue={
+          {
+            "max": undefined,
+            "min": undefined,
+            "now": undefined,
+            "text": undefined,
+          }
+        }
+        accessible={true}
+        collapsable={false}
+        focusable={true}
+        onBlur={[Function]}
+        onClick={[Function]}
+        onFocus={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+      >
+        <Text />
+      </View>
+      <View
+        accessibilityState={
+          {
+            "busy": undefined,
+            "checked": undefined,
+            "disabled": undefined,
+            "expanded": undefined,
+            "selected": undefined,
+          }
+        }
+        accessibilityValue={
+          {
+            "max": undefined,
+            "min": undefined,
+            "now": undefined,
+            "text": undefined,
+          }
+        }
+        accessible={true}
+        collapsable={false}
+        focusable={true}
+        onBlur={[Function]}
+        onClick={[Function]}
+        onFocus={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+      >
+        <Text />
+      </View>
+    </View>
+    <View
+      style={
+        {
+          "alignItems": "flex-end",
+          "flexDirection": "row",
+          "justifyContent": "center",
+          "marginBottom": 40,
+          "marginHorizontal": 20,
+        }
+      }
+    >
+      <View
+        accessibilityState={
+          {
+            "busy": undefined,
+            "checked": undefined,
+            "disabled": undefined,
+            "expanded": undefined,
+            "selected": undefined,
+          }
+        }
+        accessibilityValue={
+          {
+            "max": undefined,
+            "min": undefined,
+            "now": undefined,
+            "text": undefined,
+          }
+        }
+        accessible={true}
+        collapsable={false}
+        focusable={true}
+        onBlur={[Function]}
+        onClick={[Function]}
+        onFocus={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          {
+            "left": 0,
+            "position": "absolute",
+          }
+        }
+      >
+        <Text />
+      </View>
+      <View
+        accessibilityState={
+          {
+            "busy": undefined,
+            "checked": undefined,
+            "disabled": undefined,
+            "expanded": undefined,
+            "selected": undefined,
+          }
+        }
+        accessibilityValue={
+          {
+            "max": undefined,
+            "min": undefined,
+            "now": undefined,
+            "text": undefined,
+          }
+        }
+        accessible={true}
+        collapsable={false}
+        focusable={true}
+        onBlur={[Function]}
+        onClick={[Function]}
+        onFocus={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          {
+            "borderRadius": 50,
+            "height": 86,
+            "justifyContent": "center",
+            "width": 86,
+          }
+        }
+      >
+        <View
+          style={
+            {
+              "alignSelf": "center",
+              "backgroundColor": "#fff",
+              "borderColor": "#000",
+              "borderRadius": 50,
+              "borderStyle": "solid",
+              "borderWidth": 3,
+              "height": 80,
+              "justifyContent": "center",
+              "width": 80,
+            }
+          }
+        />
+      </View>
+    </View>
+  </ViewManagerAdapter_ExponentCamera>
+</View>
+`;
+
+exports[`snapshot test should properly display the profile screen 1`] = `
+<RCTScrollView
+  style={
+    [
+      {
+        "paddingLeft": 18,
+        "paddingRight": 18,
+      },
+    ]
+  }
+>
+  <View>
+    <View
+      style={
+        [
+          {
+            "alignItems": "stretch",
+            "display": "flex",
+            "flexBasis": "auto",
+            "flexDirection": "column",
+            "flexShrink": 0,
+            "marginBottom": 18,
+            "marginTop": 18,
+            "minHeight": 0,
+            "minWidth": 0,
+            "position": "relative",
+          },
+        ]
+      }
+    >
+      <View
+        style={
+          [
+            {
+              "alignItems": "center",
+              "alignSelf": "center",
+              "borderBottomLeftRadius": 100000,
+              "borderBottomRightRadius": 100000,
+              "borderTopLeftRadius": 100000,
+              "borderTopRightRadius": 100000,
+              "display": "flex",
+              "flexBasis": "auto",
+              "flexDirection": "column",
+              "flexShrink": 0,
+              "height": 104,
+              "justifyContent": "center",
+              "maxHeight": 104,
+              "maxWidth": 104,
+              "minHeight": 104,
+              "minWidth": 104,
+              "overflow": "hidden",
+              "position": "relative",
+              "width": 104,
+            },
+          ]
+        }
+      >
+        <View
+          style={
+            [
+              {
+                "alignItems": "stretch",
+                "bottom": 0,
+                "display": "flex",
+                "flexBasis": "auto",
+                "flexDirection": "column",
+                "flexShrink": 0,
+                "left": 0,
+                "minHeight": 0,
+                "minWidth": 0,
+                "position": "absolute",
+                "right": 0,
+                "top": 0,
+                "zIndex": 1,
+              },
+            ]
+          }
+        >
+          <Image
+            accessibilityLabel="John Snow's profile image"
+            fullscreen={true}
+            height={104}
+            onError={[Function]}
+            onLoad={[Function]}
+            source={
+              {
+                "uri": "https://xilfwzpwcchiivwulkbn.supabase.co/storage/v1/object/public/avatars/998.jpg",
+              }
+            }
+            style={
+              [
+                {
+                  "height": 104,
+                  "position": "relative",
+                  "width": 104,
+                  "zIndex": 1,
+                },
+              ]
+            }
+            width={104}
+          />
+        </View>
+      </View>
+      <Text
+        accessibilityRole="header"
+        fontFamily="$heading"
+        style={
+          [
+            {
+              "alignSelf": "center",
+              "color": "rgba(23,23,23,1.00)",
+              "display": "flex",
+              "fontFamily": "InterBold",
+              "fontSize": 23,
+              "letterSpacing": -1,
+              "lineHeight": 33,
+              "marginBottom": 0,
+              "marginLeft": 0,
+              "marginRight": 0,
+              "marginTop": 18,
+              "textTransform": "none",
+            },
+          ]
+        }
+        suppressHighlighting={true}
+      >
+        John Snow
+      </Text>
+      <Text
+        fontFamily="System"
+        style={
+          [
+            {
+              "display": "flex",
+              "fontFamily": "System",
+              "marginTop": 7,
+              "textAlign": "center",
+            },
+          ]
+        }
+        suppressHighlighting={true}
+      >
+        I know nothing.
+      </Text>
+      <View
+        focusable={true}
+        onBlur={[Function]}
+        onClick={[Function]}
+        onFocus={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        size="$2"
+        style={
+          [
+            {
+              "alignItems": "center",
+              "backgroundColor": "rgba(0,0,0,0.00)",
+              "borderBottomColor": "rgba(0,0,0,0.00)",
+              "borderBottomLeftRadius": 5,
+              "borderBottomRightRadius": 5,
+              "borderBottomStyle": "solid",
+              "borderBottomWidth": 1,
+              "borderLeftColor": "rgba(0,0,0,0.00)",
+              "borderLeftStyle": "solid",
+              "borderLeftWidth": 1,
+              "borderRightColor": "rgba(0,0,0,0.00)",
+              "borderRightStyle": "solid",
+              "borderRightWidth": 1,
+              "borderTopColor": "rgba(0,0,0,0.00)",
+              "borderTopLeftRadius": 5,
+              "borderTopRightRadius": 5,
+              "borderTopStyle": "solid",
+              "borderTopWidth": 1,
+              "display": "flex",
+              "flexBasis": "auto",
+              "flexDirection": "row",
+              "flexShrink": 0,
+              "flexWrap": "nowrap",
+              "height": 28,
+              "justifyContent": "center",
+              "marginTop": 7,
+              "minHeight": 0,
+              "minWidth": 0,
+              "paddingBottom": 0,
+              "paddingLeft": 0,
+              "paddingRight": 0,
+              "paddingTop": 0,
+              "position": "relative",
+              "shadowColor": "rgba(0,0,0,0.00)",
+            },
+          ]
+        }
+      >
+        <Text
+          fontFamily="$body"
+          lineBreakMode="clip"
+          numberOfLines={1}
+          style={
+            [
+              {
+                "color": "rgba(143,143,143,1.00)",
+                "display": "flex",
+                "flexGrow": 0,
+                "flexShrink": 1,
+                "fontFamily": "Inter",
+                "fontSize": 13,
+                "letterSpacing": 0,
+                "lineHeight": 24,
+              },
+            ]
+          }
+          suppressHighlighting={true}
+        >
+          Edit Profile
+        </Text>
+      </View>
+      <View
+        style={
+          [
+            {
+              "alignItems": "stretch",
+              "display": "flex",
+              "flexBasis": "auto",
+              "flexDirection": "row",
+              "flexShrink": 0,
+              "justifyContent": "space-around",
+              "marginBottom": 32,
+              "marginTop": 18,
+              "minHeight": 0,
+              "minWidth": 0,
+              "position": "relative",
+            },
+          ]
+        }
+      >
+        <View
+          style={
+            [
+              {
+                "alignItems": "stretch",
+                "display": "flex",
+                "flexBasis": "auto",
+                "flexDirection": "column",
+                "flexShrink": 0,
+                "minHeight": 0,
+                "minWidth": 0,
+                "position": "relative",
+              },
+            ]
+          }
+        >
+          <Text
+            fontFamily="System"
+            style={
+              [
+                {
+                  "display": "flex",
+                  "fontFamily": "System",
+                },
+              ]
+            }
+            suppressHighlighting={true}
+          >
+            Posts
+          </Text>
+          <Text
+            fontFamily="System"
+            style={
+              [
+                {
+                  "display": "flex",
+                  "fontFamily": "System",
+                  "marginTop": 7,
+                  "textAlign": "center",
+                },
+              ]
+            }
+            suppressHighlighting={true}
+          >
+            2
+          </Text>
+        </View>
+        <View
+          style={
+            [
+              {
+                "alignItems": "stretch",
+                "display": "flex",
+                "flexBasis": "auto",
+                "flexDirection": "column",
+                "flexShrink": 0,
+                "minHeight": 0,
+                "minWidth": 0,
+                "position": "relative",
+              },
+            ]
+          }
+        >
+          <Text
+            fontFamily="System"
+            style={
+              [
+                {
+                  "display": "flex",
+                  "fontFamily": "System",
+                },
+              ]
+            }
+            suppressHighlighting={true}
+          >
+            Followers
+          </Text>
+          <Text
+            fontFamily="System"
+            style={
+              [
+                {
+                  "display": "flex",
+                  "fontFamily": "System",
+                  "marginTop": 7,
+                  "textAlign": "center",
+                },
+              ]
+            }
+            suppressHighlighting={true}
+          >
+            1000000
+          </Text>
+        </View>
+        <View
+          style={
+            [
+              {
+                "alignItems": "stretch",
+                "display": "flex",
+                "flexBasis": "auto",
+                "flexDirection": "column",
+                "flexShrink": 0,
+                "minHeight": 0,
+                "minWidth": 0,
+                "position": "relative",
+              },
+            ]
+          }
+        >
+          <Text
+            fontFamily="System"
+            style={
+              [
+                {
+                  "display": "flex",
+                  "fontFamily": "System",
+                },
+              ]
+            }
+            suppressHighlighting={true}
+          >
+            Following
+          </Text>
+          <Text
+            fontFamily="System"
+            style={
+              [
+                {
+                  "display": "flex",
+                  "fontFamily": "System",
+                  "marginTop": 7,
+                  "textAlign": "center",
+                },
+              ]
+            }
+            suppressHighlighting={true}
+          >
+            1
+          </Text>
+        </View>
+      </View>
+      <View
+        style={
+          [
+            {
+              "alignItems": "stretch",
+              "borderBottomColor": "rgba(232,232,232,1.00)",
+              "borderBottomStyle": "solid",
+              "borderBottomWidth": 1,
+              "borderLeftColor": "rgba(232,232,232,1.00)",
+              "borderLeftWidth": 0,
+              "borderRightColor": "rgba(232,232,232,1.00)",
+              "borderRightWidth": 0,
+              "borderTopColor": "rgba(232,232,232,1.00)",
+              "borderTopWidth": 0,
+              "display": "flex",
+              "flex": 1,
+              "flexBasis": "auto",
+              "flexDirection": "column",
+              "flexShrink": 0,
+              "height": 0,
+              "maxHeight": 0,
+              "minHeight": 0,
+              "minWidth": 0,
+              "position": "relative",
+              "transform": [
+                {
+                  "translateY": -0.5,
+                },
+              ],
+            },
+          ]
+        }
+      />
+    </View>
+  </View>
+</RCTScrollView>
+`;

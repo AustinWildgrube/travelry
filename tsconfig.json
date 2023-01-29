@@ -5,32 +5,24 @@
     "target": "esnext",
     "module": "commonjs",
     "lib": ["es2017"],
-    "typeRoots": ["./src/types"],
-    "paths": {
-      "@env": ["src/types/env.d.ts"]
-    },
     "allowJs": true,
-    "jsx": "react-jsx",
+    "jsx": "react-native",
     "noEmit": true,
     "isolatedModules": true,
     "noImplicitAny": true,
     "moduleResolution": "node",
     "baseUrl": "./",
+    "paths": {
+      "@env": ["src/types/env.d.ts"]
+    },
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
     "skipLibCheck": false
   },
-  "include": [
-    "next-env.d.ts",
-    "**/*.ts",
-    "**/*.tsx",
-    "**/**/*.ts",
-    "**/**/*.tsx",
-  ],
   "exclude": [
     "node_modules",
     "babel.config.js",
     "metro.config.js",
-    "jest.config"
+    "jest.config.js"
   ]
 }
