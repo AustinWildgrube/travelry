@@ -10,8 +10,8 @@ export type AccountStats = {
 export type UserProfile = {
   id: string;
   username: string;
-  full_name: string | undefined;
-  avatar_url: string | undefined;
+  full_name: string;
+  avatar_url: string;
   bio: string | undefined;
   account_stat: AccountStats;
 };

@@ -1,22 +1,43 @@
 import { FC } from 'react';
 
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import { createNativeStackNavigator, NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { Camera, User } from '@tamagui/lucide-icons';
 
+import { useCurrentUser } from '../contexts/AuthProvider';
 import { ProfileScreen } from 'src/screens/app/ProfileScreen';
 import { CameraScreen } from 'src/screens/app/CameraScreen';
-import { useCurrentUser } from '../contexts/AuthProvider';
+import { PostScreen } from '../screens/app/PostScreen';
+
+import type { Post } from '../queries/posts';
+import type { UserProfile } from '../queries/users';
 
 export type AppStackParamList = {
-  Profile: { image: string };
+  Tab: undefined;
+  Post: {
+    account: UserProfile;
+    post: Post;
+    startIndex: number;
+  };
   Camera: undefined;
+  Profile: {
+    image: string;
+  };
 };
 
 export type AppNavProps<T extends keyof AppStackParamList> = NativeStackNavigationProp<AppStackParamList, T>;
 
-const Tab = createBottomTabNavigator<AppStackParamList>();
+const Stack = createNativeStackNavigator<AppStackParamList>();
+export const RootNavigator: FC = (): JSX.Element => {
+  return (
+    <Stack.Navigator>
+      <Stack.Screen name="Tab" component={AppNavigator} options={{ headerShown: false }} />
+      <Stack.Screen name="Post" component={PostScreen} options={{ headerShown: false }} />
+    </Stack.Navigator>
+  );
+};
 
+const Tab = createBottomTabNavigator<AppStackParamList>();
 export const AppNavigator: FC = (): JSX.Element => {
   const user = useCurrentUser();
 

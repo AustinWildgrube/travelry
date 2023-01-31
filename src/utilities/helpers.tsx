@@ -1,6 +1,6 @@
 import { supabase } from 'src/services/supabaseClient';
 
-export const downloadSupabaseMedia = (bucket: string, path: string): string => {
+export const downloadSupabaseMedia = (bucket: 'avatars' | 'posts', path: string): string => {
   try {
     const { data } = supabase.storage.from(bucket).getPublicUrl(path);
     if (data) {

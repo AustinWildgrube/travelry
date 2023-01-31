@@ -7,6 +7,7 @@ export type PostMedia = {
 };
 
 export type Post = {
+  caption: string;
   location: string;
   post_media: PostMedia[];
 };
@@ -17,6 +18,8 @@ export const getPosts = async (id: string): Promise<Post[] | null> => {
       .from('post')
       .select(
         `
+          caption,
+          created_at,
           location,
           post_media (
             id,

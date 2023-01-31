@@ -8,7 +8,7 @@ import { useFonts } from 'expo-font';
 import { ThemeProvider, useTheme, getNavigatorTheme } from 'src/themes';
 import { AuthProvider, useAuth } from 'src/contexts/AuthProvider';
 import { Spinner } from 'src/components';
-import { AppNavigator } from 'src/navigators/AppNavigator';
+import { AppNavigator, RootNavigator } from 'src/navigators/AppNavigator';
 import { AuthNavigator } from 'src/navigators/AuthNavigator';
 import config from './tamagui.config';
 import './src/translations/i18n';
@@ -48,7 +48,7 @@ const Root = () => {
 
   return (
     <NavigationContainer theme={getNavigatorTheme(theme)}>
-      {currentUser !== null ? <AppNavigator /> : <AuthNavigator />}
+      {currentUser !== null ? <RootNavigator /> : <AuthNavigator />}
     </NavigationContainer>
   );
 };
