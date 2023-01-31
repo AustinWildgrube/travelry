@@ -1,5 +1,6 @@
 import { Alert } from 'react-native';
-import { supabase } from 'src/services/supabaseClient';
+
+import { supabase } from '&/services/supabase-client';
 
 export type PostMedia = {
   id: string;

@@ -1,6 +1,7 @@
-import { AuthenticationScreen } from 'src/screens/authentication/AuthenticationScreen';
-import { ProfileScreen } from 'src/screens/app/ProfileScreen';
-import { CameraScreen } from 'src/screens/app/CameraScreen';
+import { CameraScreen } from '&/screens/app/CameraScreen';
+import { ProfileScreen } from '&/screens/app/ProfileScreen';
+import { AuthenticationScreen } from '&/screens/authentication/AuthenticationScreen';
+
 import { wrapRender } from '../jestSetupFile';
 
 describe('snapshot test', () => {

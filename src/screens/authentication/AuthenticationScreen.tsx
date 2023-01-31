@@ -2,7 +2,7 @@ import { FC } from 'react';
 
 import { YStack } from 'tamagui';
 
-import { Form } from 'src/components';
+import { Form } from '&/components/authentication';
 
 export const AuthenticationScreen: FC = (): JSX.Element => {
   return (

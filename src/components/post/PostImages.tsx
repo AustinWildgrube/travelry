@@ -5,9 +5,9 @@ import { useNavigation } from '@react-navigation/core';
 import CountryFlag from 'react-native-country-flag';
 import SwiperFlatList from 'react-native-swiper-flatlist';
 
-import { downloadSupabaseMedia } from '../../utilities/helpers';
-import { AppNavProps } from '../../navigators/AppNavigator';
-import type { Post } from '../../queries/posts';
+import { AppNavProps } from '&/navigators/app-navigator';
+import type { Post } from '&/queries/posts';
+import { downloadSupabaseMedia } from '&/utilities/helpers';
 
 interface PostImageProps {
   post: Post;

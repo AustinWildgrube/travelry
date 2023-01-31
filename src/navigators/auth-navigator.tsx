@@ -2,7 +2,7 @@ import { FC } from 'react';
 
 import { createNativeStackNavigator, NativeStackNavigationProp } from '@react-navigation/native-stack';
 
-import { AuthenticationScreen } from 'src/screens/authentication/AuthenticationScreen';
+import { AuthenticationScreen } from '&/screens/authentication/AuthenticationScreen';
 
 export type AuthStackParamList = {
   Login: undefined;

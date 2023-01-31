@@ -2,8 +2,8 @@ import { Image, Pressable, StyleSheet, View } from 'react-native';
 
 import { Feather } from '@expo/vector-icons';
 
-import { downloadSupabaseMedia } from '../../utilities/helpers';
-import type { UserProfile } from '../../queries/users';
+import type { UserProfile } from '&/queries/users';
+import { downloadSupabaseMedia } from '&/utilities/helpers';
 
 interface ActionsProps {
   account: UserProfile;

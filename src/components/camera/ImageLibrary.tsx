@@ -1,10 +1,10 @@
 import { Pressable } from 'react-native';
 
-import * as ImagePicker from 'expo-image-picker';
-import { useNavigation } from '@react-navigation/core';
-
-import { AppNavProps } from '../../navigators/AppNavigator';
 import { Feather } from '@expo/vector-icons';
+import { useNavigation } from '@react-navigation/core';
+import * as ImagePicker from 'expo-image-picker';
+
+import { AppNavProps } from '&/navigators/app-navigator';
 
 export function ImageLibrary(): JSX.Element {
   const navigation = useNavigation<AppNavProps<'Profile'>>();

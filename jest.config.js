@@ -12,7 +12,7 @@ module.exports = {
     },
   },
   moduleNameMapper: {
-    '^src(.*)$': '<rootDir>/src$1',
+    '^&(.*)$': '<rootDir>/src$1',
     '^@env(.*)$': '<rootDir>/.env$1',
   },
   transformIgnorePatterns: [

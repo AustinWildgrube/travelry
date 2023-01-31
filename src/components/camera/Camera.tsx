@@ -1,13 +1,13 @@
 import { useEffect, useRef, useState } from 'react';
 import { Pressable, StyleSheet, View } from 'react-native';
 
-import { Camera as ExpoCamera, CameraType } from 'expo-camera';
-import { useNavigation } from '@react-navigation/core';
 import { Feather } from '@expo/vector-icons';
+import { useNavigation } from '@react-navigation/core';
+import { CameraType, Camera as ExpoCamera } from 'expo-camera';
 import { Text } from 'tamagui';
 
-import { AppNavProps } from 'src/navigators/AppNavigator';
-import { ImageLibrary } from './ImageLibrary';
+import { ImageLibrary } from '&/components/camera';
+import { AppNavProps } from '&/navigators/app-navigator';
 
 export function Camera(): JSX.Element {
   const navigation = useNavigation<AppNavProps<'Profile'>>();

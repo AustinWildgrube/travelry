@@ -2,16 +2,17 @@ import { View } from 'react-native';
 
 import 'react-native-url-polyfill/auto';
 import { NavigationContainer } from '@react-navigation/native';
-import { TamaguiProvider } from 'tamagui';
 import { useFonts } from 'expo-font';
+import { TamaguiProvider } from 'tamagui';
 
-import { ThemeProvider, useTheme, getNavigatorTheme } from 'src/themes';
-import { AuthProvider, useAuth } from 'src/contexts/AuthProvider';
-import { Spinner } from 'src/components';
-import { AppNavigator, RootNavigator } from 'src/navigators/AppNavigator';
-import { AuthNavigator } from 'src/navigators/AuthNavigator';
+import { Spinner } from '&/components/atoms';
+import { AuthProvider, useAuth } from '&/contexts/auth-provider';
+import { RootNavigator } from '&/navigators/app-navigator';
+import { AuthNavigator } from '&/navigators/auth-navigator';
+import { getNavigatorTheme } from '&/themes/navigator-theme';
+import { ThemeProvider, useTheme } from '&/themes/theme-provider';
+
 import config from './tamagui.config';
-import './src/translations/i18n';
 
 const App = (): JSX.Element | null => {
   const [loaded] = useFonts({

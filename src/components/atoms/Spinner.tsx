@@ -1,17 +1,11 @@
 import { FC } from 'react';
 import { ActivityIndicator, ActivityIndicatorProps } from 'react-native';
 
-import { useTheme } from 'src/themes/ThemeContext';
+import { useTheme } from '&/themes/theme-provider';
 
 export const Spinner: FC<ActivityIndicatorProps> = props => {
   const { theme } = useTheme();
   const spinnerColor = props.color ? props.color : theme.colors.primary;
 
-  return (
-    <ActivityIndicator
-      {...props}
-      color={spinnerColor}
-      testID={'loading-spinner'}
-    />
-  );
+  return <ActivityIndicator {...props} color={spinnerColor} testID={'loading-spinner'} />;
 };

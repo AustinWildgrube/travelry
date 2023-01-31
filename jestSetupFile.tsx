@@ -1,12 +1,13 @@
 import { ReactNode } from 'react';
 
-import { render } from '@testing-library/react-native';
 import { NavigationContainer } from '@react-navigation/native';
+import { render } from '@testing-library/react-native';
 import { TamaguiProvider } from 'tamagui';
+
+import { AuthContext } from '&/contexts/auth-provider';
 
 import { UserProfile } from './src/queries/users';
 import { ThemeProvider } from './src/themes';
-import { AuthContext } from './src/contexts/AuthProvider';
 import config from './tamagui.config';
 
 jest.mock('@react-native-async-storage/async-storage', () =>

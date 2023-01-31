@@ -2,7 +2,7 @@ import { FC } from 'react';
 
 import { ScrollView } from 'tamagui';
 
-import { Header, Images } from 'src/components';
+import { Header, Images } from '&/components/profile';
 
 export const ProfileScreen: FC = (): JSX.Element => {
   return (

@@ -1,17 +1,16 @@
-import { useState, useContext, createContext, useEffect } from 'react';
+import { createContext, useContext, useEffect, useState } from 'react';
 import { Alert } from 'react-native';
 
-import { supabase } from 'src/services/supabaseClient';
-import { getUserProfile } from 'src/queries/users';
-import { useSupabaseMutation } from 'src/hooks/useSupabase';
-import type { UserProfile } from 'src/queries/users';
+import { useSupabaseMutation } from '&/hooks/use-supabase';
+import { getUserProfile, type UserProfile } from '&/queries/users';
+import { supabase } from '&/services/supabase-client';
 
 interface AuthContextProps {
   loading?: boolean;
   currentUser?: UserProfile | null;
-  loginWithEmailAndPassword?: (email: string, password: string) => Promise<void>;
+  loginWithEmailAndPassword: (email: string, password: string) => Promise<void>;
   logout?: () => void;
-  registerWithEmailAndPassword?: (email: string, password: string) => Promise<void>;
+  registerWithEmailAndPassword: (email: string, password: string) => Promise<void>;
   updateCurrentUser?: (fields: Partial<Omit<UserProfile, 'id' | 'email'>>) => void;
 }
 

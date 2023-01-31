@@ -1,14 +1,13 @@
-import { Fragment, useEffect, useRef, useState } from 'react';
-import { Animated, Dimensions, FlatList, PanResponder, SectionList, TouchableOpacity, View } from 'react-native';
+import { Fragment, useEffect, useState } from 'react';
+import { Dimensions, FlatList, TouchableOpacity } from 'react-native';
 
-import { Image, Paragraph, YStack } from 'tamagui';
 import { useNavigation } from '@react-navigation/core';
+import { Image } from 'tamagui';
 
-import { useCurrentUser } from '../../contexts/AuthProvider';
-import { downloadSupabaseMedia } from '../../utilities/helpers';
-import { getPosts, PostMedia } from '../../queries/posts';
-import type { Post } from '../../queries/posts';
-import { AppNavProps } from '../../navigators/AppNavigator';
+import { useCurrentUser } from '&/contexts/auth-provider';
+import { AppNavProps } from '&/navigators/app-navigator';
+import { PostMedia, getPosts, type Post } from '&/queries/posts';
+import { downloadSupabaseMedia } from '&/utilities/helpers';
 
 const dimensions = Dimensions.get('window');
 const height = Math.round((dimensions.width * 3) / 9);

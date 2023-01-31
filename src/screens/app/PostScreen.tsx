@@ -1,8 +1,6 @@
 import { StyleSheet, Text, View } from 'react-native';
 
-import { PostImages } from '../../components/post/PostImages';
-import { PostActions } from '../../components/post/PostActions';
-import { PostComments } from '../../components/post/PostComments';
+import { PostActions, PostComments, PostImages } from '&/components/post';
 
 export function PostScreen({ route }: { route: any }): JSX.Element {
   const { account, post, startIndex } = route.params;

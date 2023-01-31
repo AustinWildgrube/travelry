@@ -4,7 +4,7 @@ import { Pressable } from 'react-native';
 import { Controller, useForm } from 'react-hook-form';
 import { Button, Image, Input, Paragraph, Stack, XStack, YStack } from 'tamagui';
 
-import { useAuth } from '../../contexts/AuthProvider';
+import { useAuth } from '&/contexts/auth-provider';
 
 export function Form(): JSX.Element {
   const [type, setType] = useState<'sign-up' | 'sign-in'>('sign-in');

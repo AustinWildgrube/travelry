@@ -1,7 +1,7 @@
-import { createContext, Dispatch, SetStateAction, useContext, useEffect, useState } from 'react';
+import { Dispatch, SetStateAction, createContext, useContext, useEffect, useState } from 'react';
 import { useColorScheme } from 'react-native';
 
-import { darkTheme, lightTheme } from './themes';
+import { darkTheme, lightTheme } from '&/themes/themes';
 
 export type Theme = typeof lightTheme | typeof darkTheme;
 
@@ -11,7 +11,7 @@ interface ThemeProviderValueProps {
   setDarkMode: Dispatch<SetStateAction<boolean>>;
 }
 
-export const ThemeContext = createContext<ThemeProviderValueProps | undefined>(undefined);
+export const ThemeProvider = createContext<ThemeProviderValueProps | undefined>(undefined);
 
 export const ThemeProvider = ({ children }: any): JSX.Element => {
   const colorScheme = useColorScheme();
@@ -24,11 +24,11 @@ export const ThemeProvider = ({ children }: any): JSX.Element => {
 
   const theme = isDarkMode ? darkTheme : lightTheme;
 
-  return <ThemeContext.Provider value={{ theme, isDarkMode, setDarkMode }}>{children}</ThemeContext.Provider>;
+  return <ThemeProvider.Provider value={{ theme, isDarkMode, setDarkMode }}>{children}</ThemeProvider.Provider>;
 };
 
 export const useTheme = (): ThemeProviderValueProps => {
-  const context = useContext(ThemeContext);
+  const context = useContext(ThemeProvider);
 
   if (context === undefined) {
     throw new Error('Try to use useTheme hook without a context provider');
