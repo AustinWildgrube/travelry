@@ -1,7 +1,7 @@
 import { ReactNode, useEffect } from 'react';
 import { Platform, SafeAreaView, StatusBar, StatusBarStyle, StyleSheet, View } from 'react-native';
 
-import { useTheme, type Theme } from '&/themes/theme-provider';
+import { useTheme, type Theme } from '&/themes/ThemeProvider';
 
 export const Layout = ({ children }: { children: ReactNode }): JSX.Element => {
   const { theme } = useTheme();

@@ -3,8 +3,8 @@
 exports[`snapshot test should properly display the authentication screen 1`] = `
 <View
   style={
-    [
-      {
+    Array [
+      Object {
         "alignItems": "center",
         "display": "flex",
         "flex": 1,
@@ -21,8 +21,8 @@ exports[`snapshot test should properly display the authentication screen 1`] = `
 >
   <View
     style={
-      [
-        {
+      Array [
+        Object {
           "alignItems": "stretch",
           "backgroundColor": "rgba(252,252,252,1.00)",
           "borderBottomLeftRadius": 34,
@@ -41,7 +41,7 @@ exports[`snapshot test should properly display the authentication screen 1`] = `
           "paddingTop": 32,
           "position": "relative",
           "shadowColor": "rgb(0,0,0)",
-          "shadowOffset": {
+          "shadowOffset": Object {
             "height": 4,
             "width": 0,
           },
@@ -55,8 +55,8 @@ exports[`snapshot test should properly display the authentication screen 1`] = `
     <Text
       fontFamily="$body"
       style={
-        [
-          {
+        Array [
+          Object {
             "color": "rgba(23,23,23,1.00)",
             "display": "flex",
             "fontFamily": "InterBold",
@@ -75,8 +75,8 @@ exports[`snapshot test should properly display the authentication screen 1`] = `
     <View
       pointerEvents="none"
       style={
-        [
-          {
+        Array [
+          Object {
             "alignItems": "stretch",
             "display": "flex",
             "flexBasis": "auto",
@@ -92,8 +92,8 @@ exports[`snapshot test should properly display the authentication screen 1`] = `
     />
     <View
       style={
-        [
-          {
+        Array [
+          Object {
             "alignItems": "stretch",
             "display": "flex",
             "flexBasis": "auto",
@@ -120,8 +120,8 @@ exports[`snapshot test should properly display the authentication screen 1`] = `
         onStartShouldSetResponder={[Function]}
         size="$5"
         style={
-          [
-            {
+          Array [
+            Object {
               "alignItems": "center",
               "backgroundColor": "rgba(0,0,0,0.01)",
               "borderBottomColor": "rgba(226,226,226,1.00)",
@@ -159,13 +159,13 @@ exports[`snapshot test should properly display the authentication screen 1`] = `
         <Image
           height={20}
           source={
-            {
+            Object {
               "uri": "https://qwvsfvhphdefqfyuuhlb.supabase.co/storage/v1/object/public/logos/Google%20logo.png",
             }
           }
           style={
-            [
-              {
+            Array [
+              Object {
                 "height": 20,
                 "position": "relative",
                 "width": 20,
@@ -179,8 +179,8 @@ exports[`snapshot test should properly display the authentication screen 1`] = `
       <View
         pointerEvents="none"
         style={
-          [
-            {
+          Array [
+            Object {
               "alignItems": "stretch",
               "display": "flex",
               "flexBasis": "auto",
@@ -207,8 +207,8 @@ exports[`snapshot test should properly display the authentication screen 1`] = `
         onStartShouldSetResponder={[Function]}
         size="$5"
         style={
-          [
-            {
+          Array [
+            Object {
               "alignItems": "center",
               "backgroundColor": "rgba(0,0,0,0.01)",
               "borderBottomColor": "rgba(226,226,226,1.00)",
@@ -247,13 +247,13 @@ exports[`snapshot test should properly display the authentication screen 1`] = `
           height={22}
           resizeMode="contain"
           source={
-            {
+            Object {
               "uri": "https://qwvsfvhphdefqfyuuhlb.supabase.co/storage/v1/object/public/logos/Apple%20logo.png",
             }
           }
           style={
-            [
-              {
+            Array [
+              Object {
                 "height": 22,
                 "position": "relative",
                 "width": 22,
@@ -267,8 +267,8 @@ exports[`snapshot test should properly display the authentication screen 1`] = `
       <View
         pointerEvents="none"
         style={
-          [
-            {
+          Array [
+            Object {
               "alignItems": "stretch",
               "display": "flex",
               "flexBasis": "auto",
@@ -295,8 +295,8 @@ exports[`snapshot test should properly display the authentication screen 1`] = `
         onStartShouldSetResponder={[Function]}
         size="$5"
         style={
-          [
-            {
+          Array [
+            Object {
               "alignItems": "center",
               "backgroundColor": "rgba(0,0,0,0.01)",
               "borderBottomColor": "rgba(226,226,226,1.00)",
@@ -335,13 +335,13 @@ exports[`snapshot test should properly display the authentication screen 1`] = `
           height={22}
           resizeMode="contain"
           source={
-            {
+            Object {
               "uri": "https://qwvsfvhphdefqfyuuhlb.supabase.co/storage/v1/object/public/logos/Discord%20logo.png",
             }
           }
           style={
-            [
-              {
+            Array [
+              Object {
                 "height": 22,
                 "position": "relative",
                 "width": 25,
@@ -356,8 +356,8 @@ exports[`snapshot test should properly display the authentication screen 1`] = `
     <View
       pointerEvents="none"
       style={
-        [
-          {
+        Array [
+          Object {
             "alignItems": "stretch",
             "display": "flex",
             "flexBasis": "auto",
@@ -373,8 +373,8 @@ exports[`snapshot test should properly display the authentication screen 1`] = `
     />
     <View
       style={
-        [
-          {
+        Array [
+          Object {
             "alignItems": "center",
             "display": "flex",
             "flexBasis": "auto",
@@ -391,8 +391,8 @@ exports[`snapshot test should properly display the authentication screen 1`] = `
     >
       <View
         style={
-          [
-            {
+          Array [
+            Object {
               "alignItems": "stretch",
               "backgroundColor": "rgba(0,0,0,1.00)",
               "display": "flex",
@@ -412,8 +412,8 @@ exports[`snapshot test should properly display the authentication screen 1`] = `
       <Text
         fontFamily="$body"
         style={
-          [
-            {
+          Array [
+            Object {
               "color": "rgba(23,23,23,1.00)",
               "display": "flex",
               "fontFamily": "Inter",
@@ -430,8 +430,8 @@ exports[`snapshot test should properly display the authentication screen 1`] = `
       </Text>
       <View
         style={
-          [
-            {
+          Array [
+            Object {
               "alignItems": "stretch",
               "backgroundColor": "rgba(0,0,0,1.00)",
               "display": "flex",
@@ -452,8 +452,8 @@ exports[`snapshot test should properly display the authentication screen 1`] = `
     <View
       pointerEvents="none"
       style={
-        [
-          {
+        Array [
+          Object {
             "alignItems": "stretch",
             "display": "flex",
             "flexBasis": "auto",
@@ -477,8 +477,8 @@ exports[`snapshot test should properly display the authentication screen 1`] = `
       placeholderTextColor="rgba(226,226,226,1.00)"
       size="$true"
       style={
-        [
-          {
+        Array [
+          Object {
             "backgroundColor": "rgba(252,252,252,1.00)",
             "borderBottomColor": "rgba(232,232,232,1.00)",
             "borderBottomLeftRadius": 9,
@@ -513,8 +513,8 @@ exports[`snapshot test should properly display the authentication screen 1`] = `
     <View
       pointerEvents="none"
       style={
-        [
-          {
+        Array [
+          Object {
             "alignItems": "stretch",
             "display": "flex",
             "flexBasis": "auto",
@@ -539,8 +539,8 @@ exports[`snapshot test should properly display the authentication screen 1`] = `
       secureTextEntry={true}
       size="$true"
       style={
-        [
-          {
+        Array [
+          Object {
             "backgroundColor": "rgba(252,252,252,1.00)",
             "borderBottomColor": "rgba(232,232,232,1.00)",
             "borderBottomLeftRadius": 9,
@@ -575,8 +575,8 @@ exports[`snapshot test should properly display the authentication screen 1`] = `
     <View
       pointerEvents="none"
       style={
-        [
-          {
+        Array [
+          Object {
             "alignItems": "stretch",
             "display": "flex",
             "flexBasis": "auto",
@@ -603,8 +603,8 @@ exports[`snapshot test should properly display the authentication screen 1`] = `
       onStartShouldSetResponder={[Function]}
       size="$true"
       style={
-        [
-          {
+        Array [
+          Object {
             "alignItems": "center",
             "backgroundColor": "rgba(17,17,17,1.00)",
             "borderBottomColor": "rgba(0,0,0,0)",
@@ -645,8 +645,8 @@ exports[`snapshot test should properly display the authentication screen 1`] = `
         lineBreakMode="clip"
         numberOfLines={1}
         style={
-          [
-            {
+          Array [
+            Object {
               "color": "rgba(252,252,252,1.00)",
               "display": "flex",
               "flexGrow": 0,
@@ -666,8 +666,8 @@ exports[`snapshot test should properly display the authentication screen 1`] = `
     <View
       pointerEvents="none"
       style={
-        [
-          {
+        Array [
+          Object {
             "alignItems": "stretch",
             "display": "flex",
             "flexBasis": "auto",
@@ -683,8 +683,8 @@ exports[`snapshot test should properly display the authentication screen 1`] = `
     />
     <View
       style={
-        [
-          {
+        Array [
+          Object {
             "alignItems": "stretch",
             "display": "flex",
             "flexBasis": "auto",
@@ -700,8 +700,8 @@ exports[`snapshot test should properly display the authentication screen 1`] = `
       <Text
         fontFamily="$body"
         style={
-          [
-            {
+          Array [
+            Object {
               "color": "rgba(23,23,23,1.00)",
               "display": "flex",
               "fontFamily": "Inter",
@@ -718,23 +718,6 @@ exports[`snapshot test should properly display the authentication screen 1`] = `
         Don’t have an account?
       </Text>
       <View
-        accessibilityState={
-          {
-            "busy": undefined,
-            "checked": undefined,
-            "disabled": undefined,
-            "expanded": undefined,
-            "selected": undefined,
-          }
-        }
-        accessibilityValue={
-          {
-            "max": undefined,
-            "min": undefined,
-            "now": undefined,
-            "text": undefined,
-          }
-        }
         accessible={true}
         collapsable={false}
         focusable={true}
@@ -751,8 +734,8 @@ exports[`snapshot test should properly display the authentication screen 1`] = `
         <Text
           fontFamily="$body"
           style={
-            [
-              {
+            Array [
+              Object {
                 "color": "rgba(23,23,23,1.00)",
                 "display": "flex",
                 "fontFamily": "InterBold",
@@ -776,7 +759,7 @@ exports[`snapshot test should properly display the authentication screen 1`] = `
 exports[`snapshot test should properly display the camera screen 1`] = `
 <View
   style={
-    {
+    Object {
       "flex": 1,
     }
   }
@@ -787,9 +770,9 @@ exports[`snapshot test should properly display the camera screen 1`] = `
     onMountError={[Function]}
     onPictureSaved={[Function]}
     proxiedProperties={
-      {
+      Object {
         "autoFocus": undefined,
-        "faceDetectorSettings": {},
+        "faceDetectorSettings": Object {},
         "flashMode": undefined,
         "focusDepth": 0,
         "type": undefined,
@@ -798,14 +781,14 @@ exports[`snapshot test should properly display the camera screen 1`] = `
       }
     }
     style={
-      {
+      Object {
         "flex": 1,
       }
     }
   >
     <View
       style={
-        {
+        Object {
           "flex": 1,
           "flexDirection": "row",
           "justifyContent": "space-between",
@@ -815,23 +798,6 @@ exports[`snapshot test should properly display the camera screen 1`] = `
       }
     >
       <View
-        accessibilityState={
-          {
-            "busy": undefined,
-            "checked": undefined,
-            "disabled": undefined,
-            "expanded": undefined,
-            "selected": undefined,
-          }
-        }
-        accessibilityValue={
-          {
-            "max": undefined,
-            "min": undefined,
-            "now": undefined,
-            "text": undefined,
-          }
-        }
         accessible={true}
         collapsable={false}
         focusable={true}
@@ -845,26 +811,13 @@ exports[`snapshot test should properly display the camera screen 1`] = `
         onResponderTerminationRequest={[Function]}
         onStartShouldSetResponder={[Function]}
       >
-        <Text />
+        <
+          color="white"
+          name="x"
+          size={24}
+        />
       </View>
       <View
-        accessibilityState={
-          {
-            "busy": undefined,
-            "checked": undefined,
-            "disabled": undefined,
-            "expanded": undefined,
-            "selected": undefined,
-          }
-        }
-        accessibilityValue={
-          {
-            "max": undefined,
-            "min": undefined,
-            "now": undefined,
-            "text": undefined,
-          }
-        }
         accessible={true}
         collapsable={false}
         focusable={true}
@@ -878,12 +831,16 @@ exports[`snapshot test should properly display the camera screen 1`] = `
         onResponderTerminationRequest={[Function]}
         onStartShouldSetResponder={[Function]}
       >
-        <Text />
+        <
+          color="white"
+          name="refresh-cw"
+          size={21}
+        />
       </View>
     </View>
     <View
       style={
-        {
+        Object {
           "alignItems": "flex-end",
           "flexDirection": "row",
           "justifyContent": "center",
@@ -893,23 +850,6 @@ exports[`snapshot test should properly display the camera screen 1`] = `
       }
     >
       <View
-        accessibilityState={
-          {
-            "busy": undefined,
-            "checked": undefined,
-            "disabled": undefined,
-            "expanded": undefined,
-            "selected": undefined,
-          }
-        }
-        accessibilityValue={
-          {
-            "max": undefined,
-            "min": undefined,
-            "now": undefined,
-            "text": undefined,
-          }
-        }
         accessible={true}
         collapsable={false}
         focusable={true}
@@ -923,32 +863,19 @@ exports[`snapshot test should properly display the camera screen 1`] = `
         onResponderTerminationRequest={[Function]}
         onStartShouldSetResponder={[Function]}
         style={
-          {
+          Object {
             "left": 0,
             "position": "absolute",
           }
         }
       >
-        <Text />
+        <
+          color="white"
+          name="image"
+          size={80}
+        />
       </View>
       <View
-        accessibilityState={
-          {
-            "busy": undefined,
-            "checked": undefined,
-            "disabled": undefined,
-            "expanded": undefined,
-            "selected": undefined,
-          }
-        }
-        accessibilityValue={
-          {
-            "max": undefined,
-            "min": undefined,
-            "now": undefined,
-            "text": undefined,
-          }
-        }
         accessible={true}
         collapsable={false}
         focusable={true}
@@ -962,7 +889,7 @@ exports[`snapshot test should properly display the camera screen 1`] = `
         onResponderTerminationRequest={[Function]}
         onStartShouldSetResponder={[Function]}
         style={
-          {
+          Object {
             "borderRadius": 50,
             "height": 86,
             "justifyContent": "center",
@@ -972,7 +899,7 @@ exports[`snapshot test should properly display the camera screen 1`] = `
       >
         <View
           style={
-            {
+            Object {
               "alignSelf": "center",
               "backgroundColor": "#fff",
               "borderColor": "#000",
@@ -994,8 +921,8 @@ exports[`snapshot test should properly display the camera screen 1`] = `
 exports[`snapshot test should properly display the profile screen 1`] = `
 <RCTScrollView
   style={
-    [
-      {
+    Array [
+      Object {
         "paddingLeft": 18,
         "paddingRight": 18,
       },
@@ -1005,8 +932,8 @@ exports[`snapshot test should properly display the profile screen 1`] = `
   <View>
     <View
       style={
-        [
-          {
+        Array [
+          Object {
             "alignItems": "stretch",
             "display": "flex",
             "flexBasis": "auto",
@@ -1023,8 +950,8 @@ exports[`snapshot test should properly display the profile screen 1`] = `
     >
       <View
         style={
-          [
-            {
+          Array [
+            Object {
               "alignItems": "center",
               "alignSelf": "center",
               "borderBottomLeftRadius": 100000,
@@ -1050,8 +977,8 @@ exports[`snapshot test should properly display the profile screen 1`] = `
       >
         <View
           style={
-            [
-              {
+            Array [
+              Object {
                 "alignItems": "stretch",
                 "bottom": 0,
                 "display": "flex",
@@ -1076,13 +1003,13 @@ exports[`snapshot test should properly display the profile screen 1`] = `
             onError={[Function]}
             onLoad={[Function]}
             source={
-              {
+              Object {
                 "uri": "https://xilfwzpwcchiivwulkbn.supabase.co/storage/v1/object/public/avatars/998.jpg",
               }
             }
             style={
-              [
-                {
+              Array [
+                Object {
                   "height": 104,
                   "position": "relative",
                   "width": 104,
@@ -1098,8 +1025,8 @@ exports[`snapshot test should properly display the profile screen 1`] = `
         accessibilityRole="header"
         fontFamily="$heading"
         style={
-          [
-            {
+          Array [
+            Object {
               "alignSelf": "center",
               "color": "rgba(23,23,23,1.00)",
               "display": "flex",
@@ -1122,8 +1049,8 @@ exports[`snapshot test should properly display the profile screen 1`] = `
       <Text
         fontFamily="System"
         style={
-          [
-            {
+          Array [
+            Object {
               "display": "flex",
               "fontFamily": "System",
               "marginTop": 7,
@@ -1148,8 +1075,8 @@ exports[`snapshot test should properly display the profile screen 1`] = `
         onStartShouldSetResponder={[Function]}
         size="$2"
         style={
-          [
-            {
+          Array [
+            Object {
               "alignItems": "center",
               "backgroundColor": "rgba(0,0,0,0.00)",
               "borderBottomColor": "rgba(0,0,0,0.00)",
@@ -1193,8 +1120,8 @@ exports[`snapshot test should properly display the profile screen 1`] = `
           lineBreakMode="clip"
           numberOfLines={1}
           style={
-            [
-              {
+            Array [
+              Object {
                 "color": "rgba(143,143,143,1.00)",
                 "display": "flex",
                 "flexGrow": 0,
@@ -1213,8 +1140,8 @@ exports[`snapshot test should properly display the profile screen 1`] = `
       </View>
       <View
         style={
-          [
-            {
+          Array [
+            Object {
               "alignItems": "stretch",
               "display": "flex",
               "flexBasis": "auto",
@@ -1232,8 +1159,8 @@ exports[`snapshot test should properly display the profile screen 1`] = `
       >
         <View
           style={
-            [
-              {
+            Array [
+              Object {
                 "alignItems": "stretch",
                 "display": "flex",
                 "flexBasis": "auto",
@@ -1249,8 +1176,8 @@ exports[`snapshot test should properly display the profile screen 1`] = `
           <Text
             fontFamily="System"
             style={
-              [
-                {
+              Array [
+                Object {
                   "display": "flex",
                   "fontFamily": "System",
                 },
@@ -1263,8 +1190,8 @@ exports[`snapshot test should properly display the profile screen 1`] = `
           <Text
             fontFamily="System"
             style={
-              [
-                {
+              Array [
+                Object {
                   "display": "flex",
                   "fontFamily": "System",
                   "marginTop": 7,
@@ -1279,8 +1206,8 @@ exports[`snapshot test should properly display the profile screen 1`] = `
         </View>
         <View
           style={
-            [
-              {
+            Array [
+              Object {
                 "alignItems": "stretch",
                 "display": "flex",
                 "flexBasis": "auto",
@@ -1296,8 +1223,8 @@ exports[`snapshot test should properly display the profile screen 1`] = `
           <Text
             fontFamily="System"
             style={
-              [
-                {
+              Array [
+                Object {
                   "display": "flex",
                   "fontFamily": "System",
                 },
@@ -1310,8 +1237,8 @@ exports[`snapshot test should properly display the profile screen 1`] = `
           <Text
             fontFamily="System"
             style={
-              [
-                {
+              Array [
+                Object {
                   "display": "flex",
                   "fontFamily": "System",
                   "marginTop": 7,
@@ -1326,8 +1253,8 @@ exports[`snapshot test should properly display the profile screen 1`] = `
         </View>
         <View
           style={
-            [
-              {
+            Array [
+              Object {
                 "alignItems": "stretch",
                 "display": "flex",
                 "flexBasis": "auto",
@@ -1343,8 +1270,8 @@ exports[`snapshot test should properly display the profile screen 1`] = `
           <Text
             fontFamily="System"
             style={
-              [
-                {
+              Array [
+                Object {
                   "display": "flex",
                   "fontFamily": "System",
                 },
@@ -1357,8 +1284,8 @@ exports[`snapshot test should properly display the profile screen 1`] = `
           <Text
             fontFamily="System"
             style={
-              [
-                {
+              Array [
+                Object {
                   "display": "flex",
                   "fontFamily": "System",
                   "marginTop": 7,
@@ -1374,8 +1301,8 @@ exports[`snapshot test should properly display the profile screen 1`] = `
       </View>
       <View
         style={
-          [
-            {
+          Array [
+            Object {
               "alignItems": "stretch",
               "borderBottomColor": "rgba(232,232,232,1.00)",
               "borderBottomStyle": "solid",
@@ -1396,8 +1323,8 @@ exports[`snapshot test should properly display the profile screen 1`] = `
               "minHeight": 0,
               "minWidth": 0,
               "position": "relative",
-              "transform": [
-                {
+              "transform": Array [
+                Object {
                   "translateY": -0.5,
                 },
               ],
@@ -1406,6 +1333,25 @@ exports[`snapshot test should properly display the profile screen 1`] = `
         }
       />
     </View>
+    <RCTScrollView
+      getItem={[Function]}
+      getItemCount={[Function]}
+      keyExtractor={[Function]}
+      onContentSizeChange={[Function]}
+      onLayout={[Function]}
+      onMomentumScrollBegin={[Function]}
+      onMomentumScrollEnd={[Function]}
+      onScroll={[Function]}
+      onScrollBeginDrag={[Function]}
+      onScrollEndDrag={[Function]}
+      removeClippedSubviews={false}
+      renderItem={[Function]}
+      scrollEventThrottle={50}
+      stickyHeaderIndices={Array []}
+      viewabilityConfigCallbackPairs={Array []}
+    >
+      <View />
+    </RCTScrollView>
   </View>
 </RCTScrollView>
 `;

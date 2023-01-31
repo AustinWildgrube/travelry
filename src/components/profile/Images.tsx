@@ -4,7 +4,7 @@ import { Dimensions, FlatList, TouchableOpacity } from 'react-native';
 import { useNavigation } from '@react-navigation/core';
 import { Image } from 'tamagui';
 
-import { useCurrentUser } from '&/contexts/auth-provider';
+import { useCurrentUser } from '&/contexts/AuthProvider';
 import { AppNavProps } from '&/navigators/app-navigator';
 import { PostMedia, getPosts, type Post } from '&/queries/posts';
 import { downloadSupabaseMedia } from '&/utilities/helpers';

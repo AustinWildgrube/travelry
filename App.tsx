@@ -6,11 +6,11 @@ import { useFonts } from 'expo-font';
 import { TamaguiProvider } from 'tamagui';
 
 import { Spinner } from '&/components/atoms';
-import { AuthProvider, useAuth } from '&/contexts/auth-provider';
+import { AuthProvider, useAuth } from '&/contexts/AuthProvider';
 import { RootNavigator } from '&/navigators/app-navigator';
 import { AuthNavigator } from '&/navigators/auth-navigator';
+import { ThemeProvider, useTheme } from '&/themes/ThemeProvider';
 import { getNavigatorTheme } from '&/themes/navigator-theme';
-import { ThemeProvider, useTheme } from '&/themes/theme-provider';
 
 import config from './tamagui.config';
 

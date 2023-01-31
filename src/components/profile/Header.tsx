@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 
 import { Avatar, Button, H1, Separator, Text, XStack, YStack } from 'tamagui';
 
-import { useAuth, useCurrentUser } from '&/contexts/auth-provider';
+import { useAuth, useCurrentUser } from '&/contexts/AuthProvider';
 import { supabase } from '&/services/supabase-client';
 
 export function Header(): JSX.Element {

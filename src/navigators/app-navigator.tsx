@@ -4,7 +4,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { NativeStackNavigationProp, createNativeStackNavigator } from '@react-navigation/native-stack';
 import { Camera, User } from '@tamagui/lucide-icons';
 
-import { useCurrentUser } from '&/contexts/auth-provider';
+import { useCurrentUser } from '&/contexts/AuthProvider';
 import type { Post } from '&/queries/posts';
 import type { UserProfile } from '&/queries/users';
 import { CameraScreen } from '&/screens/app/CameraScreen';

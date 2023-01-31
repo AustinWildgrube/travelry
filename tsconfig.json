@@ -13,7 +13,7 @@
     "moduleResolution": "node",
     "baseUrl": "./",
     "paths": {
-      "@env": ["src/types/env.d.ts"],
+      "@env": ["./src/types/env.d.ts"],
       "&/*": ["./src/*"],
     },
     "allowSyntheticDefaultImports": true,

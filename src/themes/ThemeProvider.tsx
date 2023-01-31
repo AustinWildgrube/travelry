@@ -11,7 +11,7 @@ interface ThemeProviderValueProps {
   setDarkMode: Dispatch<SetStateAction<boolean>>;
 }
 
-export const ThemeProvider = createContext<ThemeProviderValueProps | undefined>(undefined);
+export const ThemeContext = createContext<ThemeProviderValueProps | undefined>(undefined);
 
 export const ThemeProvider = ({ children }: any): JSX.Element => {
   const colorScheme = useColorScheme();
@@ -24,11 +24,11 @@ export const ThemeProvider = ({ children }: any): JSX.Element => {
 
   const theme = isDarkMode ? darkTheme : lightTheme;
 
-  return <ThemeProvider.Provider value={{ theme, isDarkMode, setDarkMode }}>{children}</ThemeProvider.Provider>;
+  return <ThemeContext.Provider value={{ theme, isDarkMode, setDarkMode }}>{children}</ThemeContext.Provider>;
 };
 
 export const useTheme = (): ThemeProviderValueProps => {
-  const context = useContext(ThemeProvider);
+  const context = useContext(ThemeContext);
 
   if (context === undefined) {
     throw new Error('Try to use useTheme hook without a context provider');

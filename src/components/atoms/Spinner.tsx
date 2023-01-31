@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import { ActivityIndicator, ActivityIndicatorProps } from 'react-native';
 
-import { useTheme } from '&/themes/theme-provider';
+import { useTheme } from '&/themes/ThemeProvider';
 
 export const Spinner: FC<ActivityIndicatorProps> = props => {
   const { theme } = useTheme();
