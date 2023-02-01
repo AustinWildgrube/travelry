@@ -9,6 +9,7 @@ export type PostMedia = {
 
 export type Post = {
   caption: string;
+  created_at: string;
   location: string;
   post_media: PostMedia[];
 };

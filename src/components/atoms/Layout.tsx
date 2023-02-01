@@ -3,7 +3,11 @@ import { Platform, SafeAreaView, StatusBar, StatusBarStyle, StyleSheet, View } f
 
 import { useTheme, type Theme } from '&/themes/ThemeProvider';
 
-export const Layout = ({ children }: { children: ReactNode }): JSX.Element => {
+interface LayoutProps {
+  children: ReactNode;
+}
+
+export function Layout({ children }: LayoutProps): JSX.Element {
   const { theme } = useTheme();
   const isAndroid = Platform.OS === 'android';
 
@@ -27,7 +31,7 @@ export const Layout = ({ children }: { children: ReactNode }): JSX.Element => {
       {children}
     </SafeAreaView>
   );
-};
+}
 
 const styles = (theme: Theme) =>
   StyleSheet.create({

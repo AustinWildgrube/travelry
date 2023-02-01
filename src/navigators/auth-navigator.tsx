@@ -1,6 +1,4 @@
-import { FC } from 'react';
-
-import { createNativeStackNavigator, NativeStackNavigationProp } from '@react-navigation/native-stack';
+import { NativeStackNavigationProp, createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import { AuthenticationScreen } from '&/screens/authentication/AuthenticationScreen';
 
@@ -12,7 +10,7 @@ export type AuthNavProps<T extends keyof AuthStackParamList> = NativeStackNaviga
 
 const Stack = createNativeStackNavigator();
 
-export const AuthNavigator: FC = (): JSX.Element => {
+export function AuthNavigator(): JSX.Element {
   return (
     <Stack.Navigator>
       <Stack.Screen
@@ -24,4 +22,4 @@ export const AuthNavigator: FC = (): JSX.Element => {
       />
     </Stack.Navigator>
   );
-};
+}

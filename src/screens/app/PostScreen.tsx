@@ -1,8 +1,15 @@
 import { StyleSheet, Text, View } from 'react-native';
 
-import { PostActions, PostComments, PostImages } from '&/components/post';
+import { RouteProp } from '@react-navigation/native';
 
-export function PostScreen({ route }: { route: any }): JSX.Element {
+import { PostActions, PostComments, PostImages } from '&/components/post';
+import { AppStackParamList } from '&/navigators/app-navigator';
+
+interface PostScreenProps {
+  route: RouteProp<AppStackParamList, 'Post'>;
+}
+
+export function PostScreen({ route }: PostScreenProps): JSX.Element {
   const { account, post, startIndex } = route.params;
 
   const getRelativeTime = (timestamp: string): string => {

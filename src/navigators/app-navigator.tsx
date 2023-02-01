@@ -1,5 +1,3 @@
-import { FC } from 'react';
-
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { NativeStackNavigationProp, createNativeStackNavigator } from '@react-navigation/native-stack';
 import { Camera, User } from '@tamagui/lucide-icons';
@@ -27,17 +25,17 @@ export type AppStackParamList = {
 export type AppNavProps<T extends keyof AppStackParamList> = NativeStackNavigationProp<AppStackParamList, T>;
 
 const Stack = createNativeStackNavigator<AppStackParamList>();
-export const RootNavigator: FC = (): JSX.Element => {
+export function RootNavigator(): JSX.Element {
   return (
     <Stack.Navigator>
       <Stack.Screen name="Tab" component={AppNavigator} options={{ headerShown: false }} />
       <Stack.Screen name="Post" component={PostScreen} options={{ headerShown: false }} />
     </Stack.Navigator>
   );
-};
+}
 
 const Tab = createBottomTabNavigator<AppStackParamList>();
-export const AppNavigator: FC = (): JSX.Element => {
+export function AppNavigator(): JSX.Element {
   const user = useCurrentUser();
 
   return (
@@ -63,4 +61,4 @@ export const AppNavigator: FC = (): JSX.Element => {
       />
     </Tab.Navigator>
   );
-};
+}
