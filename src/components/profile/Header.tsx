@@ -3,27 +3,16 @@ import { useEffect, useState } from 'react';
 import { Avatar, Button, H1, Separator, Text, XStack, YStack } from 'tamagui';
 
 import { useAuth, useCurrentUser } from '&/contexts/AuthProvider';
-import { supabase } from '&/services/supabase-client';
+import { downloadSupabaseMedia } from '&/utilities/helpers';
 
 export function Header(): JSX.Element {
   const user = useCurrentUser();
   const { logout } = useAuth();
   const [avatarUrl, setAvatarUrl] = useState<string | undefined>(undefined);
 
-  const downloadImage = async (path: string): Promise<void> => {
-    try {
-      const { data } = supabase.storage.from('avatars').getPublicUrl(path);
-      setAvatarUrl(data?.publicURL);
-    } catch (error) {
-      if (error instanceof Error) {
-        console.log('Error downloading image: ', error.message);
-      }
-    }
-  };
-
   useEffect(() => {
     if (user.avatar_url) {
-      downloadImage(user.avatar_url);
+      setAvatarUrl(downloadSupabaseMedia('avatars', user.avatar_url));
     }
   }, [user]);
 
