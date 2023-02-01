@@ -5,7 +5,8 @@ import { render } from '@testing-library/react-native';
 import { TamaguiProvider } from 'tamagui';
 
 import { AuthContext } from '&/contexts/AuthProvider';
-import { UserProfile } from '&/queries/users';
+import { type Post } from '&/queries/posts';
+import { type UserProfile } from '&/queries/users';
 import { ThemeProvider } from '&/themes/ThemeProvider';
 
 import config from './tamagui.config';
@@ -24,20 +25,45 @@ jest.mock('@env', () => ({
   TAMAGUI_TARGET: 'native',
 }));
 
-export const wrapRender = (component: ReactNode): any => {
-  let currentUser: UserProfile = {
-    id: '1',
-    username: 'commander_998',
-    full_name: 'John Snow',
-    avatar_url: '998.jpg',
-    bio: 'I know nothing.',
-    account_stat: {
-      followers_count: 1000000,
-      following_count: 1,
-      trip_count: 2,
-    },
-  };
+export const currentUser: UserProfile = {
+  id: '1',
+  username: 'commander_998',
+  full_name: 'John Snow',
+  avatar_url: '998.jpg',
+  bio: 'I know nothing.',
+  account_stat: {
+    followers_count: 1000000,
+    following_count: 1,
+    trip_count: 2,
+  },
+};
 
+export const currentUserPosts: Post[] = [
+  {
+    caption: 'The dreadful Castle Black',
+    location: 'Castle Black',
+    created_at: '2022-11-22 17:41:27+00',
+    post_media: [
+      {
+        id: 'b81ad645-7155-45f6-bd2e-ca56786dd331',
+        file_url: '0.21339742357972857.jpg',
+      },
+    ],
+  },
+  {
+    caption: 'Why does Catelyn Stark hate me?',
+    location: 'Winterfell',
+    created_at: '2022-12-22 17:41:27+00',
+    post_media: [
+      {
+        id: '76cb79cf-be8a-4416-9d15-b1356b38259a',
+        file_url: '0.37365145619157225.jpg',
+      },
+    ],
+  },
+];
+
+export const wrapRender = (component: ReactNode): any => {
   let loginWithEmailAndPassword = async (): Promise<void> => {
     return undefined;
   };
