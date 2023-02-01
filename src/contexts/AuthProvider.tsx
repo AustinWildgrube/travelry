@@ -1,5 +1,7 @@
-import { createContext, useContext, useEffect, useState } from 'react';
+import { ReactNode, createContext, useContext, useEffect, useState } from 'react';
 import { Alert } from 'react-native';
+
+import { AuthChangeEvent, Session } from '@supabase/supabase-js';
 
 import { useSupabaseMutation } from '&/hooks/use-supabase';
 import { getUserProfile, type UserProfile } from '&/queries/users';
@@ -14,15 +16,19 @@ interface AuthContextProps {
   updateCurrentUser?: (fields: Partial<Omit<UserProfile, 'id' | 'email'>>) => void;
 }
 
+interface AuthProviderProps {
+  children: ReactNode;
+}
+
 export const AuthContext = createContext<AuthContextProps | undefined>(undefined);
 
-export const AuthProvider = ({ children }: any) => {
+export function AuthProvider({ children }: AuthProviderProps): JSX.Element {
   const [currentUser, setCurrentUser] = useState<UserProfile | null>(null);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState<boolean>(true);
 
   const { execute, error } = useSupabaseMutation();
 
-  const setUserInitialState = async () => {
+  const setUserInitialState = async (): Promise<void> => {
     const user = supabase.auth.user();
 
     if (supabase.auth.session() && user !== null) {
@@ -35,11 +41,11 @@ export const AuthProvider = ({ children }: any) => {
     setLoading(false);
   };
 
-  const updateCurrentUser = async (fields: Partial<Omit<UserProfile, 'id' | 'email'>>) => {
+  const updateCurrentUser = async (fields: Partial<Omit<UserProfile, 'id' | 'email'>>): Promise<void> => {
     setCurrentUser(prevUser => (prevUser ? { ...prevUser, ...fields } : null));
   };
 
-  const registerWithEmailAndPassword = async (email: string, password: string) => {
+  const registerWithEmailAndPassword = async (email: string, password: string): Promise<void> => {
     setLoading(true);
 
     await execute(
@@ -50,7 +56,7 @@ export const AuthProvider = ({ children }: any) => {
     );
   };
 
-  const loginWithEmailAndPassword = async (email: string, password: string) => {
+  const loginWithEmailAndPassword = async (email: string, password: string): Promise<void> => {
     setLoading(true);
 
     await execute(
@@ -61,7 +67,7 @@ export const AuthProvider = ({ children }: any) => {
     );
   };
 
-  const logout = async () => {
+  const logout = async (): Promise<void> => {
     setLoading(true);
     await execute(supabase.auth.signOut());
   };
@@ -75,16 +81,18 @@ export const AuthProvider = ({ children }: any) => {
       await setUserInitialState();
     })();
 
-    const { data: authListener } = supabase.auth.onAuthStateChange(async (_event, currentSession) => {
-      if (currentSession && currentSession.user) {
-        const user = await getUserProfile(currentSession.user.id);
-        setCurrentUser(user);
-      } else {
-        setCurrentUser(null);
-      }
+    const { data: authListener } = supabase.auth.onAuthStateChange(
+      async (_event: AuthChangeEvent, currentSession: Session | null) => {
+        if (currentSession && currentSession.user) {
+          const user = await getUserProfile(currentSession.user.id);
+          setCurrentUser(user);
+        } else {
+          setCurrentUser(null);
+        }
 
-      setLoading(false);
-    });
+        setLoading(false);
+      },
+    );
 
     return () => {
       authListener!.unsubscribe();
@@ -104,7 +112,7 @@ export const AuthProvider = ({ children }: any) => {
       {children}
     </AuthContext.Provider>
   );
-};
+}
 
 export const useAuth = (): AuthContextProps => {
   const context = useContext(AuthContext);
