@@ -1,5 +1,3 @@
-import * as React from 'react';
-
 import { Header } from '&/components/profile';
 
 import { wrapRender } from '../../jestSetupFile';
