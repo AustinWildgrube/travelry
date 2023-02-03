@@ -1,36 +1,38 @@
+import { screen } from '@testing-library/react-native';
+
 import { Header } from '&/components/profile';
 
 import { wrapRender } from '../../jestSetupFile';
 
 describe('profile header', () => {
   it('should display the users avatar image', () => {
-    const { getByLabelText } = wrapRender(<Header />);
-    const avatar = getByLabelText(`John Snow's profile image`);
+    wrapRender(<Header />);
+    const avatar = screen.getByLabelText(`John Snow's profile image`);
 
-    expect(avatar).toBeTruthy();
+    expect(avatar).toBeOnTheScreen();
     expect(avatar.props.accessibilityLabel).toBe(`John Snow's profile image`);
     expect(avatar.props.source.uri).toContain('.supabase.co/storage/v1/object/public/avatars/998.jpg');
   });
 
   it('should display the users full name', () => {
-    const { getByText } = wrapRender(<Header />);
-    expect(getByText('John Snow')).toBeTruthy();
+    wrapRender(<Header />);
+    expect(screen.getByText('John Snow')).toBeOnTheScreen();
   });
 
   it('should display the users bio', () => {});
-  const { getByText } = wrapRender(<Header />);
-  expect(getByText('I know nothing.')).toBeTruthy();
+  wrapRender(<Header />);
+  expect(screen.getByText('I know nothing.')).toBeOnTheScreen();
 
   it('should display the users followers, following, and trip counts', () => {
-    const { getByText } = wrapRender(<Header />);
+    wrapRender(<Header />);
 
     // followers
-    expect(getByText('1000000')).toBeTruthy();
+    expect(screen.getByText('1000000')).toBeOnTheScreen();
 
     // following
-    expect(getByText('1')).toBeTruthy();
+    expect(screen.getByText('1')).toBeOnTheScreen();
 
     // trips
-    expect(getByText('2')).toBeTruthy();
+    expect(screen.getByText('2')).toBeOnTheScreen();
   });
 });

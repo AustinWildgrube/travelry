@@ -1,4 +1,4 @@
-import { waitFor } from '@testing-library/react-native';
+import {screen, waitFor} from '@testing-library/react-native';
 
 import { Images } from '&/components/profile';
 import * as PostModule from '&/queries/posts';
@@ -43,22 +43,21 @@ describe('profile images', () => {
   });
 
   it('should show an image album per location', async () => {
-    const { getByLabelText } = wrapRender(<Images />);
+    wrapRender(<Images />);
 
-    await waitFor(() => {
-      const imageAlbum = getByLabelText('Castle Black album cover photo');
-      expect(imageAlbum).toBeTruthy();
-      expect(imageAlbum.props.accessibilityLabel).toBe('Castle Black album cover photo');
-      expect(imageAlbum.props.source.uri).toContain(
-        '.supabase.co/storage/v1/object/public/posts/0.21339742357972857.jpg',
-      );
+    const imageAlbum = await screen.findByLabelText('Castle Black album cover photo');
+    expect(imageAlbum).toBeTruthy();
+    expect(imageAlbum.props.accessibilityLabel).toBe('Castle Black album cover photo');
+    expect(imageAlbum.props.source.uri).toContain(
+      '.supabase.co/storage/v1/object/public/posts/0.21339742357972857.jpg',
+    );
 
-      const imageAlbumTwo = getByLabelText('Winterfell album cover photo');
-      expect(imageAlbumTwo).toBeTruthy();
-      expect(imageAlbumTwo.props.accessibilityLabel).toBe('Winterfell album cover photo');
-      expect(imageAlbumTwo.props.source.uri).toContain(
-        '.supabase.co/storage/v1/object/public/posts/0.37365145619157225.jpg',
-      );
-    });
+
+    const imageAlbumTwo = await screen.findByLabelText('Winterfell album cover photo');
+    expect(imageAlbumTwo).toBeTruthy();
+    expect(imageAlbumTwo.props.accessibilityLabel).toBe('Winterfell album cover photo');
+    expect(imageAlbumTwo.props.source.uri).toContain(
+      '.supabase.co/storage/v1/object/public/posts/0.37365145619157225.jpg',
+    );
   });
 });
