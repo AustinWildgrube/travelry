@@ -40,7 +40,8 @@ export function Form(): JSX.Element {
       shadowRadius={26}
       shadowOffset={{ width: 0, height: 4 }}
       bg="$background"
-      space>
+      space
+    >
       <Paragraph size="$5" fontWeight="700" opacity={0.8} mb="$1">
         {type === 'sign-up' ? 'Create your account' : 'Log in to your account'}
       </Paragraph>

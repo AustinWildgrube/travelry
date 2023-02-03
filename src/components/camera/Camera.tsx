@@ -6,7 +6,7 @@ import { useNavigation } from '@react-navigation/core';
 import { CameraType, Camera as ExpoCamera } from 'expo-camera';
 import { Text } from 'tamagui';
 
-import { ImageLibrary } from '&/components/camera';
+import { ImageLibrary } from '&/components/camera/ImageLibrary';
 import { AppNavProps } from '&/navigators/app-navigator';
 
 export function Camera(): JSX.Element {
@@ -51,7 +51,8 @@ export function Camera(): JSX.Element {
           <Pressable
             onPress={() => {
               setType(type === CameraType.back ? CameraType.front : CameraType.back);
-            }}>
+            }}
+          >
             <Feather name="refresh-cw" size={21} color="white" />
           </Pressable>
         </View>
@@ -83,7 +84,7 @@ const styles = StyleSheet.create({
     marginTop: 60,
   },
   actionContainer: {
-    alignItems: 'flex-end',
+    alignItems: 'center',
     flexDirection: 'row',
     justifyContent: 'center',
     marginBottom: 40,

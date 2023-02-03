@@ -24,7 +24,7 @@ export function ImageLibrary(): JSX.Element {
 
   return (
     <Pressable onPress={pickImage} style={{ position: 'absolute', left: 0 }}>
-      <Feather name="image" size={80} color="white" />
+      <Feather name="image" size={32} color="white" />
     </Pressable>
   );
 }
