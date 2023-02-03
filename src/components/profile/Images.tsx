@@ -1,5 +1,5 @@
 import { Fragment, useEffect, useState } from 'react';
-import { Dimensions, FlatList, Image, StyleSheet, TouchableOpacity } from 'react-native';
+import { Dimensions, FlatList, Image, StyleSheet, TouchableOpacity, View } from 'react-native';
 
 import { useNavigation } from '@react-navigation/core';
 
@@ -13,28 +13,6 @@ export function Images(): JSX.Element {
   const navigation = useNavigation<AppNavProps<'Post'>>();
   const [posts, setPosts] = useState<Post[] | null>();
 
-  const renderItem = ({ item, index }: { item: Post; index: number }): JSX.Element => {
-    return (
-      <TouchableOpacity
-        onPress={() => navigation.navigate('Post', { account: user, post: item, startIndex: index })}
-        style={[
-          styles.imageContainer,
-          index === 1 && {
-            marginLeft: 2,
-            marginRight: 2,
-          },
-        ]}
-        key={item.location}>
-        <Image
-          source={{ uri: downloadSupabaseMedia('posts', item.post_media[0].file_url) }}
-          accessibilityLabel={`${item.location} album cover photo`}
-          style={styles.image}
-          key={item.post_media[0].id}
-        />
-      </TouchableOpacity>
-    );
-  };
-
   useEffect(() => {
     const getUsersPosts = async (): Promise<void> => {
       if (user.id) {
@@ -47,9 +25,28 @@ export function Images(): JSX.Element {
   }, [user]);
 
   return (
-    <Fragment>
-      <FlatList data={posts} renderItem={renderItem} keyExtractor={item => item.location} numColumns={3} />
-    </Fragment>
+    <View style={styles.container}>
+      {posts?.map((post: Post, index: number) => (
+        <TouchableOpacity
+          onPress={() => navigation.navigate('Post', { account: user, post: post, startIndex: index })}
+          key={post.location}
+          style={[
+            styles.imageContainer,
+            index === 1 && {
+              marginLeft: 2,
+              marginRight: 2,
+            },
+          ]}
+        >
+          <Image
+            source={{ uri: downloadSupabaseMedia('posts', post.post_media[0].file_url) }}
+            accessibilityLabel={`${post.location} album cover photo`}
+            style={styles.image}
+            key={post.post_media[0].id}
+          />
+        </TouchableOpacity>
+      ))}
+    </View>
   );
 }
 
@@ -58,6 +55,11 @@ const height = Math.round((dimensions.width * 3) / 9);
 const width = dimensions.width;
 
 const styles = StyleSheet.create({
+  container: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    paddingHorizontal: 16,
+  },
   imageContainer: {
     marginBottom: 2,
     width: width / 3,
