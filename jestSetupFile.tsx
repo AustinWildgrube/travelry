@@ -43,9 +43,9 @@ export const currentUser: UserProfile = {
 
 export const currentUserPosts: Post[] = [
   {
-    caption: 'The dreadful Castle Black',
+    caption: 'The dreadful Castle Black.',
     location: 'Castle Black',
-    created_at: '2022-11-22 17:41:27+00',
+    created_at: '2021-12-24T00:00:00',
     post_media: [
       {
         id: 'b81ad645-7155-45f6-bd2e-ca56786dd331',
@@ -56,7 +56,7 @@ export const currentUserPosts: Post[] = [
   {
     caption: 'Why does Catelyn Stark hate me?',
     location: 'Winterfell',
-    created_at: '2022-12-22 17:41:27+00',
+    created_at: '2021-12-24T00:00:00',
     post_media: [
       {
         id: '76cb79cf-be8a-4416-9d15-b1356b38259a',

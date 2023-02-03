@@ -1,0 +1,128 @@
+import { useCallback } from 'react';
+import { Image, Pressable, StyleSheet, Text, View } from 'react-native';
+
+import { Feather } from '@expo/vector-icons';
+
+import { Post } from '&/queries/posts';
+import { type UserProfile } from '&/queries/users';
+import { downloadSupabaseMedia } from '&/utilities/helpers';
+
+interface PostInfoProps {
+  account: UserProfile;
+  post: Post;
+}
+
+export function PostInfo({ account, post }: PostInfoProps): JSX.Element {
+  const getRelativeTime = useCallback(
+    (timestamp: string): string => {
+      const time = new Date(timestamp);
+
+      const intervals = [
+        { label: 'year', seconds: 31536000 },
+        { label: 'month', seconds: 2592000 },
+        { label: 'day', seconds: 86400 },
+        { label: 'hour', seconds: 3600 },
+        { label: 'minute', seconds: 60 },
+        { label: 'second', seconds: 1 },
+      ];
+
+      const seconds = Math.floor((Date.now() - time.getTime()) / 1000);
+      const interval = intervals.find(i => i.seconds < seconds);
+
+      if (interval) {
+        const count = Math.floor(seconds / interval.seconds);
+        return `${count} ${interval.label}${count !== 1 ? 's' : ''} ago`;
+      }
+
+      return '';
+    },
+    [post],
+  );
+
+  return (
+    <>
+      <View style={styles.container}>
+        <Image
+          source={{
+            uri: downloadSupabaseMedia('avatars', account.avatar_url),
+          }}
+          accessibilityLabel={`${account.full_name}'s profile image`}
+          style={styles.avatarImage}
+        />
+
+        <View style={styles.actions}>
+          <Pressable style={styles.actionButton}>
+            <Feather name="map-pin" size={21} color="black" />
+          </Pressable>
+
+          <Pressable style={styles.actionButton}>
+            <Feather name="heart" size={21} color="black" />
+          </Pressable>
+
+          <Pressable style={styles.actionButton}>
+            <Feather name="share" size={21} color="black" />
+          </Pressable>
+        </View>
+      </View>
+
+      <Text style={styles.name}>{account.full_name}</Text>
+      <Text style={styles.description}>{post.caption}</Text>
+      <Text style={styles.lapsedTime}>Posted {getRelativeTime(post.created_at)} &#x2022; 44 likes</Text>
+    </>
+  );
+}
+
+const styles = StyleSheet.create({
+  container: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    paddingHorizontal: 16,
+  },
+  avatarImage: {
+    borderColor: '#fff',
+    borderStyle: 'solid',
+    borderWidth: 2,
+    borderRadius: 50,
+    height: 92,
+    marginTop: -46,
+    width: 92,
+  },
+  actions: {
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    paddingLeft: 64,
+  },
+  actionButton: {
+    alignItems: 'center',
+    backgroundColor: '#fff',
+    borderRadius: 50,
+    height: 44,
+    justifyContent: 'center',
+    marginTop: -22,
+    shadowOffset: {
+      height: 0,
+      width: 0,
+    },
+    shadowOpacity: 0.15,
+    shadowColor: '#102344',
+    width: 44,
+  },
+  name: {
+    fontSize: 21,
+    fontWeight: '600',
+    marginTop: 8,
+    paddingHorizontal: 16,
+  },
+  description: {
+    fontSize: 14,
+    marginVertical: 8,
+    paddingHorizontal: 16,
+  },
+  lapsedTime: {
+    color: '#7C8089',
+    fontSize: 12,
+    marginBottom: 21,
+    paddingHorizontal: 16,
+  },
+});

@@ -20,32 +20,11 @@ export function PostImages({ post, startIndex }: PostImageProps): JSX.Element {
   return (
     <View style={styles.postTop}>
       <View style={styles.topNav}>
-        <Pressable
-          onPress={() => navigation.goBack()}
-          style={{
-            alignItems: 'center',
-            backgroundColor: '#fff',
-            borderRadius: 8,
-            height: 38,
-            justifyContent: 'center',
-            opacity: 0.6,
-            width: 38,
-          }}>
+        <Pressable onPress={() => navigation.goBack()} accessibilityLabel="Go back" style={styles.backButton}>
           <Feather name="chevron-left" size={18} color="#2D323E" />
         </Pressable>
 
-        <View
-          style={{
-            alignItems: 'center',
-            backgroundColor: '#fff',
-            borderRadius: 8,
-            height: 38,
-            flexDirection: 'row',
-            justifyContent: 'center',
-            opacity: 0.6,
-            paddingHorizontal: 8,
-            paddingVertical: 4,
-          }}>
+        <View style={styles.location}>
           <CountryFlag isoCode="fr" size={18} style={{ borderRadius: 2, marginRight: 8 }} />
           <Text style={{ color: '#0C0F14' }}>Paris, France</Text>
         </View>
@@ -56,7 +35,11 @@ export function PostImages({ post, startIndex }: PostImageProps): JSX.Element {
         showPagination={false}
         index={startIndex}
         renderItem={({ item }) => (
-          <Image source={{ uri: downloadSupabaseMedia('posts', item.file_url) }} style={styles.postImage} />
+          <Image
+            source={{ uri: downloadSupabaseMedia('posts', item.file_url) }}
+            accessibilityLabel="Post image"
+            style={styles.postImage}
+          />
         )}
       />
     </View>
@@ -79,6 +62,26 @@ const styles = StyleSheet.create({
     top: 30,
     width: '100%',
     zIndex: 1,
+  },
+  backButton: {
+    alignItems: 'center',
+    backgroundColor: '#fff',
+    borderRadius: 8,
+    height: 38,
+    justifyContent: 'center',
+    opacity: 0.6,
+    width: 38,
+  },
+  location: {
+    alignItems: 'center',
+    backgroundColor: '#fff',
+    borderRadius: 8,
+    height: 38,
+    flexDirection: 'row',
+    justifyContent: 'center',
+    opacity: 0.6,
+    paddingHorizontal: 8,
+    paddingVertical: 4,
   },
   postImage: {
     height: '100%',

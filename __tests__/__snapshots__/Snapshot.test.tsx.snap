@@ -69,6 +69,7 @@ exports[`snapshot test should properly display the authentication screen 1`] = `
         ]
       }
       suppressHighlighting={true}
+      userSelect="text"
     >
       Log in to your account
     </Text>
@@ -157,7 +158,6 @@ exports[`snapshot test should properly display the authentication screen 1`] = `
         }
       >
         <Image
-          height={20}
           source={
             Object {
               "uri": "https://qwvsfvhphdefqfyuuhlb.supabase.co/storage/v1/object/public/logos/Google%20logo.png",
@@ -173,7 +173,6 @@ exports[`snapshot test should properly display the authentication screen 1`] = `
               },
             ]
           }
-          width={20}
         />
       </View>
       <View
@@ -244,7 +243,6 @@ exports[`snapshot test should properly display the authentication screen 1`] = `
         }
       >
         <Image
-          height={22}
           resizeMode="contain"
           source={
             Object {
@@ -261,7 +259,6 @@ exports[`snapshot test should properly display the authentication screen 1`] = `
               },
             ]
           }
-          width={22}
         />
       </View>
       <View
@@ -332,7 +329,6 @@ exports[`snapshot test should properly display the authentication screen 1`] = `
         }
       >
         <Image
-          height={22}
           resizeMode="contain"
           source={
             Object {
@@ -349,7 +345,6 @@ exports[`snapshot test should properly display the authentication screen 1`] = `
               },
             ]
           }
-          width={25}
         />
       </View>
     </View>
@@ -425,6 +420,7 @@ exports[`snapshot test should properly display the authentication screen 1`] = `
           ]
         }
         suppressHighlighting={true}
+        userSelect="text"
       >
         or
       </Text>
@@ -468,7 +464,12 @@ exports[`snapshot test should properly display the authentication screen 1`] = `
       }
     />
     <TextInput
+      color="rgba(23,23,23,1.00)"
       focusable={true}
+      fontFamily="Inter"
+      fontSize={15}
+      fontWeight="300"
+      letterSpacing={0}
       onBlur={[Function]}
       onChangeText={[Function]}
       onFocus={[Function]}
@@ -496,11 +497,7 @@ exports[`snapshot test should properly display the authentication screen 1`] = `
             "borderTopRightRadius": 9,
             "borderTopStyle": "solid",
             "borderTopWidth": 1,
-            "color": "rgba(23,23,23,1.00)",
-            "fontFamily": "Inter",
-            "fontSize": 15,
             "height": 44,
-            "letterSpacing": 0,
             "minWidth": 0,
             "paddingLeft": 16,
             "paddingRight": 16,
@@ -529,7 +526,12 @@ exports[`snapshot test should properly display the authentication screen 1`] = `
       }
     />
     <TextInput
+      color="rgba(23,23,23,1.00)"
       focusable={true}
+      fontFamily="Inter"
+      fontSize={15}
+      fontWeight="300"
+      letterSpacing={0}
       onBlur={[Function]}
       onChangeText={[Function]}
       onFocus={[Function]}
@@ -558,11 +560,7 @@ exports[`snapshot test should properly display the authentication screen 1`] = `
             "borderTopRightRadius": 9,
             "borderTopStyle": "solid",
             "borderTopWidth": 1,
-            "color": "rgba(23,23,23,1.00)",
-            "fontFamily": "Inter",
-            "fontSize": 15,
             "height": 44,
-            "letterSpacing": 0,
             "minWidth": 0,
             "paddingLeft": 16,
             "paddingRight": 16,
@@ -607,18 +605,18 @@ exports[`snapshot test should properly display the authentication screen 1`] = `
           Object {
             "alignItems": "center",
             "backgroundColor": "rgba(17,17,17,1.00)",
-            "borderBottomColor": "rgba(0,0,0,0)",
+            "borderBottomColor": "rgba(0,0,0,0.00)",
             "borderBottomLeftRadius": 9,
             "borderBottomRightRadius": 9,
             "borderBottomStyle": "solid",
             "borderBottomWidth": 1,
-            "borderLeftColor": "rgba(0,0,0,0)",
+            "borderLeftColor": "rgba(0,0,0,0.00)",
             "borderLeftStyle": "solid",
             "borderLeftWidth": 1,
-            "borderRightColor": "rgba(0,0,0,0)",
+            "borderRightColor": "rgba(0,0,0,0.00)",
             "borderRightStyle": "solid",
             "borderRightWidth": 1,
-            "borderTopColor": "rgba(0,0,0,0)",
+            "borderTopColor": "rgba(0,0,0,0.00)",
             "borderTopLeftRadius": 9,
             "borderTopRightRadius": 9,
             "borderTopStyle": "solid",
@@ -659,6 +657,7 @@ exports[`snapshot test should properly display the authentication screen 1`] = `
           ]
         }
         suppressHighlighting={true}
+        userSelect="none"
       >
         Sign In
       </Text>
@@ -714,6 +713,7 @@ exports[`snapshot test should properly display the authentication screen 1`] = `
           ]
         }
         suppressHighlighting={true}
+        userSelect="text"
       >
         Don’t have an account?
       </Text>
@@ -747,6 +747,7 @@ exports[`snapshot test should properly display the authentication screen 1`] = `
             ]
           }
           suppressHighlighting={true}
+          userSelect="text"
         >
           Sign up
         </Text>
@@ -841,7 +842,7 @@ exports[`snapshot test should properly display the camera screen 1`] = `
     <View
       style={
         Object {
-          "alignItems": "flex-end",
+          "alignItems": "center",
           "flexDirection": "row",
           "justifyContent": "center",
           "marginBottom": 40,
@@ -872,7 +873,7 @@ exports[`snapshot test should properly display the camera screen 1`] = `
         <
           color="white"
           name="image"
-          size={80}
+          size={32}
         />
       </View>
       <View
@@ -944,6 +945,7 @@ Array [
       }
     >
       <View
+        accessibilityLabel="Go back"
         accessible={true}
         collapsable={false}
         focusable={true}
@@ -1078,6 +1080,7 @@ Array [
           }
         >
           <Image
+            accessibilityLabel="Post image"
             source={
               Object {
                 "uri": "https://xilfwzpwcchiivwulkbn.supabase.co/storage/v1/object/public/posts/0.21339742357972857.jpg",
@@ -1104,6 +1107,7 @@ Array [
     }
   >
     <Image
+      accessibilityLabel="John Snow's profile image"
       source={
         Object {
           "uri": "https://xilfwzpwcchiivwulkbn.supabase.co/storage/v1/object/public/avatars/998.jpg",
@@ -1244,6 +1248,43 @@ Array [
       </View>
     </View>
   </View>,
+  <Text
+    style={
+      Object {
+        "fontSize": 21,
+        "fontWeight": "600",
+        "marginTop": 8,
+        "paddingHorizontal": 16,
+      }
+    }
+  >
+    John Snow
+  </Text>,
+  <Text
+    style={
+      Object {
+        "fontSize": 14,
+        "marginVertical": 8,
+        "paddingHorizontal": 16,
+      }
+    }
+  >
+    The dreadful Castle Black.
+  </Text>,
+  <Text
+    style={
+      Object {
+        "color": "#7C8089",
+        "fontSize": 12,
+        "marginBottom": 21,
+        "paddingHorizontal": 16,
+      }
+    }
+  >
+    Posted 
+    1 year ago
+     • 44 likes
+  </Text>,
   <View
     style={
       Object {
@@ -1251,40 +1292,6 @@ Array [
       }
     }
   >
-    <Text
-      style={
-        Object {
-          "fontSize": 21,
-          "fontWeight": "600",
-          "marginTop": 8,
-        }
-      }
-    >
-      John Snow
-    </Text>
-    <Text
-      style={
-        Object {
-          "fontSize": 14,
-          "marginVertical": 8,
-        }
-      }
-    >
-      The dreadful Castle Black
-    </Text>
-    <Text
-      style={
-        Object {
-          "color": "#7C8089",
-          "fontSize": 12,
-          "marginBottom": 21,
-        }
-      }
-    >
-      Posted 
-      2 months ago
-       • 44 likes
-    </Text>
     <Text
       style={
         Object {
@@ -1377,16 +1384,7 @@ Array [
 `;
 
 exports[`snapshot test should properly display the profile screen 1`] = `
-<RCTScrollView
-  style={
-    Array [
-      Object {
-        "paddingLeft": 18,
-        "paddingRight": 18,
-      },
-    ]
-  }
->
+<RCTScrollView>
   <View>
     <View
       style={
@@ -1457,7 +1455,6 @@ exports[`snapshot test should properly display the profile screen 1`] = `
           <Image
             accessibilityLabel="John Snow's profile image"
             fullscreen={true}
-            height={104}
             onError={[Function]}
             onLoad={[Function]}
             source={
@@ -1475,7 +1472,6 @@ exports[`snapshot test should properly display the profile screen 1`] = `
                 },
               ]
             }
-            width={104}
           />
         </View>
       </View>
@@ -1501,6 +1497,7 @@ exports[`snapshot test should properly display the profile screen 1`] = `
           ]
         }
         suppressHighlighting={true}
+        userSelect="text"
       >
         John Snow
       </Text>
@@ -1592,6 +1589,7 @@ exports[`snapshot test should properly display the profile screen 1`] = `
             ]
           }
           suppressHighlighting={true}
+          userSelect="none"
         >
           Edit Profile
         </Text>
@@ -1791,25 +1789,15 @@ exports[`snapshot test should properly display the profile screen 1`] = `
         }
       />
     </View>
-    <RCTScrollView
-      getItem={[Function]}
-      getItemCount={[Function]}
-      keyExtractor={[Function]}
-      onContentSizeChange={[Function]}
-      onLayout={[Function]}
-      onMomentumScrollBegin={[Function]}
-      onMomentumScrollEnd={[Function]}
-      onScroll={[Function]}
-      onScrollBeginDrag={[Function]}
-      onScrollEndDrag={[Function]}
-      removeClippedSubviews={false}
-      renderItem={[Function]}
-      scrollEventThrottle={50}
-      stickyHeaderIndices={Array []}
-      viewabilityConfigCallbackPairs={Array []}
-    >
-      <View />
-    </RCTScrollView>
+    <View
+      style={
+        Object {
+          "flexDirection": "row",
+          "flexWrap": "wrap",
+          "paddingHorizontal": 16,
+        }
+      }
+    />
   </View>
 </RCTScrollView>
 `;
