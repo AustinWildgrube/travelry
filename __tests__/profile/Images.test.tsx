@@ -11,10 +11,7 @@ describe('profile images', () => {
   it('should retrieve the users images ', async () => {
     wrapRender(<Images />);
 
-    await waitFor(() => {
-      expect(postSpy).toHaveBeenCalled();
-    });
-
+    await waitFor(() => expect(postSpy).toHaveBeenCalled());
     const spyReturnValue = await postSpy.mock.results[0].value;
     expect(spyReturnValue).toEqual([
       {
