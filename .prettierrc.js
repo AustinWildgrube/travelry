@@ -11,6 +11,7 @@ module.exports = {
     '^(react-native/(.*)$)|^(react-native$)',
     '',
     '<THIRD_PARTY_MODULES>',
+    '@testing-library/(.*)$)|^(testing-library$)',
     '',
     '^&/components/(.*)$|^(&/components$)',
     '^&/contexts/(.*)$|^(&/contexts)',

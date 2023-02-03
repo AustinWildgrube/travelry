@@ -3,6 +3,9 @@ import { ReactNode } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { render } from '@testing-library/react-native';
 import { TamaguiProvider } from 'tamagui';
+import '@testing-library/jest-native/extend-expect';
+import '@testing-library/jest-dom/extend-expect';
+import '@testing-library/jest-dom';
 
 import { AuthContext } from '&/contexts/AuthProvider';
 import { type Post } from '&/queries/posts';
