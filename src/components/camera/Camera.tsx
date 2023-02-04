@@ -4,15 +4,15 @@ import { Pressable, StyleSheet, View } from 'react-native';
 import { Feather } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/core';
 import { CameraType, Camera as ExpoCamera } from 'expo-camera';
-import { Text } from 'tamagui';
 
 import { ImageLibrary } from '&/components/camera/ImageLibrary';
+import { Permissions } from '&/components/camera/Permissions';
 import { AppNavProps } from '&/navigators/app-navigator';
 
 export function Camera(): JSX.Element {
   const navigation = useNavigation<AppNavProps<'Profile'>>();
   const cameraRef = useRef<ExpoCamera>(null);
-  const [hasPermission, setHasPermission] = useState<boolean | null>(null);
+  const [hasCameraPermission, setHasCameraPermission] = useState<boolean>(false);
   const [type, setType] = useState<CameraType>(CameraType.back);
 
   const takePicture = async (): Promise<void> => {
@@ -26,33 +26,27 @@ export function Camera(): JSX.Element {
   };
 
   useEffect(() => {
-    (async () => {
-      if (hasPermission === null) {
-        return <View />;
-      }
+    const requestCameraPermission = async () => {
+      const cameraPermission = await ExpoCamera.requestCameraPermissionsAsync();
+      setHasCameraPermission(cameraPermission.status === 'granted');
+    };
 
-      if (!hasPermission) {
-        return <Text>No access to camera</Text>;
-      }
-
-      const { status } = await ExpoCamera.requestCameraPermissionsAsync();
-      setHasPermission(status === 'granted');
-    })();
+    requestCameraPermission();
   }, []);
 
   return (
     <View style={styles.container}>
-      <ExpoCamera style={styles.camera} type={type} ref={cameraRef}>
+      <ExpoCamera style={styles.camera} type={type} ref={cameraRef} testID="camera">
         <View style={styles.buttonContainer}>
           <Pressable onPress={() => navigation.goBack()}>
             <Feather name="x" size={24} color="white" />
           </Pressable>
 
           <Pressable
+            accessibilityLabel="Flip camera"
             onPress={() => {
               setType(type === CameraType.back ? CameraType.front : CameraType.back);
-            }}
-          >
+            }}>
             <Feather name="refresh-cw" size={21} color="white" />
           </Pressable>
         </View>
@@ -60,10 +54,12 @@ export function Camera(): JSX.Element {
         <View style={styles.actionContainer}>
           <ImageLibrary />
 
-          <Pressable style={styles.cameraButton} onPress={takePicture}>
+          <Pressable onPress={takePicture} accessibilityLabel="Capture image" style={styles.cameraButton}>
             <View style={styles.cameraRing}></View>
           </Pressable>
         </View>
+
+        {!hasCameraPermission && <Permissions />}
       </ExpoCamera>
     </View>
   );
@@ -91,7 +87,9 @@ const styles = StyleSheet.create({
     marginHorizontal: 20,
   },
   cameraButton: {
+    borderColor: '#fff',
     borderRadius: 50,
+    borderWidth: 3,
     height: 86,
     justifyContent: 'center',
     width: 86,

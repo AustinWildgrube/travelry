@@ -5013,6 +5013,11 @@ expo-image-picker@~14.0.2:
   dependencies:
     expo-image-loader "~4.0.0"
 
+expo-intent-launcher@^10.3.1:
+  version "10.3.1"
+  resolved "https://registry.yarnpkg.com/expo-intent-launcher/-/expo-intent-launcher-10.3.1.tgz#1479400f5f63096f73361f506bb4f7e067b050e6"
+  integrity sha512-T48ENkhcAkOkzKs3edGjNaCljfoEs/cyDQzAryjQdR8Wy5/BZwAPBd+ihf2Hzx1NhExatKFcWuKbwXvKDS+xkA==
+
 expo-keep-awake@~11.0.1:
   version "11.0.1"
   resolved "https://registry.yarnpkg.com/expo-keep-awake/-/expo-keep-awake-11.0.1.tgz#ee354465892a94040ffe09901b85b469e7d54fb3"
