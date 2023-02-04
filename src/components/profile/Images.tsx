@@ -1,5 +1,5 @@
-import { Fragment, useEffect, useState } from 'react';
-import { Dimensions, FlatList, Image, StyleSheet, TouchableOpacity, View } from 'react-native';
+import { useEffect, useState } from 'react';
+import { Dimensions, Image, StyleSheet, TouchableOpacity, View } from 'react-native';
 
 import { useNavigation } from '@react-navigation/core';
 
@@ -36,8 +36,7 @@ export function Images(): JSX.Element {
               marginLeft: 2,
               marginRight: 2,
             },
-          ]}
-        >
+          ]}>
           <Image
             source={{ uri: downloadSupabaseMedia('posts', post.post_media[0].file_url) }}
             accessibilityLabel={`${post.location} album cover photo`}
@@ -52,7 +51,7 @@ export function Images(): JSX.Element {
 
 const dimensions = Dimensions.get('window');
 const height = Math.round((dimensions.width * 3) / 9);
-const width = dimensions.width;
+const width = Math.round(dimensions.width - 36);
 
 const styles = StyleSheet.create({
   container: {
@@ -67,6 +66,6 @@ const styles = StyleSheet.create({
   image: {
     borderRadius: 4,
     height: height,
-    width: width / 3,
+    width: '100%',
   },
 });
