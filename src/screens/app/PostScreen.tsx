@@ -1,31 +1,22 @@
-import { StyleSheet, View } from 'react-native';
-
+import { useNavigation } from '@react-navigation/core';
 import { RouteProp } from '@react-navigation/native';
 
 import { PostComments, PostImages, PostInfo } from '&/components/post';
-import { AppStackParamList } from '&/navigators/app-navigator';
+import { AppNavProps, AppStackParamList } from '&/navigators/app-navigator';
 
 interface PostScreenProps {
   route: RouteProp<AppStackParamList, 'Post'>;
 }
 
 export function PostScreen({ route }: PostScreenProps): JSX.Element {
+  const navigation = useNavigation<AppNavProps<'Post'>>();
   const { account, post, startIndex } = route.params;
 
   return (
     <>
-      <PostImages post={post} startIndex={startIndex} />
+      <PostImages navigation={navigation} post={post} startIndex={startIndex} />
       <PostInfo account={account} post={post} />
-
-      <View style={styles.container}>
-        <PostComments />
-      </View>
+      <PostComments />
     </>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    paddingHorizontal: 16,
-  },
-});

@@ -1,16 +1,17 @@
 import { useEffect, useState } from 'react';
 import { Dimensions, Image, StyleSheet, TouchableOpacity, View } from 'react-native';
 
-import { useNavigation } from '@react-navigation/core';
-
 import { useCurrentUser } from '&/contexts/AuthProvider';
 import { AppNavProps } from '&/navigators/app-navigator';
 import { getPosts, type Post } from '&/queries/posts';
 import { downloadSupabaseMedia } from '&/utilities/helpers';
 
-export function Images(): JSX.Element {
+interface ImageProps {
+  navigation: AppNavProps<'Post'>;
+}
+
+export function Images({ navigation }: ImageProps): JSX.Element {
   const user = useCurrentUser();
-  const navigation = useNavigation<AppNavProps<'Post'>>();
   const [posts, setPosts] = useState<Post[] | null>();
 
   useEffect(() => {
@@ -28,7 +29,7 @@ export function Images(): JSX.Element {
     <View style={styles.container}>
       {posts?.map((post: Post, index: number) => (
         <TouchableOpacity
-          onPress={() => navigation.navigate('Post', { account: user, post: post, startIndex: index })}
+          onPress={() => navigation.navigate('Post', { account: user, post: post, startIndex: 0 })}
           key={post.location}
           style={[
             styles.imageContainer,

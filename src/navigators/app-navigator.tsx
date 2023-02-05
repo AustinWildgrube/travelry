@@ -3,8 +3,8 @@ import { NativeStackNavigationProp, createNativeStackNavigator } from '@react-na
 import { Camera, User } from '@tamagui/lucide-icons';
 
 import { useCurrentUser } from '&/contexts/AuthProvider';
-import type { Post } from '&/queries/posts';
-import type { UserProfile } from '&/queries/users';
+import { type Post } from '&/queries/posts';
+import { type UserProfile } from '&/queries/users';
 import { CameraScreen } from '&/screens/app/CameraScreen';
 import { PostScreen } from '&/screens/app/PostScreen';
 import { ProfileScreen } from '&/screens/app/ProfileScreen';
@@ -27,7 +27,7 @@ export type AppNavProps<T extends keyof AppStackParamList> = NativeStackNavigati
 const Stack = createNativeStackNavigator<AppStackParamList>();
 export function RootNavigator(): JSX.Element {
   return (
-    <Stack.Navigator>
+    <Stack.Navigator initialRouteName="Profile">
       <Stack.Screen name="Tab" component={AppNavigator} options={{ headerShown: false }} />
       <Stack.Screen name="Post" component={PostScreen} options={{ headerShown: false }} />
     </Stack.Navigator>

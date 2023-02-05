@@ -19,6 +19,7 @@ module.exports = {
     '^&/queries/(.*)$|^(&/queries)',
     '^&/screens/(.*)$|^(&/screens)',
     '^&/services/(.*)$|^(&/services)',
+    '^&/stores/(.*)$|^(&/stores)',
     '^&/themes/(.*)$|^(&/themes)',
     '^&/translations/(.*)$|^(&/translations)',
     '^&/types/(.*)$|^(&/types)',

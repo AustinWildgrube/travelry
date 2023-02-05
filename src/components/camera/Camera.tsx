@@ -2,18 +2,33 @@ import { useEffect, useRef, useState } from 'react';
 import { Pressable, StyleSheet, View } from 'react-native';
 
 import { Feather } from '@expo/vector-icons';
-import { useNavigation } from '@react-navigation/core';
 import { CameraType, Camera as ExpoCamera } from 'expo-camera';
+import { MediaTypeOptions, launchImageLibraryAsync } from 'expo-image-picker';
 
-import { ImageLibrary } from '&/components/camera/ImageLibrary';
 import { Permissions } from '&/components/camera/Permissions';
 import { AppNavProps } from '&/navigators/app-navigator';
 
-export function Camera(): JSX.Element {
-  const navigation = useNavigation<AppNavProps<'Profile'>>();
+interface CameraProps {
+  navigation: AppNavProps<'Profile'>;
+}
+
+export function Camera({ navigation }: CameraProps): JSX.Element {
   const cameraRef = useRef<ExpoCamera>(null);
-  const [hasCameraPermission, setHasCameraPermission] = useState<boolean>(false);
   const [type, setType] = useState<CameraType>(CameraType.back);
+  const [hasCameraPermission, setHasCameraPermission] = useState<boolean>(false);
+
+  const pickImage = async (): Promise<void> => {
+    let result = await launchImageLibraryAsync({
+      mediaTypes: MediaTypeOptions.All,
+      allowsEditing: false,
+      aspect: [4, 3],
+      quality: 1,
+    });
+
+    if (!result.canceled) {
+      navigation.navigate('Profile', { image: result.assets[0].uri });
+    }
+  };
 
   const takePicture = async (): Promise<void> => {
     if (cameraRef && cameraRef.current) {
@@ -38,7 +53,10 @@ export function Camera(): JSX.Element {
     <View style={styles.container}>
       <ExpoCamera style={styles.camera} type={type} ref={cameraRef} testID="camera">
         <View style={styles.buttonContainer}>
-          <Pressable onPress={() => navigation.goBack()}>
+          <Pressable
+            onPress={() =>
+              navigation.canGoBack() ? navigation.goBack() : navigation.navigate('Profile', { image: '' })
+            }>
             <Feather name="x" size={24} color="white" />
           </Pressable>
 
@@ -52,7 +70,9 @@ export function Camera(): JSX.Element {
         </View>
 
         <View style={styles.actionContainer}>
-          <ImageLibrary />
+          <Pressable onPress={pickImage} style={styles.libraryButton}>
+            <Feather name="image" size={32} color="white" />
+          </Pressable>
 
           <Pressable onPress={takePicture} accessibilityLabel="Capture image" style={styles.cameraButton}>
             <View style={styles.cameraRing}></View>
@@ -85,6 +105,10 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     marginBottom: 40,
     marginHorizontal: 20,
+  },
+  libraryButton: {
+    left: 0,
+    position: 'absolute',
   },
   cameraButton: {
     borderColor: '#fff',

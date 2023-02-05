@@ -2,7 +2,7 @@ import { Image, StyleSheet, Text, View } from 'react-native';
 
 export function PostComments(): JSX.Element {
   return (
-    <>
+    <View style={styles.container}>
       <Text style={styles.commentTitle}>Comments</Text>
 
       <View style={styles.commentContainer}>
@@ -28,11 +28,14 @@ export function PostComments(): JSX.Element {
           </View>
         </View>
       </View>
-    </>
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
+  container: {
+    paddingHorizontal: 16,
+  },
   commentContainer: {
     alignItems: 'center',
     flexDirection: 'row',
