@@ -38,12 +38,13 @@ const styles = (theme: Theme) =>
     layoutAndroid: {
       backgroundColor: theme.colors.mainBackground,
       flex: 1,
-      paddingTop: 25,
-      paddingHorizontal: 12,
+      marginsTop: 25,
+      marginHorizontal: 12,
     },
     layoutIOS: {
       backgroundColor: theme.colors.mainBackground,
       flex: 1,
-      paddingHorizontal: 12,
+      marginTop: 21,
+      marginHorizontal: 12,
     },
   });

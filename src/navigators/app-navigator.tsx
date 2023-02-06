@@ -1,22 +1,24 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { NativeStackNavigationProp, createNativeStackNavigator } from '@react-navigation/native-stack';
-import { Camera, User } from '@tamagui/lucide-icons';
+import { Camera, Home, User } from '@tamagui/lucide-icons';
 
 import { useCurrentUser } from '&/contexts/AuthProvider';
 import { type Post } from '&/queries/posts';
 import { type UserProfile } from '&/queries/users';
 import { CameraScreen } from '&/screens/app/CameraScreen';
+import { FeedScreen } from '&/screens/app/FeedScreen';
 import { PostScreen } from '&/screens/app/PostScreen';
 import { ProfileScreen } from '&/screens/app/ProfileScreen';
 
 export type AppStackParamList = {
   Tab: undefined;
+  Camera: undefined;
+  Feed: undefined;
   Post: {
     account: UserProfile;
     post: Post;
     startIndex: number;
   };
-  Camera: undefined;
   Profile: {
     image: string;
   };
@@ -27,7 +29,7 @@ export type AppNavProps<T extends keyof AppStackParamList> = NativeStackNavigati
 const Stack = createNativeStackNavigator<AppStackParamList>();
 export function RootNavigator(): JSX.Element {
   return (
-    <Stack.Navigator initialRouteName="Profile">
+    <Stack.Navigator initialRouteName="Feed">
       <Stack.Screen name="Tab" component={AppNavigator} options={{ headerShown: false }} />
       <Stack.Screen name="Post" component={PostScreen} options={{ headerShown: false }} />
     </Stack.Navigator>
@@ -40,6 +42,13 @@ export function AppNavigator(): JSX.Element {
 
   return (
     <Tab.Navigator>
+      <Tab.Screen
+        name="Feed"
+        component={FeedScreen}
+        options={{
+          tabBarIcon: ({}) => <Home />,
+        }}
+      />
       <Tab.Screen
         name="Camera"
         component={CameraScreen}
