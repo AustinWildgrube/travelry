@@ -6,6 +6,7 @@ import { useCurrentUser } from '&/contexts/AuthProvider';
 import { type Post } from '&/queries/posts';
 import { type UserProfile } from '&/queries/users';
 import { CameraScreen } from '&/screens/app/CameraScreen';
+import { EditScreen } from '&/screens/app/EditScreen';
 import { FeedScreen } from '&/screens/app/FeedScreen';
 import { PostScreen } from '&/screens/app/PostScreen';
 import { ProfileScreen } from '&/screens/app/ProfileScreen';
@@ -14,13 +15,14 @@ export type AppStackParamList = {
   Tab: undefined;
   Camera: undefined;
   Feed: undefined;
+  Profile: undefined;
+  Edit: {
+    image: string;
+  };
   Post: {
     account: UserProfile;
     post: Post;
     startIndex: number;
-  };
-  Profile: {
-    image: string;
   };
 };
 
@@ -32,6 +34,7 @@ export function RootNavigator(): JSX.Element {
     <Stack.Navigator initialRouteName="Feed">
       <Stack.Screen name="Tab" component={AppNavigator} options={{ headerShown: false }} />
       <Stack.Screen name="Post" component={PostScreen} options={{ headerShown: false }} />
+      <Stack.Screen name="Edit" component={EditScreen} />
     </Stack.Navigator>
   );
 }

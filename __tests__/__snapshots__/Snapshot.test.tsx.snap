@@ -819,6 +819,7 @@ exports[`snapshot test should properly display the camera screen 1`] = `
         />
       </View>
       <View
+        accessibilityLabel="Flip camera"
         accessible={true}
         collapsable={false}
         focusable={true}
@@ -877,6 +878,7 @@ exports[`snapshot test should properly display the camera screen 1`] = `
         />
       </View>
       <View
+        accessibilityLabel="Capture image"
         accessible={true}
         collapsable={false}
         focusable={true}
@@ -891,7 +893,9 @@ exports[`snapshot test should properly display the camera screen 1`] = `
         onStartShouldSetResponder={[Function]}
         style={
           Object {
+            "borderColor": "#fff",
             "borderRadius": 50,
+            "borderWidth": 3,
             "height": 86,
             "justifyContent": "center",
             "width": 86,
@@ -913,6 +917,80 @@ exports[`snapshot test should properly display the camera screen 1`] = `
             }
           }
         />
+      </View>
+    </View>
+    <View
+      style={
+        Object {
+          "alignItems": "center",
+          "backgroundColor": "rgba(0, 0, 0, 0.75)",
+          "bottom": 0,
+          "flex": 1,
+          "justifyContent": "center",
+          "left": 0,
+          "position": "absolute",
+          "right": 0,
+          "top": 0,
+        }
+      }
+    >
+      <Text
+        style={
+          Object {
+            "color": "#fff",
+            "fontSize": 21,
+            "fontWeight": "600",
+            "textAlign": "center",
+          }
+        }
+      >
+        Travelry needs access to your camera
+      </Text>
+      <Text
+        style={
+          Object {
+            "color": "#fff",
+            "marginTop": 8,
+            "textAlign": "center",
+          }
+        }
+      >
+        Click the button below enable it
+      </Text>
+      <View
+        accessible={true}
+        collapsable={false}
+        focusable={true}
+        onBlur={[Function]}
+        onClick={[Function]}
+        onFocus={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          Object {
+            "alignItems": "center",
+            "backgroundColor": "#e63946",
+            "borderRadius": 3,
+            "justifyContent": "center",
+            "marginTop": 32,
+            "padding": 16,
+            "width": "50%",
+          }
+        }
+      >
+        <Text
+          style={
+            Object {
+              "color": "#fff",
+            }
+          }
+        >
+          Open Settings
+        </Text>
       </View>
     </View>
   </ViewManagerAdapter_ExponentCamera>

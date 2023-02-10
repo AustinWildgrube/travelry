@@ -3,18 +3,19 @@ import { Pressable, StyleSheet, View } from 'react-native';
 
 import { Feather } from '@expo/vector-icons';
 import { CameraType, Camera as ExpoCamera } from 'expo-camera';
+import { FlipType, manipulateAsync } from 'expo-image-manipulator';
 import { MediaTypeOptions, launchImageLibraryAsync } from 'expo-image-picker';
 
 import { Permissions } from '&/components/camera/Permissions';
 import { AppNavProps } from '&/navigators/app-navigator';
 
 interface CameraProps {
-  navigation: AppNavProps<'Profile'>;
+  navigation: AppNavProps<'Edit' | 'Profile'>;
 }
 
 export function Camera({ navigation }: CameraProps): JSX.Element {
   const cameraRef = useRef<ExpoCamera>(null);
-  const [type, setType] = useState<CameraType>(CameraType.back);
+  const [type, setType] = useState<CameraType>(CameraType.front);
   const [hasCameraPermission, setHasCameraPermission] = useState<boolean>(false);
 
   const pickImage = async (): Promise<void> => {
@@ -26,7 +27,7 @@ export function Camera({ navigation }: CameraProps): JSX.Element {
     });
 
     if (!result.canceled) {
-      navigation.navigate('Profile', { image: result.assets[0].uri });
+      navigation.navigate('Edit', { image: result.assets[0].uri });
     }
   };
 
@@ -37,7 +38,13 @@ export function Camera({ navigation }: CameraProps): JSX.Element {
   };
 
   const onPictureSaved = async (photo: any): Promise<void> => {
-    navigation.navigate('Profile', { image: photo.uri });
+    if (type === CameraType.front) {
+      photo = await manipulateAsync(photo.localUri || photo.uri, [{ rotate: 180 }, { flip: FlipType.Vertical }], {
+        compress: 1,
+      });
+
+      navigation.navigate('Edit', { image: photo.uri });
+    }
   };
 
   useEffect(() => {
@@ -51,12 +58,9 @@ export function Camera({ navigation }: CameraProps): JSX.Element {
 
   return (
     <View style={styles.container}>
-      <ExpoCamera style={styles.camera} type={type} ref={cameraRef} testID="camera">
+      <ExpoCamera style={styles.camera} type={type} ref={cameraRef}>
         <View style={styles.buttonContainer}>
-          <Pressable
-            onPress={() =>
-              navigation.canGoBack() ? navigation.goBack() : navigation.navigate('Profile', { image: '' })
-            }>
+          <Pressable onPress={() => (navigation.canGoBack() ? navigation.goBack() : navigation.navigate('Profile'))}>
             <Feather name="x" size={24} color="white" />
           </Pressable>
 

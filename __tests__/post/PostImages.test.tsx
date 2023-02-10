@@ -1,6 +1,8 @@
+import { useNavigation } from '@react-navigation/core';
 import { fireEvent, screen } from '@testing-library/react-native';
 
 import { PostImages } from '&/components/post';
+import { AppNavProps } from '&/navigators/app-navigator';
 
 import { currentUserPosts, wrapRender } from '../../jestSetupFile';
 
@@ -15,9 +17,11 @@ jest.mock('@react-navigation/core', () => {
   };
 });
 
+let props: any;
+
 describe('post images', () => {
   it('should show the posts images', () => {
-    wrapRender(<PostImages post={currentUserPosts[0]} startIndex={0} />);
+    wrapRender(<PostImages post={currentUserPosts[0]} startIndex={0} {...props} />);
     const image = screen.getByLabelText('Post image');
 
     expect(image).toBeOnTheScreen();
@@ -26,7 +30,9 @@ describe('post images', () => {
   });
 
   it('should navigate back when the back button is pressed', async () => {
-    wrapRender(<PostImages post={currentUserPosts[0]} startIndex={0} />);
+    const navigation = useNavigation<AppNavProps<'Post'>>();
+    wrapRender(<PostImages post={currentUserPosts[0]} startIndex={0} navigation={navigation} />);
+
     const backButton = screen.getByLabelText(/go back/i);
     expect(backButton).toBeOnTheScreen();
 

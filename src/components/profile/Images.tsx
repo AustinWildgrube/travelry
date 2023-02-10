@@ -3,7 +3,7 @@ import { Dimensions, Image, StyleSheet, TouchableOpacity, View } from 'react-nat
 
 import { useCurrentUser } from '&/contexts/AuthProvider';
 import { AppNavProps } from '&/navigators/app-navigator';
-import { getPosts, type Post } from '&/queries/posts';
+import { getPostsByAccountId, type Post } from '&/queries/posts';
 import { downloadSupabaseMedia } from '&/utilities/helpers';
 
 interface ImageProps {
@@ -17,7 +17,7 @@ export function Images({ navigation }: ImageProps): JSX.Element {
   useEffect(() => {
     const getUsersPosts = async (): Promise<void> => {
       if (user.id) {
-        const posts: Post[] | null = await getPosts(user.id);
+        const posts: Post[] | null = await getPostsByAccountId(user.id);
         setPosts(posts);
       }
     };
@@ -33,7 +33,7 @@ export function Images({ navigation }: ImageProps): JSX.Element {
           key={post.location}
           style={[
             styles.imageContainer,
-            index === 1 && {
+            index % 2 === 0 && {
               marginLeft: 2,
               marginRight: 2,
             },
@@ -52,7 +52,7 @@ export function Images({ navigation }: ImageProps): JSX.Element {
 
 const dimensions = Dimensions.get('window');
 const height = Math.round((dimensions.width * 3) / 9);
-const width = Math.round(dimensions.width - 36);
+const width = Math.round(dimensions.width - 40);
 
 const styles = StyleSheet.create({
   container: {

@@ -20,9 +20,11 @@ jest.spyOn(ExpoCamera, 'requestCameraPermissionsAsync').mockResolvedValue({
   canAskAgain: true,
 });
 
+let props: any;
+
 describe('camera', () => {
   it('should take an image when the capture button is pressed', async () => {
-    wrapRender(<Camera />);
+    wrapRender(<Camera {...props} />);
     const captureButton = screen.getByLabelText(/capture image/i);
     expect(captureButton).toBeOnTheScreen();
 
@@ -33,7 +35,7 @@ describe('camera', () => {
   });
 
   it('should show a message with a settings button when permission is denied', async () => {
-    wrapRender(<Camera />);
+    wrapRender(<Camera {...props} />);
     expect(screen.findByText(/'travelry needs access to your camera/i)).toBeDefined();
     expect(screen.findByText(/Click the button below enable it/i)).toBeDefined();
   });

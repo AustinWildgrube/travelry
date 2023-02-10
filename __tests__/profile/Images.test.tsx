@@ -5,11 +5,12 @@ import * as PostModule from '&/queries/posts';
 
 import { currentUserPosts, wrapRender } from '../../jestSetupFile';
 
-const postSpy = jest.spyOn(PostModule, 'getPosts').mockResolvedValue(currentUserPosts);
+const postSpy = jest.spyOn(PostModule, 'getPostsByAccountId').mockResolvedValue(currentUserPosts);
+let props: any;
 
 describe('profile images', () => {
   it('should retrieve the users images ', async () => {
-    wrapRender(<Images />);
+    wrapRender(<Images {...props} />);
 
     await waitFor(() => expect(postSpy).toHaveBeenCalled());
     const spyReturnValue = await postSpy.mock.results[0].value;
@@ -40,7 +41,7 @@ describe('profile images', () => {
   });
 
   it('should show an image album per location', async () => {
-    wrapRender(<Images />);
+    wrapRender(<Images {...props} />);
 
     const imageAlbum = await screen.findByLabelText('Castle Black album cover photo');
     expect(imageAlbum).toBeTruthy();
