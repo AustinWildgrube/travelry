@@ -40,3 +40,33 @@ export const getUserProfile = async (id: string): Promise<UserProfile> => {
 
   return data[0];
 };
+
+export const isFollowingUser = async (id: string, targetId: string): Promise<string> => {
+  const { data, error } = await supabase
+    .from('follow')
+    .select('id')
+    .eq('account_id', id)
+    .eq('target_account_id', targetId);
+
+  if (error) {
+    throw new Error(`Error ${error.code}: ${error.message}`);
+  }
+
+  return data[0];
+};
+
+export const followUser = async (id: string, targetId: string): Promise<void> => {
+  let { error } = await supabase.from('follow').insert({ account_id: id, target_account_id: targetId });
+
+  if (error) {
+    throw new Error(`Error ${error.code}: ${error.message}`);
+  }
+};
+
+export const unfollowUser = async (id: string, targetId: string): Promise<void> => {
+  let { error } = await supabase.from('follow').delete().eq('account_id', id).eq('target_account_id', targetId);
+
+  if (error) {
+    throw new Error(`Error ${error.code}: ${error.message}`);
+  }
+};
