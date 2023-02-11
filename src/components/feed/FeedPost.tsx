@@ -1,97 +1,116 @@
-import { Dimensions, Image, Pressable, StyleSheet, Text, View } from 'react-native';
+import { useEffect, useState } from 'react';
+import { Dimensions, Image, ImageBackground, Pressable, StyleSheet, Text, View } from 'react-native';
 
 import { Heart } from '@tamagui/lucide-icons';
+import { LinearGradient } from 'expo-linear-gradient';
 
-import { Card } from '&/components/atoms';
 import { AppNavProps } from '&/navigators/app-navigator';
+import { getAllPosts, type Post } from '&/queries/posts';
+import { getUserProfile, type UserProfile } from '&/queries/users';
+import { downloadSupabaseMedia } from '&/utilities/helpers';
 
 interface PostProps {
   navigation: AppNavProps<'Post'>;
-}
-
-export function FeedPost({ navigation }: PostProps): JSX.Element {
-  return (
-    <Pressable>
-      <Card style={styles.post}>
-        <View style={styles.header}>
-          <View style={styles.headerInfo}>
-            <Image
-              source={{
-                uri: 'https://images.unsplash.com/photo-1674925271211-cef66b0db2f1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=987&q=80',
-              }}
-              style={styles.accountAvatar}
-            />
-
-            <View>
-              <Text style={styles.accountName}>Austin Wildgrube</Text>
-              <Text style={styles.location}>Maui, Hawaii</Text>
-            </View>
-          </View>
-
-          <View style={styles.likeButton}>
-            <Heart size={21} color="#7C8089" />
-            <Text style={styles.likeAmount}>15</Text>
-          </View>
-        </View>
-
-        <Image
-          source={{
-            uri: 'https://images.unsplash.com/photo-1675432980667-95da207814a5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1974&q=80',
-          }}
-          style={styles.mainImage}
-        />
-
-        <View style={styles.secondaryImages}>
-          <Image
-            source={{
-              uri: 'https://images.unsplash.com/photo-1675659999529-630a3febadfc?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80',
-            }}
-            style={styles.secondaryImage}
-          />
-
-          <Image
-            source={{
-              uri: 'https://images.unsplash.com/photo-1675670412085-1a8ff853895c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=987&q=80',
-            }}
-            style={[styles.secondaryImage, { marginHorizontal: 4 }]}
-          />
-
-          <View style={styles.moreContainer}>
-            <Image
-              source={{
-                uri: 'https://images.unsplash.com/photo-1675667329170-736408ff7a68?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=987&q=80',
-              }}
-              style={styles.secondaryImage}
-              blurRadius={5}
-            />
-
-            <Text style={styles.overflowNumber}>+2</Text>
-          </View>
-        </View>
-
-        <Text numberOfLines={3} style={styles.caption}>
-          Lorem ipsum dolet amir solot Lorem ipsum dolet amir solot Lorem ipsum dolet amir solot Lorem ipsum dolet amir
-          solot Lorem ipsum dolet amir solot Lorem ipsum
-        </Text>
-
-        <Text style={styles.lapsedTime}>Posted 1 hour ago</Text>
-      </Card>
-    </Pressable>
-  );
+  setViewedUser: (user: UserProfile) => void;
 }
 
 const dimensions = Dimensions.get('window');
-const height = Math.round(dimensions.width / 3);
-const width = Math.round(dimensions.width - 64);
+const height = Math.round(dimensions.width);
+const width = Math.round(dimensions.width - 24);
+
+export function FeedPost({ navigation, setViewedUser }: PostProps): JSX.Element {
+  const [feedPosts, setFeedPosts] = useState<Post[] | null>(null);
+
+  const goToPost = async (post: Post): Promise<void> => {
+    navigation.navigate('Post', { account: await getUserProfile(post.account.id), post: post, startIndex: 0 });
+  };
+
+  const goToAccount = async (account: UserProfile): Promise<void> => {
+    setViewedUser(await getUserProfile(account.id));
+    navigation.navigate('Profile');
+  };
+
+  useEffect(() => {
+    const getFeedPosts = async (): Promise<void> => {
+      setFeedPosts(await getAllPosts());
+    };
+
+    getFeedPosts();
+  }, []);
+
+  return (
+    <>
+      {feedPosts &&
+        feedPosts.map((post: Post) => (
+          <Pressable onPress={() => goToPost(post)} style={styles.post} key={post.created_at}>
+            <ImageBackground
+              source={{ uri: downloadSupabaseMedia('posts', post.post_media[0].file_url) }}
+              imageStyle={styles.imageBackground}
+              style={styles.imageBackgroundContainer}>
+              <LinearGradient
+                colors={['white', 'rgba(255,255,255,0)']}
+                start={{ x: 0, y: 0.85 }}
+                end={{ x: 0, y: 0.7 }}
+                style={styles.linearGradient}>
+                <View style={styles.header}>
+                  <Pressable onPress={() => goToAccount(post.account)} style={styles.headerInfo}>
+                    <Image
+                      source={{ uri: downloadSupabaseMedia('avatars', post.account.avatar_url) }}
+                      style={styles.accountAvatar}
+                    />
+
+                    <View>
+                      <Text style={styles.accountName}>{post.account?.full_name}</Text>
+                      <Text style={styles.location}>{post.location}</Text>
+                    </View>
+                  </Pressable>
+
+                  <View style={styles.likeButton}>
+                    <Heart size={21} color="#7C8089" />
+                    <Text style={styles.likeAmount}>15</Text>
+                  </View>
+                </View>
+              </LinearGradient>
+            </ImageBackground>
+          </Pressable>
+        ))}
+    </>
+  );
+}
 
 const styles = StyleSheet.create({
   post: {
     marginBottom: 12,
   },
+  imageBackground: {
+    borderRadius: 4,
+  },
+  imageBackgroundContainer: {
+    borderRadius: 4,
+    elevation: 1,
+    height: height - 24,
+    justifyContent: 'flex-end',
+    marginBottom: 8,
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 1,
+    },
+    shadowOpacity: 0.18,
+    shadowRadius: 1.0,
+    width: width - 2,
+  },
+  linearGradient: {
+    borderRadius: 4,
+    height: height,
+    padding: 8,
+  },
   header: {
-    alignItems: 'center',
+    alignItems: 'flex-end',
+    flex: 1,
     flexDirection: 'row',
     justifyContent: 'space-between',
+    padding: 8,
   },
   headerInfo: {
     alignItems: 'center',
@@ -118,46 +137,5 @@ const styles = StyleSheet.create({
   likeAmount: {
     color: '#7C8089',
     marginLeft: 8,
-  },
-  mainImage: {
-    borderRadius: 4,
-    height: height,
-    marginBottom: 2,
-    marginTop: 8,
-    width: '100%',
-  },
-  secondaryImages: {
-    flexDirection: 'row',
-  },
-  secondaryImage: {
-    borderRadius: 4,
-    height: Math.round(dimensions.width / 4),
-    marginVertical: 8,
-    width: width / 3,
-  },
-  moreContainer: {
-    alignItems: 'center',
-    flex: 1,
-    height: Math.round(dimensions.width / 4),
-    justifyContent: 'center',
-    marginTop: 8,
-    position: 'relative',
-    width: width / 3,
-  },
-  overflowNumber: {
-    color: '#fff',
-    fontSize: 24,
-    fontWeight: '600',
-    marginVertical: 8,
-    position: 'absolute',
-  },
-  caption: {
-    color: '#0C0F14',
-    fontSize: 12,
-    marginBottom: 8,
-  },
-  lapsedTime: {
-    color: '#7C8089',
-    fontSize: 12,
   },
 });

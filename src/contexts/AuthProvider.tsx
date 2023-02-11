@@ -108,8 +108,7 @@ export function AuthProvider({ children }: AuthProviderProps): JSX.Element {
         loginWithEmailAndPassword,
         updateCurrentUser,
         logout,
-      }}
-    >
+      }}>
       {children}
     </AuthContext.Provider>
   );

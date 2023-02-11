@@ -4,18 +4,20 @@ import { RouteProp } from '@react-navigation/native';
 import { Layout } from '&/components/atoms';
 import { EditInputs } from '&/components/edit/EditInputs';
 import { AppNavProps, AppStackParamList } from '&/navigators/app-navigator';
+import { useUserStore } from '&/stores/user-store';
 
 interface EditScreenProps {
   route: RouteProp<AppStackParamList, 'Edit'>;
 }
 
 export function EditScreen({ route }: EditScreenProps): JSX.Element {
+  const setViewedUser = useUserStore(state => state.setViewedUser);
   const navigation = useNavigation<AppNavProps<'Profile'>>();
   const { image } = route.params;
 
   return (
     <Layout>
-      <EditInputs image={image} navigation={navigation} />
+      <EditInputs image={image} navigation={navigation} setViewedUser={setViewedUser} />
     </Layout>
   );
 }

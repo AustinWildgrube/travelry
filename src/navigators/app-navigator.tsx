@@ -10,6 +10,7 @@ import { EditScreen } from '&/screens/app/EditScreen';
 import { FeedScreen } from '&/screens/app/FeedScreen';
 import { PostScreen } from '&/screens/app/PostScreen';
 import { ProfileScreen } from '&/screens/app/ProfileScreen';
+import { useUserStore } from '&/stores/user-store';
 
 export type AppStackParamList = {
   Tab: undefined;
@@ -42,6 +43,7 @@ export function RootNavigator(): JSX.Element {
 const Tab = createBottomTabNavigator<AppStackParamList>();
 export function AppNavigator(): JSX.Element {
   const user = useCurrentUser();
+  const setViewedUser = useUserStore(state => state.setViewedUser);
 
   return (
     <Tab.Navigator>
@@ -64,6 +66,11 @@ export function AppNavigator(): JSX.Element {
       <Tab.Screen
         name="Profile"
         component={ProfileScreen}
+        listeners={{
+          tabPress: e => {
+            setViewedUser(user);
+          },
+        }}
         options={{
           headerShown: true,
           title: `@${user.username}`,

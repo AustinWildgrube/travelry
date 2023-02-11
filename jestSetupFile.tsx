@@ -3,10 +3,10 @@ import { ReactNode } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { render } from '@testing-library/react-native';
 import { TamaguiProvider } from 'tamagui';
+
 import '@testing-library/jest-native/extend-expect';
 import '@testing-library/jest-dom/extend-expect';
 import '@testing-library/jest-dom';
-
 import { AuthContext } from '&/contexts/AuthProvider';
 import { type Post } from '&/queries/posts';
 import { type UserProfile } from '&/queries/users';
@@ -46,6 +46,7 @@ export const currentUserPosts: Post[] = [
     caption: 'The dreadful Castle Black.',
     location: 'Castle Black',
     created_at: '2021-12-24T00:00:00',
+    account: currentUser,
     post_media: [
       {
         id: 'b81ad645-7155-45f6-bd2e-ca56786dd331',
@@ -57,6 +58,7 @@ export const currentUserPosts: Post[] = [
     caption: 'Why does Catelyn Stark hate me?',
     location: 'Winterfell',
     created_at: '2021-12-24T00:00:00',
+    account: currentUser,
     post_media: [
       {
         id: '76cb79cf-be8a-4416-9d15-b1356b38259a',

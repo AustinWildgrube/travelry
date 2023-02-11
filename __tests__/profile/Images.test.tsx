@@ -3,14 +3,14 @@ import { screen, waitFor } from '@testing-library/react-native';
 import { Images } from '&/components/profile';
 import * as PostModule from '&/queries/posts';
 
-import { currentUserPosts, wrapRender } from '../../jestSetupFile';
+import { currentUser, currentUserPosts, wrapRender } from '../../jestSetupFile';
 
 const postSpy = jest.spyOn(PostModule, 'getPostsByAccountId').mockResolvedValue(currentUserPosts);
 let props: any;
 
 describe('profile images', () => {
   it('should retrieve the users images ', async () => {
-    wrapRender(<Images {...props} />);
+    wrapRender(<Images user={currentUser} {...props} />);
 
     await waitFor(() => expect(postSpy).toHaveBeenCalled());
     const spyReturnValue = await postSpy.mock.results[0].value;
@@ -19,6 +19,7 @@ describe('profile images', () => {
         caption: 'The dreadful Castle Black.',
         location: 'Castle Black',
         created_at: '2021-12-24T00:00:00',
+        account: currentUser,
         post_media: [
           {
             id: 'b81ad645-7155-45f6-bd2e-ca56786dd331',
@@ -30,6 +31,7 @@ describe('profile images', () => {
         caption: 'Why does Catelyn Stark hate me?',
         location: 'Winterfell',
         created_at: '2021-12-24T00:00:00',
+        account: currentUser,
         post_media: [
           {
             id: '76cb79cf-be8a-4416-9d15-b1356b38259a',
@@ -41,7 +43,7 @@ describe('profile images', () => {
   });
 
   it('should show an image album per location', async () => {
-    wrapRender(<Images {...props} />);
+    wrapRender(<Images user={currentUser} {...props} />);
 
     const imageAlbum = await screen.findByLabelText('Castle Black album cover photo');
     expect(imageAlbum).toBeTruthy();

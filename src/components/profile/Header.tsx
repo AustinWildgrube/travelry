@@ -2,11 +2,15 @@ import { useEffect, useState } from 'react';
 
 import { Avatar, Button, H1, Separator, Text, XStack, YStack } from 'tamagui';
 
-import { useAuth, useCurrentUser } from '&/contexts/AuthProvider';
+import { useAuth } from '&/contexts/AuthProvider';
+import { type UserProfile } from '&/queries/users';
 import { downloadSupabaseMedia } from '&/utilities/helpers';
 
-export function Header(): JSX.Element {
-  const user = useCurrentUser();
+interface HeaderProps {
+  user: UserProfile;
+}
+
+export function Header({ user }: HeaderProps): JSX.Element {
   const { logout } = useAuth();
   const [avatarUrl, setAvatarUrl] = useState<string | undefined>(undefined);
 

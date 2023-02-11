@@ -1,17 +1,17 @@
 import { useEffect, useState } from 'react';
 import { Dimensions, Image, StyleSheet, TouchableOpacity, View } from 'react-native';
 
-import { useCurrentUser } from '&/contexts/AuthProvider';
 import { AppNavProps } from '&/navigators/app-navigator';
 import { getPostsByAccountId, type Post } from '&/queries/posts';
+import { UserProfile } from '&/queries/users';
 import { downloadSupabaseMedia } from '&/utilities/helpers';
 
 interface ImageProps {
-  navigation: AppNavProps<'Post'>;
+  navigation: AppNavProps<'Post' | 'Profile'>;
+  user: UserProfile;
 }
 
-export function Images({ navigation }: ImageProps): JSX.Element {
-  const user = useCurrentUser();
+export function Images({ navigation, user }: ImageProps): JSX.Element {
   const [posts, setPosts] = useState<Post[] | null>();
 
   useEffect(() => {

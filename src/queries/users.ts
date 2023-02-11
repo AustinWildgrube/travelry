@@ -1,5 +1,3 @@
-import { Alert } from 'react-native';
-
 import { supabase } from '&/services/supabase-client';
 
 export type AccountStats = {
@@ -17,40 +15,28 @@ export type UserProfile = {
   account_stat: AccountStats;
 };
 
-export const getUserProfile = async (id: string) => {
-  try {
-    const { data, error } = await supabase
-      .from('account')
-      .select(
-        `
-          id,
-          username, 
-          full_name,
-          avatar_url, 
-          bio,
-          account_stat (
-            following_count, 
-            followers_count, 
-            trip_count
-          )
-        `,
-      )
-      .eq('id', id);
+export const getUserProfile = async (id: string): Promise<UserProfile> => {
+  const { data, error } = await supabase
+    .from('account')
+    .select(
+      `
+        id,
+        username, 
+        full_name,
+        avatar_url, 
+        bio,
+        account_stat (
+          following_count, 
+          followers_count, 
+          trip_count
+        )
+      `,
+    )
+    .eq('id', id);
 
-    if (error) {
-      throw new Error(`Error ${error.code}: ${error.message}`);
-    }
-
-    if (data !== null) {
-      return data[0] as UserProfile;
-    }
-  } catch (error) {
-    if (error instanceof Error) {
-      Alert.alert('An error occurred', error.message);
-    }
-
-    console.error(error);
+  if (error) {
+    throw new Error(`Error ${error.code}: ${error.message}`);
   }
 
-  return null;
+  return data[0];
 };

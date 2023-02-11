@@ -15,13 +15,15 @@ import { Input } from '&/components/atoms';
 import { useCurrentUser } from '&/contexts/AuthProvider';
 import { AppNavProps } from '&/navigators/app-navigator';
 import { createPost, createPostMedia } from '&/queries/posts';
+import { type UserProfile } from '&/queries/users';
 
 interface EditInputProps {
   image: string;
   navigation: AppNavProps<'Profile'>;
+  setViewedUser: (user: UserProfile) => void;
 }
 
-export function EditInputs({ image, navigation }: EditInputProps): JSX.Element {
+export function EditInputs({ image, navigation, setViewedUser }: EditInputProps): JSX.Element {
   const user = useCurrentUser();
 
   const {
@@ -38,6 +40,8 @@ export function EditInputs({ image, navigation }: EditInputProps): JSX.Element {
   const startUpload = async ({ caption, location }: { caption: string; location: string }): Promise<void> => {
     const postId = await createPost(user.id, caption, location);
     await createPostMedia(user.id, postId, image);
+
+    setViewedUser(user);
     navigation.navigate('Profile');
   };
 
