@@ -1,2 +1,3 @@
-export { Header } from './Header';
-export { Images } from './Images';
+export { ProfileHeader } from './ProfileHeader';
+export { ProfileImages } from './ProfileImages';
+export { ProfileFollowButton } from './ProfileFollowButton';

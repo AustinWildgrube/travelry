@@ -8,7 +8,7 @@ interface FollowButtonProps {
   viewedUser: UserProfile;
 }
 
-export function FollowButton({ loggedInUser, viewedUser }: FollowButtonProps): JSX.Element {
+export function ProfileFollowButton({ loggedInUser, viewedUser }: FollowButtonProps): JSX.Element {
   const [following, setFollowing] = useState<boolean>();
 
   const followAction = async (): Promise<void> => {

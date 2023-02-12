@@ -11,7 +11,7 @@ interface ImageProps {
   user: UserProfile;
 }
 
-export function Images({ navigation, user }: ImageProps): JSX.Element {
+export function ProfileImages({ navigation, user }: ImageProps): JSX.Element {
   const [posts, setPosts] = useState<Post[] | null>();
 
   useEffect(() => {

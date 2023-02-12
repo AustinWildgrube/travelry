@@ -2,7 +2,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { NativeStackNavigationProp, createNativeStackNavigator } from '@react-navigation/native-stack';
 import { Camera, Home, User } from '@tamagui/lucide-icons';
 
-import { FollowButton } from '&/components/profile/FollowButton';
+import { ProfileFollowButton } from '&/components/profile/ProfileFollowButton';
 import { useCurrentUser } from '&/contexts/AuthProvider';
 import { type Post } from '&/queries/posts';
 import { type UserProfile } from '&/queries/users';
@@ -75,7 +75,7 @@ export function AppNavigator(): JSX.Element {
         }}
         options={{
           headerShown: true,
-          headerRight: () => <FollowButton loggedInUser={user} viewedUser={viewedUser} />,
+          headerRight: () => <ProfileFollowButton loggedInUser={user} viewedUser={viewedUser} />,
           title: `@${viewedUser.username}`,
           tabBarLabel: 'Profile',
           tabBarIcon: ({}) => <User />,

@@ -1,12 +1,12 @@
 import { screen } from '@testing-library/react-native';
 
-import { Header } from '&/components/profile';
+import { ProfileHeader } from '&/components/profile';
 
 import { currentUser, wrapRender } from '../../jestSetupFile';
 
 describe('profile header', () => {
   it('should display the users avatar image', () => {
-    wrapRender(<Header user={currentUser} />);
+    wrapRender(<ProfileHeader user={currentUser} />);
     const avatar = screen.getByLabelText(`John Snow's profile image`);
 
     expect(avatar).toBeOnTheScreen();
@@ -15,16 +15,16 @@ describe('profile header', () => {
   });
 
   it('should display the users full name', () => {
-    wrapRender(<Header user={currentUser} />);
+    wrapRender(<ProfileHeader user={currentUser} />);
     expect(screen.getByText('John Snow')).toBeOnTheScreen();
   });
 
   it('should display the users bio', () => {});
-  wrapRender(<Header user={currentUser} />);
+  wrapRender(<ProfileHeader user={currentUser} />);
   expect(screen.getByText('I know nothing.')).toBeOnTheScreen();
 
   it('should display the users followers, following, and trip counts', () => {
-    wrapRender(<Header user={currentUser} />);
+    wrapRender(<ProfileHeader user={currentUser} />);
 
     // followers
     expect(screen.getByText('1000000')).toBeOnTheScreen();

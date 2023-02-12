@@ -9,7 +9,7 @@ interface HeaderProps {
   user: UserProfile;
 }
 
-export function Header({ user }: HeaderProps): JSX.Element {
+export function ProfileHeader({ user }: HeaderProps): JSX.Element {
   const [avatarUrl, setAvatarUrl] = useState<string | undefined>(undefined);
 
   useEffect(() => {
