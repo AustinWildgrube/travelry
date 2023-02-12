@@ -34,6 +34,8 @@ export function PostComments(): JSX.Element {
 
 const styles = StyleSheet.create({
   container: {
+    backgroundColor: '#fff',
+    flex: 1,
     paddingHorizontal: 16,
   },
   commentContainer: {

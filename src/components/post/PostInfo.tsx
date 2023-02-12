@@ -13,8 +13,8 @@ interface PostInfoProps {
 
 export function PostInfo({ account, post }: PostInfoProps): JSX.Element {
   return (
-    <>
-      <View style={styles.container}>
+    <View style={styles.container}>
+      <View style={styles.actionRow}>
         <Image
           source={{
             uri: downloadSupabaseMedia('avatars', account.avatar_url),
@@ -41,12 +41,15 @@ export function PostInfo({ account, post }: PostInfoProps): JSX.Element {
       <Text style={styles.name}>{account.full_name}</Text>
       <Text style={styles.description}>{post.caption}</Text>
       <Text style={styles.lapsedTime}>Posted {getRelativeTime(post.created_at)} &#x2022; 44 likes</Text>
-    </>
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
+    backgroundColor: '#fff',
+  },
+  actionRow: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     paddingHorizontal: 16,
