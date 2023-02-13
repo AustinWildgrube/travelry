@@ -4,7 +4,7 @@ import { Dimensions, Image, ImageBackground, Pressable, StyleSheet, Text, View }
 import { Heart } from '@tamagui/lucide-icons';
 import { LinearGradient } from 'expo-linear-gradient';
 
-import { AppNavProps } from '&/navigators/app-navigator';
+import { AppNavProps } from '&/navigators/root-navigator';
 import { getAllPosts, type Post } from '&/queries/posts';
 import { getUserProfile, type UserProfile } from '&/queries/users';
 import { downloadSupabaseMedia } from '&/utilities/helpers';
@@ -27,7 +27,12 @@ export function FeedPost({ navigation, setViewedUser }: PostProps): JSX.Element 
 
   const goToAccount = async (account: UserProfile): Promise<void> => {
     setViewedUser(await getUserProfile(account.id));
-    navigation.navigate('Profile');
+    navigation.navigate('Tabs', {
+      screen: 'ProfileTab',
+      params: {
+        screen: 'Profile',
+      },
+    });
   };
 
   useEffect(() => {

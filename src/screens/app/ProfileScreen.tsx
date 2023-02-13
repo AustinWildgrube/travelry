@@ -3,7 +3,7 @@ import { ScrollView } from 'react-native';
 import { useNavigation } from '@react-navigation/core';
 
 import { ProfileHeader, ProfileImages } from '&/components/profile';
-import { AppNavProps } from '&/navigators/app-navigator';
+import { type AppNavProps } from '&/navigators/root-navigator';
 import { useAlbumStore } from '&/stores/album';
 import { useUserStore } from '&/stores/user';
 

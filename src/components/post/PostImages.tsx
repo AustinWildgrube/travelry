@@ -4,7 +4,7 @@ import { Feather } from '@expo/vector-icons';
 import CountryFlag from 'react-native-country-flag';
 import SwiperFlatList from 'react-native-swiper-flatlist';
 
-import { AppNavProps } from '&/navigators/app-navigator';
+import { AppNavProps } from '&/navigators/root-navigator';
 import { type Post } from '&/queries/posts';
 import { downloadSupabaseMedia } from '&/utilities/helpers';
 

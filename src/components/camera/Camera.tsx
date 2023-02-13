@@ -7,10 +7,10 @@ import { FlipType, manipulateAsync } from 'expo-image-manipulator';
 import { MediaTypeOptions, launchImageLibraryAsync } from 'expo-image-picker';
 
 import { Permissions } from '&/components/camera/Permissions';
-import { AppNavProps } from '&/navigators/app-navigator';
+import { AppNavProps } from '&/navigators/root-navigator';
 
 interface CameraProps {
-  navigation: AppNavProps<'Edit' | 'Profile'>;
+  navigation: AppNavProps<'Edit' | 'Tabs'>;
 }
 
 export function Camera({ navigation }: CameraProps): JSX.Element {
@@ -60,7 +60,17 @@ export function Camera({ navigation }: CameraProps): JSX.Element {
     <View style={styles.container}>
       <ExpoCamera style={styles.camera} type={type} ref={cameraRef}>
         <View style={styles.buttonContainer}>
-          <Pressable onPress={() => (navigation.canGoBack() ? navigation.goBack() : navigation.navigate('Profile'))}>
+          <Pressable
+            onPress={() =>
+              navigation.canGoBack()
+                ? navigation.goBack()
+                : navigation.navigate('Tabs', {
+                    screen: 'ProfileTab',
+                    params: {
+                      screen: 'Profile',
+                    },
+                  })
+            }>
             <Feather name="x" size={24} color="white" />
           </Pressable>
 

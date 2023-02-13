@@ -1,13 +1,13 @@
 import { useEffect, useState } from 'react';
 import { Dimensions, Image, StyleSheet, TouchableOpacity, View } from 'react-native';
 
-import { type AppNavProps } from '&/navigators/app-navigator';
+import { type AppNavProps } from '&/navigators/root-navigator';
 import { getAlbumsByAccountId, type Album } from '&/queries/albums';
 import { type UserProfile } from '&/queries/users';
 import { downloadSupabaseMedia } from '&/utilities/helpers';
 
 interface ImageProps {
-  navigation: AppNavProps<'Post' | 'Profile'>;
+  navigation: AppNavProps<'Tabs' | 'Post'>;
   setViewedAlbum: (album: Album) => void;
   user: UserProfile;
 }
@@ -17,7 +17,15 @@ export function ProfileImages({ navigation, setViewedAlbum, user }: ImageProps):
 
   const goToAlbum = (album: Album): void => {
     setViewedAlbum(album);
-    navigation.navigate('Album', { albumId: album.id });
+    navigation.navigate('Tabs', {
+      screen: 'ProfileTab',
+      params: {
+        screen: 'Album',
+        params: {
+          albumId: album.id,
+        },
+      },
+    });
   };
 
   useEffect(() => {

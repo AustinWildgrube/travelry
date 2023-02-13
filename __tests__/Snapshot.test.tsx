@@ -1,6 +1,6 @@
 import { RouteProp } from '@react-navigation/native';
 
-import { AppStackParamList } from '&/navigators/app-navigator';
+import { AppStackParamList } from '&/navigators/root-navigator';
 import { CameraScreen } from '&/screens/app/CameraScreen';
 import { PostScreen } from '&/screens/app/PostScreen';
 import { ProfileScreen } from '&/screens/app/ProfileScreen';

@@ -4,7 +4,7 @@ import { useNavigation } from '@react-navigation/core';
 
 import { Layout } from '&/components/atoms';
 import { FeedPost } from '&/components/feed/FeedPost';
-import { AppNavProps } from '&/navigators/app-navigator';
+import { type AppNavProps } from '&/navigators/root-navigator';
 import { useUserStore } from '&/stores/user';
 
 export function FeedScreen(): JSX.Element {

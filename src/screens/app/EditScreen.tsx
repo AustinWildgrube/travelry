@@ -3,7 +3,7 @@ import { RouteProp } from '@react-navigation/native';
 
 import { Layout } from '&/components/atoms';
 import { EditInputs } from '&/components/edit/EditInputs';
-import { AppNavProps, AppStackParamList } from '&/navigators/app-navigator';
+import { type AppNavProps, type AppStackParamList } from '&/navigators/root-navigator';
 import { useUserStore } from '&/stores/user';
 
 interface EditScreenProps {
@@ -12,7 +12,7 @@ interface EditScreenProps {
 
 export function EditScreen({ route }: EditScreenProps): JSX.Element {
   const setViewedUser = useUserStore(state => state.setViewedUser);
-  const navigation = useNavigation<AppNavProps<'Profile'>>();
+  const navigation = useNavigation<AppNavProps<'Tabs'>>();
   const { image } = route.params;
 
   return (

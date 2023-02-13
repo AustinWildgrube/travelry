@@ -1,7 +1,7 @@
 import React, { Fragment, useEffect, useState } from 'react';
 import { Dimensions, Image, StyleSheet, TouchableOpacity, View } from 'react-native';
 
-import { type AppNavProps } from '&/navigators/app-navigator';
+import { type AppNavProps } from '&/navigators/root-navigator';
 import { getPostsByAlbumId, type Post, type PostMedia } from '&/queries/posts';
 import { getUserProfile } from '&/queries/users';
 import { downloadSupabaseMedia } from '&/utilities/helpers';

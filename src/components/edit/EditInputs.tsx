@@ -13,13 +13,13 @@ import { Controller, useForm } from 'react-hook-form';
 
 import { Input } from '&/components/atoms';
 import { useCurrentUser } from '&/contexts/AuthProvider';
-import { AppNavProps } from '&/navigators/app-navigator';
+import { type AppNavProps } from '&/navigators/root-navigator';
 import { createPost, createPostMedia } from '&/queries/posts';
 import { type UserProfile } from '&/queries/users';
 
 interface EditInputProps {
   image: string;
-  navigation: AppNavProps<'Profile'>;
+  navigation: AppNavProps<'Tabs'>;
   setViewedUser: (user: UserProfile) => void;
 }
 
@@ -42,7 +42,12 @@ export function EditInputs({ image, navigation, setViewedUser }: EditInputProps)
     await createPostMedia(user.id, postId, image);
 
     setViewedUser(user);
-    navigation.navigate('Profile');
+    navigation.navigate('Tabs', {
+      screen: 'ProfileTab',
+      params: {
+        screen: 'Profile',
+      },
+    });
   };
 
   return (

@@ -2,7 +2,7 @@ import { useNavigation } from '@react-navigation/core';
 import { fireEvent, screen } from '@testing-library/react-native';
 
 import { PostImages } from '&/components/post';
-import { AppNavProps } from '&/navigators/app-navigator';
+import { AppNavProps } from '&/navigators/root-navigator';
 
 import { currentUserPosts, wrapRender } from '../../jestSetupFile';
 

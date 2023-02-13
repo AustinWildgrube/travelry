@@ -2,7 +2,7 @@ import { useNavigation } from '@react-navigation/core';
 import { RouteProp } from '@react-navigation/native';
 
 import { PostComments, PostImages, PostInfo } from '&/components/post';
-import { AppNavProps, AppStackParamList } from '&/navigators/app-navigator';
+import { type AppNavProps, type AppStackParamList } from '&/navigators/root-navigator';
 
 interface PostScreenProps {
   route: RouteProp<AppStackParamList, 'Post'>;

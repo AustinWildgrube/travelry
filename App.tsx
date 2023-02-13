@@ -7,8 +7,8 @@ import { TamaguiProvider } from 'tamagui';
 
 import { Spinner } from '&/components/atoms';
 import { AuthProvider, useAuth } from '&/contexts/AuthProvider';
-import { RootNavigator } from '&/navigators/app-navigator';
 import { AuthNavigator } from '&/navigators/auth-navigator';
+import { RootNavigator } from '&/navigators/root-navigator';
 import { ThemeProvider, useTheme } from '&/themes/ThemeProvider';
 import { getNavigatorTheme } from '&/themes/navigator-theme';
 

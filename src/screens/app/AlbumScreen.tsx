@@ -2,10 +2,11 @@ import { useNavigation } from '@react-navigation/core';
 import { type RouteProp } from '@react-navigation/native';
 
 import { AlbumImages } from '&/components/album/AlbumImages';
-import { type AppNavProps, type AppStackParamList } from '&/navigators/app-navigator';
+import { type ProfileStackParamList } from '&/navigators/profile-navigator';
+import { type AppNavProps } from '&/navigators/root-navigator';
 
 interface AlbumScreenProps {
-  route: RouteProp<AppStackParamList, 'Album'>;
+  route: RouteProp<ProfileStackParamList, 'Album'>;
 }
 
 export function AlbumScreen({ route }: AlbumScreenProps): JSX.Element {
