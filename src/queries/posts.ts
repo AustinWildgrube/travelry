@@ -1,4 +1,4 @@
-import { UserProfile } from '&/queries/users';
+import { type UserProfile } from '&/queries/users';
 import { supabase } from '&/services/supabase-client';
 
 export type PostMedia = {
@@ -14,7 +14,7 @@ export type Post = {
   account: UserProfile;
 };
 
-// TODO: Change album id
+// TODO: Change album.ts id
 export const createPost = async (accountId: string, caption: string, location: string): Promise<string> => {
   const { data, error } = await supabase.from('post').insert([
     {
@@ -74,6 +74,32 @@ export const getPostsByAccountId = async (id: string): Promise<Post[]> => {
         `,
     )
     .eq('account_id', id);
+
+  if (error) {
+    throw new Error(`Error: ${error.code}: ${error.message}`);
+  }
+
+  return data;
+};
+
+export const getPostsByAlbumId = async (id: string): Promise<Post[]> => {
+  const { data, error } = await supabase
+    .from('post')
+    .select(
+      `
+          caption,
+          created_at,
+          location,
+          account (
+            id
+          ),
+          post_media (
+            id,
+            file_url
+          )
+        `,
+    )
+    .eq('album_id', id);
 
   if (error) {
     throw new Error(`Error: ${error.code}: ${error.message}`);

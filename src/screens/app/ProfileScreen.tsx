@@ -4,16 +4,18 @@ import { useNavigation } from '@react-navigation/core';
 
 import { ProfileHeader, ProfileImages } from '&/components/profile';
 import { AppNavProps } from '&/navigators/app-navigator';
-import { useUserStore } from '&/stores/user-store';
+import { useAlbumStore } from '&/stores/album';
+import { useUserStore } from '&/stores/user';
 
 export function ProfileScreen(): JSX.Element {
   const navigation = useNavigation<AppNavProps<'Post'>>();
   const viewedUser = useUserStore(state => state.viewedUser);
+  const setViewedAlbum = useAlbumStore(state => state.setViewedAlbum);
 
   return (
     <ScrollView>
       <ProfileHeader user={viewedUser} />
-      <ProfileImages user={viewedUser} navigation={navigation} />
+      <ProfileImages navigation={navigation} setViewedAlbum={setViewedAlbum} user={viewedUser} />
     </ScrollView>
   );
 }

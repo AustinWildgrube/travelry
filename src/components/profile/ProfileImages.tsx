@@ -1,36 +1,41 @@
 import { useEffect, useState } from 'react';
 import { Dimensions, Image, StyleSheet, TouchableOpacity, View } from 'react-native';
 
-import { AppNavProps } from '&/navigators/app-navigator';
-import { getPostsByAccountId, type Post } from '&/queries/posts';
-import { UserProfile } from '&/queries/users';
+import { type AppNavProps } from '&/navigators/app-navigator';
+import { getAlbumsByAccountId, type Album } from '&/queries/albums';
+import { type UserProfile } from '&/queries/users';
 import { downloadSupabaseMedia } from '&/utilities/helpers';
 
 interface ImageProps {
   navigation: AppNavProps<'Post' | 'Profile'>;
+  setViewedAlbum: (album: Album) => void;
   user: UserProfile;
 }
 
-export function ProfileImages({ navigation, user }: ImageProps): JSX.Element {
-  const [posts, setPosts] = useState<Post[] | null>();
+export function ProfileImages({ navigation, setViewedAlbum, user }: ImageProps): JSX.Element {
+  const [albums, setAlbums] = useState<Album[]>();
+
+  const goToAlbum = (album: Album): void => {
+    setViewedAlbum(album);
+    navigation.navigate('Album', { albumId: album.id });
+  };
 
   useEffect(() => {
-    const getUsersPosts = async (): Promise<void> => {
+    const getUsersAlbums = async (): Promise<void> => {
       if (user.id) {
-        const posts: Post[] | null = await getPostsByAccountId(user.id);
-        setPosts(posts);
+        setAlbums(await getAlbumsByAccountId(user.id));
       }
     };
 
-    getUsersPosts();
+    getUsersAlbums();
   }, [user]);
 
   return (
     <View style={styles.container}>
-      {posts?.map((post: Post, index: number) => (
+      {albums?.map((album: Album, index: number) => (
         <TouchableOpacity
-          onPress={() => navigation.navigate('Post', { account: user, post: post, startIndex: 0 })}
-          key={post.location}
+          onPress={() => goToAlbum(album)}
+          key={album.name}
           style={[
             styles.imageContainer,
             index % 2 === 0 && {
@@ -39,10 +44,10 @@ export function ProfileImages({ navigation, user }: ImageProps): JSX.Element {
             },
           ]}>
           <Image
-            source={{ uri: downloadSupabaseMedia('posts', post.post_media[0].file_url) }}
-            accessibilityLabel={`${post.location} album cover photo`}
+            source={{ uri: downloadSupabaseMedia('posts', album.cover.file_url) }}
+            accessibilityLabel={`${album.name} album cover photo`}
             style={styles.image}
-            key={post.post_media[0].id}
+            key={album.id}
           />
         </TouchableOpacity>
       ))}

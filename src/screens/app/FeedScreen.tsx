@@ -5,7 +5,7 @@ import { useNavigation } from '@react-navigation/core';
 import { Layout } from '&/components/atoms';
 import { FeedPost } from '&/components/feed/FeedPost';
 import { AppNavProps } from '&/navigators/app-navigator';
-import { useUserStore } from '&/stores/user-store';
+import { useUserStore } from '&/stores/user';
 
 export function FeedScreen(): JSX.Element {
   const setViewedUser = useUserStore(state => state.setViewedUser);

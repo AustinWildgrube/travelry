@@ -4,7 +4,7 @@ import { RouteProp } from '@react-navigation/native';
 import { Layout } from '&/components/atoms';
 import { EditInputs } from '&/components/edit/EditInputs';
 import { AppNavProps, AppStackParamList } from '&/navigators/app-navigator';
-import { useUserStore } from '&/stores/user-store';
+import { useUserStore } from '&/stores/user';
 
 interface EditScreenProps {
   route: RouteProp<AppStackParamList, 'Edit'>;
