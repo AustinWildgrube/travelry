@@ -1,4 +1,5 @@
 import { RouteProp } from '@react-navigation/native';
+import { waitFor } from '@testing-library/react-native';
 
 import { ProfileStackParamList } from '&/navigators/profile-navigator';
 import { AppStackParamList } from '&/navigators/root-navigator';
@@ -69,8 +70,11 @@ describe('snapshot tests', () => {
     expect(tree).toMatchSnapshot();
   });
 
-  it('should properly display the profile screen', () => {
+  it('should properly display the profile screen', async () => {
     const tree = wrapRender(<ProfileScreen />);
-    expect(tree).toMatchSnapshot();
+
+    await waitFor(() => {
+      expect(tree).toMatchSnapshot();
+    });
   });
 });

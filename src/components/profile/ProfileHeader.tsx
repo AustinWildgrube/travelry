@@ -1,5 +1,6 @@
-import { useEffect, useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
+
+import { useQuery } from '@tanstack/react-query';
 
 import { Avatar } from '&/components/atoms';
 import { type UserProfile } from '&/queries/users';
@@ -10,17 +11,14 @@ interface HeaderProps {
 }
 
 export function ProfileHeader({ user }: HeaderProps): JSX.Element {
-  const [avatarUrl, setAvatarUrl] = useState<string | undefined>(undefined);
-
-  useEffect(() => {
-    if (user.avatar_url) {
-      setAvatarUrl(downloadSupabaseMedia('avatars', user.avatar_url));
-    }
-  }, [user]);
+  const { data } = useQuery({
+    queryKey: ['avatar', user.id],
+    queryFn: () => downloadSupabaseMedia('avatars', user.avatar_url),
+  });
 
   return (
     <View style={styles.container}>
-      <Avatar src={avatarUrl} accessibilityLabel={`${user.full_name}'s profile image`} />
+      <Avatar src={data} accessibilityLabel={`${user.full_name}'s profile image`} />
       <Text style={styles.fullName}>{user.full_name}</Text>
       <Text style={styles.bio}>{user.bio}</Text>
 

@@ -2,9 +2,11 @@ import { useEffect, useState } from 'react';
 import { Dimensions, Image, ImageBackground, Pressable, StyleSheet, Text, View } from 'react-native';
 
 import { Heart } from '@tamagui/lucide-icons';
+import { useQuery } from '@tanstack/react-query';
 import { LinearGradient } from 'expo-linear-gradient';
 
 import { AppNavProps } from '&/navigators/root-navigator';
+import { getAlbumsByAccountId } from '&/queries/albums';
 import { getAllPosts, type Post } from '&/queries/posts';
 import { getUserProfile, type UserProfile } from '&/queries/users';
 import { downloadSupabaseMedia } from '&/utilities/helpers';
@@ -19,7 +21,10 @@ const height = Math.round(dimensions.width);
 const width = Math.round(dimensions.width - 24);
 
 export function FeedPost({ navigation, setViewedUser }: PostProps): JSX.Element {
-  const [feedPosts, setFeedPosts] = useState<Post[] | null>(null);
+  const { data } = useQuery({
+    queryKey: ['feedPosts'],
+    queryFn: () => getAllPosts(),
+  });
 
   const goToPost = async (post: Post): Promise<void> => {
     navigation.navigate('Post', { account: await getUserProfile(post.account.id), post: post, startIndex: 0 });
@@ -35,18 +40,10 @@ export function FeedPost({ navigation, setViewedUser }: PostProps): JSX.Element 
     });
   };
 
-  useEffect(() => {
-    const getFeedPosts = async (): Promise<void> => {
-      setFeedPosts(await getAllPosts());
-    };
-
-    getFeedPosts();
-  }, []);
-
   return (
     <>
-      {feedPosts &&
-        feedPosts.map((post: Post) => (
+      {data &&
+        data.map((post: Post) => (
           <Pressable onPress={() => goToPost(post)} style={styles.post} key={post.created_at}>
             <ImageBackground
               source={{ uri: downloadSupabaseMedia('posts', post.post_media[0].file_url) }}

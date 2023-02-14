@@ -1,40 +1,38 @@
-import { useEffect, useState } from 'react';
 import { StyleSheet, Text, TouchableOpacity } from 'react-native';
 
-import { UserProfile, followUser, isFollowingUser, unfollowUser } from '&/queries/users';
+import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
+
+import { UserProfile, followUser, getUserProfile, isFollowingUser, unfollowUser } from '&/queries/users';
 
 interface FollowButtonProps {
   loggedInUser: UserProfile;
+  setViewedUser: (user: UserProfile) => void;
   viewedUser: UserProfile;
 }
 
-export function ProfileFollowButton({ loggedInUser, viewedUser }: FollowButtonProps): JSX.Element {
-  const [following, setFollowing] = useState<boolean>();
+export function ProfileFollowButton({ loggedInUser, setViewedUser, viewedUser }: FollowButtonProps): JSX.Element {
+  const queryClient = useQueryClient();
 
-  const followAction = async (): Promise<void> => {
-    if (following) {
-      await unfollowUser(loggedInUser.id, viewedUser.id);
-      setFollowing(false);
-    } else {
-      await followUser(loggedInUser.id, viewedUser.id);
-      setFollowing(true);
-    }
-  };
+  const { data } = useQuery({
+    queryKey: ['following', loggedInUser.id, viewedUser.id],
+    queryFn: () => isFollowingUser(loggedInUser.id, viewedUser.id),
+  });
 
-  useEffect(() => {
-    const isFollowing = async (): Promise<void> => {
-      const isFollowing = await isFollowingUser(loggedInUser.id, viewedUser.id);
-      setFollowing(!!isFollowing);
-    };
-
-    isFollowing();
-  }, [loggedInUser, viewedUser]);
+  const { mutate } = useMutation({
+    mutationFn: () =>
+      data === 0 ? followUser(loggedInUser.id, viewedUser.id) : unfollowUser(loggedInUser.id, viewedUser.id),
+    onSuccess: async () => {
+      // Maybe switch userProfile to use React Query?
+      setViewedUser(await getUserProfile(viewedUser.id));
+      queryClient.setQueryData(['following', loggedInUser.id, viewedUser.id], data === 0 ? 1 : 0);
+    },
+  });
 
   return (
     <>
       {loggedInUser.id !== viewedUser.id && (
-        <TouchableOpacity onPress={() => followAction()}>
-          <Text style={styles.followText}>{following ? 'Unfollow' : 'Follow'}</Text>
+        <TouchableOpacity onPress={() => mutate()}>
+          <Text style={styles.followText}>{!!data ? 'Unfollow' : 'Follow'}</Text>
         </TouchableOpacity>
       )}
     </>

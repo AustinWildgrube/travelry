@@ -1,5 +1,6 @@
-import { useEffect, useState } from 'react';
 import { Dimensions, Image, StyleSheet, TouchableOpacity, View } from 'react-native';
+
+import { useQuery } from '@tanstack/react-query';
 
 import { type AppNavProps } from '&/navigators/root-navigator';
 import { getAlbumsByAccountId, type Album } from '&/queries/albums';
@@ -13,7 +14,10 @@ interface ImageProps {
 }
 
 export function ProfileAlbums({ navigation, setViewedAlbum, user }: ImageProps): JSX.Element {
-  const [albums, setAlbums] = useState<Album[]>();
+  const { data } = useQuery({
+    queryKey: ['albums', user.id],
+    queryFn: () => getAlbumsByAccountId(user.id),
+  });
 
   const goToAlbum = (album: Album): void => {
     setViewedAlbum(album);
@@ -28,19 +32,9 @@ export function ProfileAlbums({ navigation, setViewedAlbum, user }: ImageProps):
     });
   };
 
-  useEffect(() => {
-    const getUsersAlbums = async (): Promise<void> => {
-      if (user.id) {
-        setAlbums(await getAlbumsByAccountId(user.id));
-      }
-    };
-
-    getUsersAlbums();
-  }, [user]);
-
   return (
     <View style={styles.container}>
-      {albums?.map((album: Album, index: number) => (
+      {data?.map((album: Album, index: number) => (
         <TouchableOpacity
           onPress={() => goToAlbum(album)}
           key={album.name}

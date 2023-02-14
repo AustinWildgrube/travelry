@@ -1,17 +1,20 @@
-import { screen } from '@testing-library/react-native';
+import { screen, waitFor } from '@testing-library/react-native';
 
 import { ProfileHeader } from '&/components/profile';
 
 import { currentUser, wrapRender } from '../../jestSetupFile';
 
 describe('profile header', () => {
-  it('should display the users avatar image', () => {
+  it('should display the users avatar image', async () => {
     wrapRender(<ProfileHeader user={currentUser} />);
-    const avatar = screen.getByLabelText(`John Snow's profile image`);
+    const avatar = await screen.findByLabelText(`John Snow's profile image`);
 
-    expect(avatar).toBeOnTheScreen();
-    expect(avatar.props.accessibilityLabel).toBe(`John Snow's profile image`);
-    expect(avatar.props.source.uri).toContain('.supabase.co/storage/v1/object/public/avatars/998.jpg');
+    // wait for react query to fetch image
+    await waitFor(() => {
+      expect(avatar).toBeOnTheScreen();
+      expect(avatar.props.accessibilityLabel).toBe(`John Snow's profile image`);
+      expect(avatar.props.source.uri).toContain('.supabase.co/storage/v1/object/public/avatars/998.jpg');
+    });
   });
 
   it('should display the users full name', () => {

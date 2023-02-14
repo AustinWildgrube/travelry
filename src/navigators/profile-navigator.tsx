@@ -23,6 +23,7 @@ const Stack = createNativeStackNavigator<ProfileStackParamList>();
 export function ProfileNavigator(): JSX.Element {
   const user = useCurrentUser();
   const viewedUser = useUserStore(state => state.viewedUser);
+  const setViewedUser = useUserStore(state => state.setViewedUser);
   const viewedAlbum = useAlbumStore(state => state.viewedAlbum);
 
   return (
@@ -33,7 +34,9 @@ export function ProfileNavigator(): JSX.Element {
         component={ProfileScreen}
         options={{
           headerShown: true,
-          headerRight: () => <ProfileFollowButton loggedInUser={user} viewedUser={viewedUser} />,
+          headerRight: () => (
+            <ProfileFollowButton loggedInUser={user} setViewedUser={setViewedUser} viewedUser={viewedUser} />
+          ),
           title: `@${viewedUser.username}`,
         }}
       />

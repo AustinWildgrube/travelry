@@ -2,6 +2,7 @@ import { View } from 'react-native';
 
 import 'react-native-url-polyfill/auto';
 import { NavigationContainer } from '@react-navigation/native';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { useFonts } from 'expo-font';
 import { TamaguiProvider } from 'tamagui';
 
@@ -20,18 +21,22 @@ const App = (): JSX.Element | null => {
     InterBold: require('@tamagui/font-inter/otf/Inter-Bold.otf'),
   });
 
+  const queryClient = new QueryClient();
+
   if (!loaded) {
     return null;
   }
 
   return (
-    <TamaguiProvider config={config}>
-      <ThemeProvider>
-        <AuthProvider>
-          <Root />
-        </AuthProvider>
-      </ThemeProvider>
-    </TamaguiProvider>
+    <QueryClientProvider client={queryClient}>
+      <TamaguiProvider config={config}>
+        <ThemeProvider>
+          <AuthProvider>
+            <Root />
+          </AuthProvider>
+        </ThemeProvider>
+      </TamaguiProvider>
+    </QueryClientProvider>
   );
 };
 

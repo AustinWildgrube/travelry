@@ -1,6 +1,8 @@
 import React, { Fragment, useEffect, useState } from 'react';
 import { Dimensions, Image, StyleSheet, TouchableOpacity, View } from 'react-native';
 
+import { useQuery } from '@tanstack/react-query';
+
 import { type AppNavProps } from '&/navigators/root-navigator';
 import { getPostsByAlbumId, type Post, type PostMedia } from '&/queries/posts';
 import { getUserProfile } from '&/queries/users';
@@ -12,19 +14,14 @@ interface AlbumImagesProps {
 }
 
 export function AlbumImages({ albumId, navigation }: AlbumImagesProps): JSX.Element {
-  const [posts, setPosts] = useState<Post[]>();
-
-  useEffect(() => {
-    const getPostsInAlbum = async (): Promise<void> => {
-      setPosts(await getPostsByAlbumId(albumId));
-    };
-
-    getPostsInAlbum();
-  }, []);
+  const { data } = useQuery({
+    queryKey: ['albumImages', albumId],
+    queryFn: () => getPostsByAlbumId(albumId),
+  });
 
   return (
     <View style={styles.container}>
-      {posts?.map((post: Post, index: number) => (
+      {data?.map((post: Post, index: number) => (
         <Fragment key={post.created_at}>
           {post.post_media.map((media: PostMedia) => (
             <TouchableOpacity

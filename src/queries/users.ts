@@ -41,10 +41,10 @@ export const getUserProfile = async (id: string): Promise<UserProfile> => {
   return data[0];
 };
 
-export const isFollowingUser = async (id: string, targetId: string): Promise<string> => {
-  const { data, error } = await supabase
+export const isFollowingUser = async (id: string, targetId: string): Promise<number | null> => {
+  const { count, error } = await supabase
     .from('follow')
-    .select('id')
+    .select('id', { count: 'exact', head: true })
     .eq('account_id', id)
     .eq('target_account_id', targetId);
 
@@ -52,7 +52,7 @@ export const isFollowingUser = async (id: string, targetId: string): Promise<str
     throw new Error(`Error ${error.code}: ${error.message}`);
   }
 
-  return data[0];
+  return count;
 };
 
 export const followUser = async (id: string, targetId: string): Promise<void> => {

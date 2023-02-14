@@ -7,6 +7,8 @@ import { TamaguiProvider } from 'tamagui';
 import '@testing-library/jest-native/extend-expect';
 import '@testing-library/jest-dom/extend-expect';
 import '@testing-library/jest-dom';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+
 import { AuthContext } from '&/contexts/AuthProvider';
 import { type Album } from '&/queries/albums';
 import { type Post } from '&/queries/posts';
@@ -24,8 +26,6 @@ jest.mock('@react-native-async-storage/async-storage', () =>
 jest.mock('@expo/vector-icons', () => ({
   Feather: '',
 }));
-
-jest.mock('zustand');
 
 jest.mock('@env', () => ({
   SUPABASE_URL: '',
@@ -97,6 +97,8 @@ export const currentUserAlbums: Album[] = [
 ];
 
 export const wrapRender = (component: ReactNode): any => {
+  const queryClient = new QueryClient();
+
   let loginWithEmailAndPassword = async (): Promise<void> => {
     return undefined;
   };
@@ -106,12 +108,14 @@ export const wrapRender = (component: ReactNode): any => {
   };
 
   return render(
-    <TamaguiProvider config={config}>
-      <ThemeProvider>
-        <AuthContext.Provider value={{ currentUser, loginWithEmailAndPassword, registerWithEmailAndPassword }}>
-          <NavigationContainer>{component}</NavigationContainer>
-        </AuthContext.Provider>
-      </ThemeProvider>
-    </TamaguiProvider>,
+    <QueryClientProvider client={queryClient}>
+      <TamaguiProvider config={config}>
+        <ThemeProvider>
+          <AuthContext.Provider value={{ currentUser, loginWithEmailAndPassword, registerWithEmailAndPassword }}>
+            <NavigationContainer>{component}</NavigationContainer>
+          </AuthContext.Provider>
+        </ThemeProvider>
+      </TamaguiProvider>
+    </QueryClientProvider>,
   );
 };
