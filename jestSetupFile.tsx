@@ -8,6 +8,7 @@ import '@testing-library/jest-native/extend-expect';
 import '@testing-library/jest-dom/extend-expect';
 import '@testing-library/jest-dom';
 import { AuthContext } from '&/contexts/AuthProvider';
+import { type Album } from '&/queries/albums';
 import { type Post } from '&/queries/posts';
 import { type UserProfile } from '&/queries/users';
 import { ThemeProvider } from '&/themes/ThemeProvider';
@@ -21,6 +22,8 @@ jest.mock('@react-native-async-storage/async-storage', () =>
 jest.mock('@expo/vector-icons', () => ({
   Feather: '',
 }));
+
+jest.mock('zustand');
 
 jest.mock('@env', () => ({
   SUPABASE_URL: '',
@@ -65,6 +68,16 @@ export const currentUserPosts: Post[] = [
         file_url: '0.37365145619157225.jpg',
       },
     ],
+  },
+];
+
+export const currentUserAlbums: Album[] = [
+  {
+    id: '0',
+    name: 'Beyond The Wall',
+    cover: {
+      file_url: '0.37365142347572250.jpg',
+    },
   },
 ];
 

@@ -36,7 +36,7 @@ describe('camera', () => {
 
   it('should show a message with a settings button when permission is denied', async () => {
     wrapRender(<Camera {...props} />);
-    expect(screen.findByText(/'travelry needs access to your camera/i)).toBeDefined();
+    expect(screen.findByText(/travelry needs access to your camera/i)).toBeDefined();
     expect(screen.findByText(/Click the button below enable it/i)).toBeDefined();
   });
 });
