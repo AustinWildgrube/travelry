@@ -15,6 +15,8 @@ import { ThemeProvider } from '&/themes/ThemeProvider';
 
 import config from './tamagui.config';
 
+jest.mock('react-native/Libraries/Animated/NativeAnimatedHelper');
+
 jest.mock('@react-native-async-storage/async-storage', () =>
   require('@react-native-async-storage/async-storage/jest/async-storage-mock'),
 );
@@ -41,6 +43,19 @@ export const currentUser: UserProfile = {
     followers_count: 1000000,
     following_count: 1,
     trip_count: 2,
+  },
+};
+
+export const otherUser: UserProfile = {
+  id: '2',
+  username: 'FreeFolk',
+  full_name: 'Ygritte',
+  avatar_url: '234.jpg',
+  bio: 'You know nothing John Snow.',
+  account_stat: {
+    followers_count: 0,
+    following_count: 0,
+    trip_count: 1,
   },
 };
 
