@@ -65,6 +65,10 @@ export const currentUserPosts: Post[] = [
     location: 'Castle Black',
     created_at: '2021-12-24T00:00:00',
     account: currentUser,
+    post_stat: {
+      id: '',
+      likes_count: '21',
+    },
     post_media: [
       {
         id: 'b81ad645-7155-45f6-bd2e-ca56786dd331',
@@ -77,6 +81,10 @@ export const currentUserPosts: Post[] = [
     location: 'Winterfell',
     created_at: '2021-12-24T00:00:00',
     account: currentUser,
+    post_stat: {
+      id: '',
+      likes_count: '123',
+    },
     post_media: [
       {
         id: '76cb79cf-be8a-4416-9d15-b1356b38259a',

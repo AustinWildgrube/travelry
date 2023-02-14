@@ -40,7 +40,9 @@ export function PostInfo({ account, post }: PostInfoProps): JSX.Element {
 
       <Text style={styles.name}>{account.full_name}</Text>
       <Text style={styles.description}>{post.caption}</Text>
-      <Text style={styles.lapsedTime}>Posted {getRelativeTime(post.created_at)} &#x2022; 44 likes</Text>
+      <Text style={styles.lapsedTime}>
+        Posted {getRelativeTime(post.created_at)} &#x2022; <Text>{post.post_stat.likes_count} likes</Text>
+      </Text>
     </View>
   );
 }

@@ -6,11 +6,17 @@ export type PostMedia = {
   file_url: string;
 };
 
+export type PostStat = {
+  id: string;
+  likes_count: string;
+};
+
 export type Post = {
   caption: string;
   created_at: string;
   location: string;
   post_media: PostMedia[];
+  post_stat: PostStat;
   account: UserProfile;
 };
 
@@ -21,6 +27,7 @@ export const createPost = async (accountId: string, caption: string, location: s
       account_id: accountId,
       caption: caption.trim(),
       location: location.trim(),
+      album_id: '78d5eecd-0651-4554-92b4-baa2fe9467e7',
     },
   ]);
 
@@ -50,36 +57,11 @@ export const createPostMedia = async (accountId: string, postId: string, image: 
 
   const { error: errorTwo } = await supabase
     .from('post_media')
-    .insert([
-      { account_id: accountId, post_id: postId, file_url: filePath, album_id: '78d5eecd-0651-4554-92b4-baa2fe9467e7' },
-    ]);
+    .insert([{ account_id: accountId, post_id: postId, file_url: filePath }]);
 
   if (errorTwo) {
     throw new Error(`Error: ${errorTwo.code}: ${errorTwo.message}`);
   }
-};
-
-export const getPostsByAccountId = async (id: string): Promise<Post[]> => {
-  const { data, error } = await supabase
-    .from('post')
-    .select(
-      `
-          caption,
-          created_at,
-          location,
-          post_media (
-            id,
-            file_url
-          )
-        `,
-    )
-    .eq('account_id', id);
-
-  if (error) {
-    throw new Error(`Error: ${error.code}: ${error.message}`);
-  }
-
-  return data;
 };
 
 export const getPostsByAlbumId = async (id: string): Promise<Post[]> => {
@@ -123,11 +105,14 @@ export const getAllPosts = async (): Promise<Post[]> => {
       post_media (
         id,
         file_url
+      ),
+      post_stat (
+        id,
+        likes_count
       )
     `,
   );
 
-  console.log(error);
   if (error) {
     throw new Error(`Error: ${error.code}: ${error.message}`);
   }

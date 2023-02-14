@@ -26,6 +26,7 @@ describe('post info', () => {
 
   it('should display the posts relative time', () => {
     wrapRender(<PostInfo account={currentUser} post={currentUserPosts[0]} />);
-    expect(screen.getByText(/Posted (.*) • 44 likes/i)).toBeOnTheScreen();
+    expect(screen.getByText(/Posted (.*)/i)).toBeOnTheScreen();
+    expect(screen.getByText(`${currentUserPosts[0].post_stat.likes_count} likes`)).toBeOnTheScreen();
   });
 });

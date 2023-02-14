@@ -69,7 +69,7 @@ export function FeedPost({ navigation, setViewedUser }: PostProps): JSX.Element 
 
                   <View style={styles.likeButton}>
                     <Heart size={21} color="#7C8089" />
-                    <Text style={styles.likeAmount}>15</Text>
+                    <Text style={styles.likeAmount}>{post.post_stat.likes_count}</Text>
                   </View>
                 </View>
               </LinearGradient>
