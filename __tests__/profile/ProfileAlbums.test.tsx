@@ -1,6 +1,6 @@
 import { screen, waitFor } from '@testing-library/react-native';
 
-import { ProfileImages } from '&/components/profile';
+import { ProfileAlbums } from '&/components/profile';
 import * as PostModule from '&/queries/posts';
 
 import { currentUser, currentUserPosts, wrapRender } from '../../jestSetupFile';
@@ -10,7 +10,7 @@ let props: any;
 
 describe('profile images', () => {
   it('should retrieve the users images ', async () => {
-    wrapRender(<ProfileImages user={currentUser} {...props} />);
+    wrapRender(<ProfileAlbums user={currentUser} {...props} />);
 
     await waitFor(() => expect(postSpy).toHaveBeenCalled());
     const spyReturnValue = await postSpy.mock.results[0].value;
@@ -43,7 +43,7 @@ describe('profile images', () => {
   });
 
   it('should show an image album per location', async () => {
-    wrapRender(<ProfileImages user={currentUser} {...props} />);
+    wrapRender(<ProfileAlbums user={currentUser} {...props} />);
 
     const imageAlbum = await screen.findByLabelText('Castle Black album cover photo');
     expect(imageAlbum).toBeTruthy();

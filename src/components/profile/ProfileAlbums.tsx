@@ -12,7 +12,7 @@ interface ImageProps {
   user: UserProfile;
 }
 
-export function ProfileImages({ navigation, setViewedAlbum, user }: ImageProps): JSX.Element {
+export function ProfileAlbums({ navigation, setViewedAlbum, user }: ImageProps): JSX.Element {
   const [albums, setAlbums] = useState<Album[]>();
 
   const goToAlbum = (album: Album): void => {
