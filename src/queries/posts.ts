@@ -12,6 +12,7 @@ export type PostStat = {
 };
 
 export type Post = {
+  id: string;
   caption: string;
   created_at: string;
   location: string;

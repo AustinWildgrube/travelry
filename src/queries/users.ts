@@ -1,3 +1,4 @@
+import { type Like } from '&/queries/likes';
 import { supabase } from '&/services/supabase-client';
 
 export type AccountStats = {
@@ -13,6 +14,7 @@ export type UserProfile = {
   avatar_url: string;
   bio: string | undefined;
   account_stat: AccountStats;
+  like: Like[];
 };
 
 export const getUserProfile = async (id: string): Promise<UserProfile> => {
@@ -29,6 +31,10 @@ export const getUserProfile = async (id: string): Promise<UserProfile> => {
           following_count, 
           followers_count, 
           trip_count
+        ),
+        like (
+          id,
+          post_id
         )
       `,
     )

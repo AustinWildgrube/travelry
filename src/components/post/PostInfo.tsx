@@ -2,6 +2,7 @@ import { Image, Pressable, StyleSheet, Text, View } from 'react-native';
 
 import { Feather } from '@expo/vector-icons';
 
+import { LikeButton } from '&/components/shared/LikeButton';
 import { Post } from '&/queries/posts';
 import { type UserProfile } from '&/queries/users';
 import { downloadSupabaseMedia, getRelativeTime } from '&/utilities/helpers';
@@ -28,9 +29,9 @@ export function PostInfo({ account, post }: PostInfoProps): JSX.Element {
             <Feather name="map-pin" size={21} color="black" />
           </Pressable>
 
-          <Pressable style={styles.actionButton}>
-            <Feather name="heart" size={21} color="black" />
-          </Pressable>
+          <View style={styles.actionButton}>
+            <LikeButton postId={post.id} />
+          </View>
 
           <Pressable style={styles.actionButton}>
             <Feather name="share" size={21} color="black" />
