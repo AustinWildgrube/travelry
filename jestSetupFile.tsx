@@ -61,6 +61,7 @@ export const otherUser: UserProfile = {
 
 export const currentUserPosts: Post[] = [
   {
+    id: '0',
     caption: 'The dreadful Castle Black.',
     location: 'Castle Black',
     created_at: '2021-12-24T00:00:00',
@@ -77,6 +78,7 @@ export const currentUserPosts: Post[] = [
     ],
   },
   {
+    id: '0',
     caption: 'Why does Catelyn Stark hate me?',
     location: 'Winterfell',
     created_at: '2021-12-24T00:00:00',
