@@ -52,7 +52,7 @@ export function LikeButton({ likeCount, postId }: LikeButtonProps): JSX.Element 
           <FontAwesome style={styles.likeHeart} name="heart-o" size={21} color="black" />
         )}
 
-        {likeCount ? <Text style={styles.likeCount}>{likeCount}</Text> : null}
+        {likeCount ? <Text style={[styles.likeCount, { color: '#d90429' }]}>{likeCount}</Text> : null}
       </Pressable>
     </AnimatedView>
   );
