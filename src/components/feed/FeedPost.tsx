@@ -1,24 +1,30 @@
 import { Dimensions, Image, ImageBackground, Pressable, StyleSheet, Text, View } from 'react-native';
 
+import { useQuery } from '@tanstack/react-query';
 import { LinearGradient } from 'expo-linear-gradient';
 
 import { LikeButton } from '&/components/shared/LikeButton';
 import { type AppNavProps } from '&/navigators/root-navigator';
-import { type Post } from '&/queries/posts';
+import { getPostById, type Post } from '&/queries/posts';
 import { getUserProfile, type UserProfile } from '&/queries/users';
 import { downloadSupabaseMedia } from '&/utilities/helpers';
 
 interface PostProps {
   navigation: AppNavProps<'Post'>;
-  post: Post;
+  postId: string;
   setViewedUser: (user: UserProfile) => void;
 }
 
-export function FeedPost({ navigation, post, setViewedUser }: PostProps): JSX.Element {
+export function FeedPost({ navigation, postId, setViewedUser }: PostProps): JSX.Element {
+  const { data: post } = useQuery({
+    queryKey: ['post', postId],
+    queryFn: () => getPostById(postId),
+  });
+
   const goToPost = async (post: Post): Promise<void> => {
     navigation.navigate('Post', {
-      account: await getUserProfile(post.account.id),
-      post: post,
+      accountId: post.account.id,
+      postId: post.id,
       startIndex: 0,
     });
   };
@@ -34,36 +40,40 @@ export function FeedPost({ navigation, post, setViewedUser }: PostProps): JSX.El
   };
 
   return (
-    <Pressable onPress={() => goToPost(post)} style={styles.post} key={post.created_at}>
-      <ImageBackground
-        source={{ uri: downloadSupabaseMedia('posts', post.post_media[0].file_url) }}
-        imageStyle={styles.imageBackground}
-        style={styles.imageBackgroundContainer}>
-        <LinearGradient
-          colors={['white', 'rgba(255,255,255,0)']}
-          start={{ x: 0, y: 0.85 }}
-          end={{ x: 0, y: 0.7 }}
-          style={styles.linearGradient}>
-          <View style={styles.header}>
-            <Pressable onPress={() => goToAccount(post.account)} style={styles.headerInfo}>
-              <Image
-                source={{ uri: downloadSupabaseMedia('avatars', post.account.avatar_url) }}
-                style={styles.accountAvatar}
-              />
+    <>
+      {post && (
+        <Pressable onPress={() => goToPost(post)} style={styles.post} key={post.created_at}>
+          <ImageBackground
+            source={{ uri: downloadSupabaseMedia('posts', post.post_media[0].file_url) }}
+            imageStyle={styles.imageBackground}
+            style={styles.imageBackgroundContainer}>
+            <LinearGradient
+              colors={['white', 'rgba(255,255,255,0)']}
+              start={{ x: 0, y: 0.85 }}
+              end={{ x: 0, y: 0.7 }}
+              style={styles.linearGradient}>
+              <View style={styles.header}>
+                <Pressable onPress={() => goToAccount(post.account)} style={styles.headerInfo}>
+                  <Image
+                    source={{ uri: downloadSupabaseMedia('avatars', post.account.avatar_url) }}
+                    style={styles.accountAvatar}
+                  />
 
-              <View>
-                <Text style={styles.accountName}>{post.account?.full_name}</Text>
-                <Text style={styles.location}>{post.location}</Text>
+                  <View>
+                    <Text style={styles.accountName}>{post.account?.full_name}</Text>
+                    <Text style={styles.location}>{post.location}</Text>
+                  </View>
+                </Pressable>
+
+                <View style={styles.likeButton}>
+                  <LikeButton likeCount={post.post_stat.likes_count} postId={post.id} />
+                </View>
               </View>
-            </Pressable>
-
-            <View style={styles.likeButton}>
-              <LikeButton likeCount={post.post_stat.likes_count} postId={post.id} />
-            </View>
-          </View>
-        </LinearGradient>
-      </ImageBackground>
-    </Pressable>
+            </LinearGradient>
+          </ImageBackground>
+        </Pressable>
+      )}
+    </>
   );
 }
 

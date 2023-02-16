@@ -28,7 +28,6 @@ export function ProfileNavigator(): JSX.Element {
 
   return (
     <Stack.Navigator>
-      <Stack.Screen name="Album" component={AlbumScreen} options={{ title: viewedAlbum.name }} />
       <Stack.Screen
         name="Profile"
         component={ProfileScreen}
@@ -40,6 +39,7 @@ export function ProfileNavigator(): JSX.Element {
           title: `@${viewedUser.username}`,
         }}
       />
+      <Stack.Screen name="Album" component={AlbumScreen} options={{ title: viewedAlbum.name }} />
     </Stack.Navigator>
   );
 }

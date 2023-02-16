@@ -65,6 +65,40 @@ export const createPostMedia = async (accountId: string, postId: string, image: 
   }
 };
 
+export const getPostById = async (id: string): Promise<Post> => {
+  const { data, error } = await supabase
+    .from('post')
+    .select(
+      `
+        id,
+        caption,
+        created_at,
+        location,
+        account (
+          id,
+          full_name,
+          avatar_url
+        ),
+        post_media (
+          id,
+          file_url
+        ),
+        post_stat (
+          id,
+          likes_count
+        )
+      `,
+    )
+    .eq('id', id)
+    .single();
+
+  if (error) {
+    throw new Error(`Error: ${error.code}: ${error.message}`);
+  }
+
+  return data;
+};
+
 export const getPostsByAlbumId = async (id: string): Promise<Post[]> => {
   const { data, error } = await supabase
     .from('post')

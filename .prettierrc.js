@@ -12,6 +12,8 @@ module.exports = {
     '',
     '<THIRD_PARTY_MODULES>',
     '',
+    '^&/animations/(.*)$|^(&/animations)',
+    '^&/assets/(.*)$|^(&/assets)',
     '^&/components/(.*)$|^(&/components$)',
     '^&/contexts/(.*)$|^(&/contexts)',
     '^&/hooks/(.*)$|^(&/hooks)',

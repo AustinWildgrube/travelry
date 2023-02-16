@@ -22,7 +22,7 @@ export function FeedScreen(): JSX.Element {
     <ScrollView>
       <Layout>
         {data?.map((post: Post) => (
-          <FeedPost navigation={navigation} post={post} setViewedUser={setViewedUser} key={post.id} />
+          <FeedPost navigation={navigation} postId={post.id} setViewedUser={setViewedUser} key={post.id} />
         ))}
       </Layout>
     </ScrollView>

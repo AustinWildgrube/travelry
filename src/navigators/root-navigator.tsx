@@ -1,8 +1,6 @@
 import { NativeStackNavigationProp, createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import { TabNavigator } from '&/navigators/tab-navigator';
-import { type Post } from '&/queries/posts';
-import { type UserProfile } from '&/queries/users';
 import { EditScreen } from '&/screens/app/EditScreen';
 import { PostScreen } from '&/screens/app/PostScreen';
 
@@ -12,8 +10,8 @@ export type AppStackParamList = {
     image: string;
   };
   Post: {
-    account: UserProfile;
-    post: Post;
+    accountId: string;
+    postId: string;
     startIndex: number;
   };
 };

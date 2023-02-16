@@ -3,7 +3,7 @@ import { Image, Pressable, StyleSheet, Text, View } from 'react-native';
 import { Feather } from '@expo/vector-icons';
 
 import { LikeButton } from '&/components/shared/LikeButton';
-import { Post } from '&/queries/posts';
+import { type Post } from '&/queries/posts';
 import { type UserProfile } from '&/queries/users';
 import { downloadSupabaseMedia, getRelativeTime } from '&/utilities/helpers';
 

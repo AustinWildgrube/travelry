@@ -1,11 +1,10 @@
-import React, { Fragment, useEffect, useState } from 'react';
+import React, { Fragment } from 'react';
 import { Dimensions, Image, StyleSheet, TouchableOpacity, View } from 'react-native';
 
 import { useQuery } from '@tanstack/react-query';
 
 import { type AppNavProps } from '&/navigators/root-navigator';
 import { getPostsByAlbumId, type Post, type PostMedia } from '&/queries/posts';
-import { getUserProfile } from '&/queries/users';
 import { downloadSupabaseMedia } from '&/utilities/helpers';
 
 interface AlbumImagesProps {
@@ -27,8 +26,8 @@ export function AlbumImages({ albumId, navigation }: AlbumImagesProps): JSX.Elem
             <TouchableOpacity
               onPress={async () =>
                 navigation.navigate('Post', {
-                  account: await getUserProfile(post.account.id),
-                  post: post,
+                  accountId: post.account.id,
+                  postId: post.id,
                   startIndex: 0,
                 })
               }
