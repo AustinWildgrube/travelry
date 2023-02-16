@@ -29,8 +29,8 @@ export function FeedPost({ navigation, postId, setViewedUser }: PostProps): JSX.
     });
   };
 
-  const goToAccount = async (account: UserProfile): Promise<void> => {
-    setViewedUser(await getUserProfile(account.id));
+  const goToAccount = async (accountId: string): Promise<void> => {
+    setViewedUser(await getUserProfile(accountId));
     navigation.navigate('Tabs', {
       screen: 'ProfileTab',
       params: {
@@ -53,7 +53,7 @@ export function FeedPost({ navigation, postId, setViewedUser }: PostProps): JSX.
               end={{ x: 0, y: 0.7 }}
               style={styles.linearGradient}>
               <View style={styles.header}>
-                <Pressable onPress={() => goToAccount(post.account)} style={styles.headerInfo}>
+                <Pressable onPress={() => goToAccount(post.account.id)} style={styles.headerInfo}>
                   <Image
                     source={{ uri: downloadSupabaseMedia('avatars', post.account.avatar_url) }}
                     style={styles.accountAvatar}

@@ -16,31 +16,31 @@ export type Post = {
   caption: string;
   created_at: string;
   location: string;
+  account: Pick<UserProfile, 'id' | 'full_name' | 'avatar_url'>;
   post_media: PostMedia[];
   post_stat: PostStat;
-  account: UserProfile;
 };
 
-// TODO: Change album.ts id
+// TODO: Change album id
 export const createPost = async (accountId: string, caption: string, location: string): Promise<string> => {
-  const { data, error } = await supabase.from('post').insert([
-    {
-      account_id: accountId,
-      caption: caption.trim(),
-      location: location.trim(),
-      album_id: '78d5eecd-0651-4554-92b4-baa2fe9467e7',
-    },
-  ]);
+  const { data, error } = await supabase
+    .from('post')
+    .insert([
+      {
+        account_id: accountId,
+        caption: caption.trim(),
+        location: location.trim(),
+        album_id: '78d5eecd-0651-4554-92b4-baa2fe9467e7',
+      },
+    ])
+    .select('id')
+    .single();
 
   if (error) {
-    throw new Error(`Error: ${error.code}: ${error.message}`);
+    throw new Error(`${error.code}: createPost: ${error.message}`);
   }
 
-  if (data) {
-    return data[0].id;
-  }
-
-  return '';
+  return data.id;
 };
 
 export const createPostMedia = async (accountId: string, postId: string, image: string): Promise<void> => {
@@ -53,7 +53,7 @@ export const createPostMedia = async (accountId: string, postId: string, image: 
   });
 
   if (error) {
-    throw new Error(`Error: ${error.name}: ${error.message}`);
+    throw new Error(`${error.name}: createPostMedia: ${error.message}`);
   }
 
   const { error: errorTwo } = await supabase
@@ -61,7 +61,7 @@ export const createPostMedia = async (accountId: string, postId: string, image: 
     .insert([{ account_id: accountId, post_id: postId, file_url: filePath }]);
 
   if (errorTwo) {
-    throw new Error(`Error: ${errorTwo.code}: ${errorTwo.message}`);
+    throw new Error(`${errorTwo.code}: createPostMedia: ${errorTwo.message}`);
   }
 };
 
@@ -93,36 +93,41 @@ export const getPostById = async (id: string): Promise<Post> => {
     .single();
 
   if (error) {
-    throw new Error(`Error: ${error.code}: ${error.message}`);
+    console.log(error);
+    throw new Error(`${error.code}: getPostById: ${error.message}`);
   }
 
-  return data;
+  return data as Post;
 };
 
+// TODO: Only need ID from account so maybe change Post type?
 export const getPostsByAlbumId = async (id: string): Promise<Post[]> => {
   const { data, error } = await supabase
     .from('post')
     .select(
       `
-          caption,
-          created_at,
-          location,
-          account (
-            id
-          ),
-          post_media (
-            id,
-            file_url
-          )
-        `,
+        id,
+        caption,
+        created_at,
+        location,
+        account (
+          id,
+          full_name,
+          avatar_url
+        ),
+        post_media (
+          id,
+          file_url
+        )
+      `,
     )
     .eq('album_id', id);
 
   if (error) {
-    throw new Error(`Error: ${error.code}: ${error.message}`);
+    throw new Error(`${error.code}: getPostsByAlbumId: ${error.message}`);
   }
 
-  return data;
+  return data as Post[];
 };
 
 export const getAllPosts = async (): Promise<Post[]> => {
@@ -149,10 +154,10 @@ export const getAllPosts = async (): Promise<Post[]> => {
   );
 
   if (error) {
-    throw new Error(`Error: ${error.code}: ${error.message}`);
+    throw new Error(`${error.code}: getAllPosts: ${error.message}`);
   }
 
-  return data;
+  return data as Post[];
 };
 
 // TODO: use if create post is unsuccessful
@@ -160,6 +165,6 @@ export const deletePostById = async (postId: string): Promise<void> => {
   const { error } = await supabase.from('post').delete().eq('id', postId);
 
   if (error) {
-    throw new Error(`Error: ${error.code}: ${error.message}`);
+    throw new Error(`${error.code}: deletePostById: ${error.message}`);
   }
 };

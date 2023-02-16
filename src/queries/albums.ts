@@ -23,8 +23,8 @@ export const getAlbumsByAccountId = async (id: string): Promise<Album[]> => {
     .eq('account_id', id);
 
   if (error) {
-    throw new Error(`Error: ${error.code}: ${error.message}`);
+    throw new Error(`${error.code}: getAlbumsByAccountId: ${error.message}`);
   }
 
-  return data;
+  return data as Album[];
 };

@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react';
-import { Dimensions, Image, StyleSheet, TouchableOpacity, View } from 'react-native';
+import { Dimensions, Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
 import { useQuery } from '@tanstack/react-query';
 
@@ -24,7 +24,7 @@ export function AlbumImages({ albumId, navigation }: AlbumImagesProps): JSX.Elem
         <Fragment key={post.created_at}>
           {post.post_media.map((media: PostMedia) => (
             <TouchableOpacity
-              onPress={async () =>
+              onPress={() =>
                 navigation.navigate('Post', {
                   accountId: post.account.id,
                   postId: post.id,

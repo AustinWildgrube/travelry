@@ -29,11 +29,13 @@ export function AuthProvider({ children }: AuthProviderProps): JSX.Element {
   const { execute, error } = useSupabaseMutation();
 
   const setUserInitialState = async (): Promise<void> => {
-    const user = supabase.auth.user();
+    const {
+      data: { session },
+    } = await supabase.auth.getSession();
 
-    if (supabase.auth.session() && user !== null) {
-      const profile = await getUserProfile(user.id);
-      setCurrentUser(profile);
+    if (session) {
+      const { user } = session;
+      setCurrentUser(await getUserProfile(user.id));
     } else {
       setCurrentUser(null);
     }
@@ -60,7 +62,7 @@ export function AuthProvider({ children }: AuthProviderProps): JSX.Element {
     setLoading(true);
 
     await execute(
-      supabase.auth.signIn({
+      supabase.auth.signInWithPassword({
         email,
         password,
       }),
@@ -84,8 +86,7 @@ export function AuthProvider({ children }: AuthProviderProps): JSX.Element {
     const { data: authListener } = supabase.auth.onAuthStateChange(
       async (_event: AuthChangeEvent, currentSession: Session | null) => {
         if (currentSession && currentSession.user) {
-          const user = await getUserProfile(currentSession.user.id);
-          setCurrentUser(user);
+          setCurrentUser(await getUserProfile(currentSession.user.id));
         } else {
           setCurrentUser(null);
         }
@@ -95,7 +96,7 @@ export function AuthProvider({ children }: AuthProviderProps): JSX.Element {
     );
 
     return () => {
-      authListener!.unsubscribe();
+      authListener.subscription.unsubscribe();
     };
   }, []);
 

@@ -61,8 +61,8 @@ describe('snapshot tests', () => {
       name: 'Post',
       params: {
         startIndex: 0,
-        post: currentUserPosts[0],
-        account: currentUser,
+        postId: currentUserPosts[0].id,
+        accountId: currentUser.id,
       },
     };
 

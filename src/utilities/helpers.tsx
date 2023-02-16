@@ -4,7 +4,7 @@ export const downloadSupabaseMedia = (bucket: 'avatars' | 'posts', path: string)
   try {
     const { data } = supabase.storage.from(bucket).getPublicUrl(path);
     if (data) {
-      return data.publicURL;
+      return data.publicUrl;
     }
   } catch (error) {
     if (error instanceof Error) {

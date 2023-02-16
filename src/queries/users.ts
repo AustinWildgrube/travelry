@@ -11,7 +11,7 @@ export type UserProfile = {
   username: string;
   full_name: string;
   avatar_url: string;
-  bio: string | undefined;
+  bio: string | null;
   account_stat: AccountStats;
 };
 
@@ -32,13 +32,14 @@ export const getUserProfile = async (id: string): Promise<UserProfile> => {
         )
       `,
     )
-    .eq('id', id);
+    .eq('id', id)
+    .single();
 
   if (error) {
-    throw new Error(`Error ${error.code}: ${error.message}`);
+    throw new Error(`${error.code}: getUserProfile: ${error.message}`);
   }
 
-  return data[0];
+  return data as UserProfile;
 };
 
 export const isFollowingUser = async (id: string, targetId: string): Promise<number | null> => {
@@ -49,7 +50,7 @@ export const isFollowingUser = async (id: string, targetId: string): Promise<num
     .eq('target_account_id', targetId);
 
   if (error) {
-    throw new Error(`Error ${error.code}: ${error.message}`);
+    throw new Error(`${error.code}: isFollowingUser: ${error.message}`);
   }
 
   return count;
@@ -59,7 +60,7 @@ export const followUser = async (id: string, targetId: string): Promise<void> =>
   let { error } = await supabase.from('follow').insert({ account_id: id, target_account_id: targetId });
 
   if (error) {
-    throw new Error(`Error ${error.code}: ${error.message}`);
+    throw new Error(`${error.code}: followUser: ${error.message}`);
   }
 };
 
@@ -67,6 +68,6 @@ export const unfollowUser = async (id: string, targetId: string): Promise<void> 
   let { error } = await supabase.from('follow').delete().eq('account_id', id).eq('target_account_id', targetId);
 
   if (error) {
-    throw new Error(`Error ${error.code}: ${error.message}`);
+    throw new Error(`${error.code}: unfollowUser: ${error.message}`);
   }
 };

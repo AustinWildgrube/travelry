@@ -16,7 +16,7 @@ export const useSupabaseQuery = (query: any) => {
     (async () => {
       try {
         const { data, error } = await query;
-        if (error) throw new Error(`Error ${error.code}: ${error.message}`);
+        if (error) throw new Error(`Error [${error.code}] ${error.message}`);
 
         setQueryState(prev => ({ ...prev, data, loading: false, error: null }));
       } catch (error) {
@@ -55,7 +55,7 @@ export const useSupabaseMutation = () => {
 
     try {
       const { data, error } = await mutation;
-      if (error) throw new Error(`Error ${error.code}: ${error.message}`);
+      if (error) throw new Error(`Error [${error.code}] ${error.message}`);
 
       setMutationState(prev => ({
         ...prev,

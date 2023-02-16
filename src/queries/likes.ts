@@ -10,15 +10,14 @@ export const getLikesByAccountId = async (id: string): Promise<Like[]> => {
     .from('like')
     .select(
       `
-          id,
-          post_id
-          )
-        `,
+        id,
+        post_id
+      `,
     )
     .eq('account_id', id);
 
   if (error) {
-    throw new Error(`Error: ${error.code}: ${error.message}`);
+    throw new Error(`${error.code}: getLikesByAccountId: ${error.message}`);
   }
 
   return data;
@@ -33,7 +32,7 @@ export const likePost = async (accountId: string, postId: string): Promise<void>
   ]);
 
   if (error) {
-    throw new Error(`Error: ${error.code}: ${error.message}`);
+    throw new Error(`${error.code}: likePost: ${error.message}`);
   }
 };
 
@@ -41,6 +40,6 @@ export const unlikePost = async (accountId: string, postId: string): Promise<voi
   let { error } = await supabase.from('like').delete().eq('account_id', accountId).eq('post_id', postId);
 
   if (error) {
-    throw new Error(`Error: ${error.code}: ${error.message}`);
+    throw new Error(`${error.code}: unlikePost: ${error.message}`);
   }
 };
