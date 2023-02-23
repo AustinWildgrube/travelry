@@ -1,10 +1,11 @@
 import { MutableRefObject, useCallback, useMemo } from 'react';
-import { Dimensions, Image, StyleSheet, Text, View } from 'react-native';
+import { Dimensions, StyleSheet, Text, View } from 'react-native';
 
 import BottomSheet, { BottomSheetBackdrop, BottomSheetScrollView } from '@gorhom/bottom-sheet';
 import { type BottomSheetDefaultBackdropProps } from '@gorhom/bottom-sheet/lib/typescript/components/bottomSheetBackdrop/types';
 import { useQuery } from '@tanstack/react-query';
 
+import { Avatar } from '&/components/atoms';
 import { AccountButton } from '&/components/shared/AccountButton';
 import { getCommentsByPostId } from '&/queries/comments';
 import { downloadSupabaseMedia } from '&/utilities/helpers';
@@ -41,10 +42,9 @@ export function PostComments({ bottomSheetRef, postId }: PostCommentProps): JSX.
           comments.map((comment: any) => (
             <View style={styles.commentContainer} key={comment.id}>
               <AccountButton accountId={comment.account.id}>
-                <Image
-                  source={{
-                    uri: downloadSupabaseMedia('avatars', comment.account.avatar_url),
-                  }}
+                <Avatar
+                  src={downloadSupabaseMedia('avatars', comment.account.avatar_url)}
+                  size={42}
                   style={styles.commenterAvatar}
                 />
               </AccountButton>
@@ -89,12 +89,7 @@ const styles = StyleSheet.create({
     marginBottom: 16,
   },
   commenterAvatar: {
-    borderColor: 'lightgray',
-    borderRadius: 50,
-    borderWidth: 1,
-    height: 42,
     marginRight: 8,
-    width: 42,
   },
   commenterName: {
     fontWeight: '600',

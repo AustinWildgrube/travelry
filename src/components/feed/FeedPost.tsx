@@ -1,9 +1,10 @@
-import { Dimensions, Image, ImageBackground, Pressable, StyleSheet, Text, View } from 'react-native';
+import { Dimensions, ImageBackground, Pressable, StyleSheet, Text, View } from 'react-native';
 
 import { useNavigation } from '@react-navigation/core';
 import { useQuery } from '@tanstack/react-query';
 import { LinearGradient } from 'expo-linear-gradient';
 
+import { Avatar } from '&/components/atoms';
 import { AccountButton } from '&/components/shared/AccountButton';
 import { LikeButton } from '&/components/shared/LikeButton';
 import { type AppNavProps } from '&/navigators/root-navigator';
@@ -45,8 +46,9 @@ export function FeedPost({ postId }: PostProps): JSX.Element {
               style={styles.linearGradient}>
               <View style={styles.header}>
                 <AccountButton accountId={post.account.id} style={styles.headerInfo}>
-                  <Image
-                    source={{ uri: downloadSupabaseMedia('avatars', post.account.avatar_url) }}
+                  <Avatar
+                    src={downloadSupabaseMedia('avatars', post.account.avatar_url)}
+                    size={36}
                     style={styles.accountAvatar}
                   />
 
@@ -111,10 +113,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
   },
   accountAvatar: {
-    borderRadius: 50,
-    height: 32,
     marginRight: 8,
-    width: 32,
   },
   accountName: {
     color: '#0C0F14',

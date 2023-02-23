@@ -1,9 +1,9 @@
-import { Image, StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
 
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { Controller, useForm } from 'react-hook-form';
 
-import { Input } from '&/components/atoms';
+import { Avatar, Input } from '&/components/atoms';
 import { useCurrentUser } from '&/contexts/AuthProvider';
 import { createComment } from '&/queries/comments';
 import { downloadSupabaseMedia } from '&/utilities/helpers';
@@ -46,12 +46,7 @@ export function CommentInput({ postId }: PostCommentsProps): JSX.Element {
   return (
     <View style={styles.container}>
       <View style={styles.commentContainer}>
-        <Image
-          source={{
-            uri: downloadSupabaseMedia('avatars', user.avatar_url),
-          }}
-          style={styles.commenterAvatar}
-        />
+        <Avatar src={downloadSupabaseMedia('avatars', user.avatar_url)} size={54} style={styles.commenterAvatar} />
 
         <Controller
           name="comment"
@@ -84,9 +79,6 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
   },
   commenterAvatar: {
-    borderRadius: 50,
-    height: 54,
     marginRight: 8,
-    width: 54,
   },
 });

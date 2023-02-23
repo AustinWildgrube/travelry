@@ -1,14 +1,16 @@
-import { Image, StyleSheet, View } from 'react-native';
+import { Image, StyleSheet, View, ViewStyle } from 'react-native';
 
 interface AvatarProps {
   accessibilityLabel?: string;
+  borderStyle?: 'story' | 'none';
   size?: number;
   src: string | undefined;
+  style?: ViewStyle;
 }
 
-export function Avatar({ accessibilityLabel, size = 96, src }: AvatarProps): JSX.Element {
+export function Avatar({ accessibilityLabel, borderStyle, size = 96, src, style }: AvatarProps): JSX.Element {
   return (
-    <View style={styles.avatarBorder}>
+    <View style={[borderStyle ? styles.avatarBorder : null, style]}>
       <Image
         source={{ uri: src }}
         accessibilityLabel={accessibilityLabel}

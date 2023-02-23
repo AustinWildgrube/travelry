@@ -1,4 +1,4 @@
-import { Image, Pressable, StyleSheet, Text, View } from 'react-native';
+import { Pressable, StyleSheet, Text, View } from 'react-native';
 
 import { Feather } from '@expo/vector-icons';
 
@@ -7,6 +7,8 @@ import { LikeButton } from '&/components/shared/LikeButton';
 import { type Post } from '&/queries/posts';
 import { type UserProfile } from '&/queries/users';
 import { downloadSupabaseMedia, getRelativeTime } from '&/utilities/helpers';
+
+import { Avatar } from '../atoms';
 
 interface PostInfoProps {
   account: UserProfile;
@@ -18,13 +20,7 @@ export function PostInfo({ account, post }: PostInfoProps): JSX.Element {
     <View style={styles.container}>
       <View style={styles.actionRow}>
         <AccountButton accountId={account.id}>
-          <Image
-            source={{
-              uri: downloadSupabaseMedia('avatars', account.avatar_url),
-            }}
-            accessibilityLabel={`${account.full_name}'s profile image`}
-            style={styles.avatarImage}
-          />
+          <Avatar src={downloadSupabaseMedia('avatars', account.avatar_url)} size={92} style={styles.avatarImage} />
         </AccountButton>
 
         <View style={styles.actions}>
@@ -65,12 +61,10 @@ const styles = StyleSheet.create({
   },
   avatarImage: {
     borderColor: '#fff',
+    borderRadius: 50,
     borderStyle: 'solid',
     borderWidth: 2,
-    borderRadius: 50,
-    height: 92,
     marginTop: -46,
-    width: 92,
   },
   actions: {
     flex: 1,
