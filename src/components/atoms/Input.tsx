@@ -1,4 +1,4 @@
-import { KeyboardTypeOptions, StyleSheet, Text, TextInput, View } from 'react-native';
+import { KeyboardTypeOptions, ReturnKeyTypeOptions, StyleSheet, Text, TextInput, View } from 'react-native';
 
 interface InputProps {
   defaultValue?: string;
@@ -7,7 +7,10 @@ interface InputProps {
   label: string;
   lines?: number;
   onChangeText?: (text: string) => void;
+  onSubmit?: () => void;
   placeholder: string;
+  returnKeyType?: ReturnKeyTypeOptions;
+  value?: string;
 }
 
 export function Input({
@@ -16,7 +19,10 @@ export function Input({
   keyboardType,
   label,
   onChangeText,
+  onSubmit,
   placeholder,
+  returnKeyType,
+  value,
   lines = 1,
 }: InputProps): JSX.Element {
   return (
@@ -24,7 +30,8 @@ export function Input({
       <Text style={styles.label}>{label}</Text>
 
       <TextInput
-        autoCapitalize="none"
+        returnKeyType={returnKeyType}
+        onSubmitEditing={onSubmit}
         placeholder={placeholder}
         defaultValue={defaultValue}
         onChangeText={onChangeText}
@@ -33,6 +40,7 @@ export function Input({
         multiline={lines > 1}
         numberOfLines={lines}
         style={[styles.input, { height: 35 * lines }]}
+        value={value}
       />
     </View>
   );
@@ -44,14 +52,9 @@ const styles = StyleSheet.create({
     borderColor: 'gray',
     borderRadius: 4,
     borderWidth: 1,
-    marginBottom: 20,
+    flex: 1,
     paddingHorizontal: 10,
     paddingTop: 5,
-  },
-  icon: {
-    alignItems: 'center',
-    justifyContent: 'center',
-    width: 40,
   },
   input: {
     color: '#000',

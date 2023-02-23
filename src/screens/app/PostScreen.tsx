@@ -1,8 +1,14 @@
+import { useRef } from 'react';
+import { KeyboardAvoidingView, Pressable, StyleSheet, Text, View } from 'react-native';
+
+import BottomSheet from '@gorhom/bottom-sheet';
 import { useNavigation } from '@react-navigation/core';
 import { RouteProp } from '@react-navigation/native';
 import { useQuery } from '@tanstack/react-query';
 
-import { PostComments, PostImages, PostInfo } from '&/components/post';
+import { PostImages, PostInfo } from '&/components/post';
+import { PostComments } from '&/components/post/PostComments';
+import { CommentInput } from '&/components/shared/CommentInput';
 import { type AppNavProps, type AppStackParamList } from '&/navigators/root-navigator';
 import { getPostById } from '&/queries/posts';
 import { getUserProfile } from '&/queries/users';
@@ -13,6 +19,7 @@ interface PostScreenProps {
 
 export function PostScreen({ route }: PostScreenProps): JSX.Element {
   const navigation = useNavigation<AppNavProps<'Post'>>();
+  const bottomSheetRef = useRef<BottomSheet>(null);
   const { accountId, postId, startIndex } = route.params;
 
   const { data: post, isLoading: isLoadingPost } = useQuery({
@@ -26,14 +33,45 @@ export function PostScreen({ route }: PostScreenProps): JSX.Element {
   });
 
   return (
-    <>
-      {!isLoadingPost && post && account && !isLoadingAccount && (
+    <KeyboardAvoidingView behavior="height" keyboardVerticalOffset={75} style={styles.keyboard}>
+      {!isLoadingPost && !isLoadingAccount && post && account && (
         <>
           <PostImages navigation={navigation} post={post} startIndex={startIndex} />
-          <PostInfo account={account} post={post} />
-          <PostComments />
+
+          <View style={styles.postBottom}>
+            <PostInfo account={account} post={post} />
+
+            <Text style={styles.commentTitle}>Comments</Text>
+            <CommentInput postId={post.id} />
+
+            <Pressable onPress={() => bottomSheetRef?.current?.expand()} style={styles.showComments}>
+              <Text>Show Comments</Text>
+            </Pressable>
+          </View>
+
+          <PostComments bottomSheetRef={bottomSheetRef} postId={post.id} />
         </>
       )}
-    </>
+    </KeyboardAvoidingView>
   );
 }
+
+const styles = StyleSheet.create({
+  keyboard: {
+    flex: 1,
+  },
+  postBottom: {
+    backgroundColor: '#fff',
+    flex: 0.35,
+    paddingHorizontal: 16,
+  },
+  commentTitle: {
+    fontSize: 14,
+    fontWeight: '600',
+    marginBottom: 12,
+  },
+  showComments: {
+    alignItems: 'center',
+    marginTop: 16,
+  },
+});

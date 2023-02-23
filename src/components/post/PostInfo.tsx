@@ -55,7 +55,6 @@ const styles = StyleSheet.create({
   actionRow: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    paddingHorizontal: 16,
   },
   avatarImage: {
     borderColor: '#fff',
@@ -91,17 +90,14 @@ const styles = StyleSheet.create({
     fontSize: 21,
     fontWeight: '600',
     marginTop: 8,
-    paddingHorizontal: 16,
   },
   description: {
     fontSize: 14,
     marginVertical: 8,
-    paddingHorizontal: 16,
   },
   lapsedTime: {
     color: '#7C8089',
     fontSize: 12,
     marginBottom: 21,
-    paddingHorizontal: 16,
   },
 });

@@ -47,7 +47,7 @@ export function PostImages({ navigation, post, startIndex }: PostImageProps): JS
 const width = Dimensions.get('window').width;
 const styles = StyleSheet.create({
   postTop: {
-    height: '65%',
+    flex: 0.65,
     position: 'relative',
   },
   topNav: {
