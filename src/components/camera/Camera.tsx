@@ -11,7 +11,7 @@ import { Permissions } from '&/components/camera/Permissions';
 import { type AppNavProps } from '&/navigators/root-navigator';
 
 export function Camera(): JSX.Element {
-  const navigation = useNavigation<AppNavProps<'Edit'>>();
+  const navigation = useNavigation<AppNavProps<'Edit' | 'Tabs'>>();
   const cameraRef = useRef<ExpoCamera>(null);
   const [type, setType] = useState<CameraType>(CameraType.front);
   const [hasCameraPermission, setHasCameraPermission] = useState<boolean>(false);

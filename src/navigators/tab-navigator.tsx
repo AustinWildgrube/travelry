@@ -19,6 +19,7 @@ export type TabNavProps<T extends keyof TabStackParamList> = NativeStackNavigati
 const Tab = createBottomTabNavigator<TabStackParamList>();
 export function TabNavigator(): JSX.Element {
   const user = useCurrentUser();
+  const viewedUser = useUserStore(state => state.viewedUser);
   const setViewedUser = useUserStore(state => state.setViewedUser);
 
   return (
@@ -51,6 +52,7 @@ export function TabNavigator(): JSX.Element {
           },
         }}
         options={{
+          tabBarActiveTintColor: user.id === viewedUser.id ? 'blue' : 'gray',
           headerShown: false,
           tabBarLabel: 'Profile',
           tabBarIcon: ({}) => <User />,

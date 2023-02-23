@@ -14,7 +14,7 @@ import { Controller, useForm } from 'react-hook-form';
 
 import { Input } from '&/components/atoms';
 import { useCurrentUser } from '&/contexts/AuthProvider';
-import { type AppNavProps } from '&/navigators/root-navigator';
+import { type ProfileNavProps } from '&/navigators/profile-navigator';
 import { createPost, createPostMedia } from '&/queries/posts';
 import { useUserStore } from '&/stores/user';
 
@@ -24,7 +24,7 @@ interface EditInputProps {
 
 export function EditInputs({ image }: EditInputProps): JSX.Element {
   const setViewedUser = useUserStore(state => state.setViewedUser);
-  const navigation = useNavigation<AppNavProps<'Tabs'>>();
+  const navigation = useNavigation<ProfileNavProps<'Profile'>>();
   const user = useCurrentUser();
 
   const {
@@ -43,12 +43,7 @@ export function EditInputs({ image }: EditInputProps): JSX.Element {
     await createPostMedia(user.id, postId, image);
 
     setViewedUser(user);
-    navigation.navigate('Tabs', {
-      screen: 'ProfileTab',
-      params: {
-        screen: 'Profile',
-      },
-    });
+    navigation.navigate('Profile');
   };
 
   return (

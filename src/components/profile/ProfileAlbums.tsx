@@ -3,14 +3,14 @@ import { Dimensions, Image, StyleSheet, TouchableOpacity, View } from 'react-nat
 import { useNavigation } from '@react-navigation/core';
 import { useQuery } from '@tanstack/react-query';
 
-import { type AppNavProps } from '&/navigators/root-navigator';
+import { type ProfileNavProps } from '&/navigators/profile-navigator';
 import { getAlbumsByAccountId, type Album } from '&/queries/albums';
 import { useAlbumStore } from '&/stores/album';
 import { useUserStore } from '&/stores/user';
 import { downloadSupabaseMedia } from '&/utilities/helpers';
 
 export function ProfileAlbums(): JSX.Element {
-  const navigation = useNavigation<AppNavProps<'Post'>>();
+  const navigation = useNavigation<ProfileNavProps<'Album'>>();
   const setViewedAlbum = useAlbumStore(state => state.setViewedAlbum);
   const viewedUser = useUserStore(state => state.viewedUser);
 
@@ -21,15 +21,7 @@ export function ProfileAlbums(): JSX.Element {
 
   const goToAlbum = (album: Album): void => {
     setViewedAlbum(album);
-    navigation.navigate('Tabs', {
-      screen: 'ProfileTab',
-      params: {
-        screen: 'Album',
-        params: {
-          albumId: album.id,
-        },
-      },
-    });
+    navigation.navigate('Album', { albumId: album.id });
   };
 
   return (
