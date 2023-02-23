@@ -2,18 +2,16 @@ import { useEffect, useRef, useState } from 'react';
 import { Pressable, StyleSheet, View } from 'react-native';
 
 import { Feather } from '@expo/vector-icons';
+import { useNavigation } from '@react-navigation/core';
 import { CameraType, Camera as ExpoCamera } from 'expo-camera';
 import { FlipType, manipulateAsync } from 'expo-image-manipulator';
 import { MediaTypeOptions, launchImageLibraryAsync } from 'expo-image-picker';
 
 import { Permissions } from '&/components/camera/Permissions';
-import { AppNavProps } from '&/navigators/root-navigator';
+import { type AppNavProps } from '&/navigators/root-navigator';
 
-interface CameraProps {
-  navigation: AppNavProps<'Edit' | 'Tabs'>;
-}
-
-export function Camera({ navigation }: CameraProps): JSX.Element {
+export function Camera(): JSX.Element {
+  const navigation = useNavigation<AppNavProps<'Edit'>>();
   const cameraRef = useRef<ExpoCamera>(null);
   const [type, setType] = useState<CameraType>(CameraType.front);
   const [hasCameraPermission, setHasCameraPermission] = useState<boolean>(false);

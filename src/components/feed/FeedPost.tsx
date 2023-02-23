@@ -1,21 +1,24 @@
 import { Dimensions, Image, ImageBackground, Pressable, StyleSheet, Text, View } from 'react-native';
 
+import { useNavigation } from '@react-navigation/core';
 import { useQuery } from '@tanstack/react-query';
 import { LinearGradient } from 'expo-linear-gradient';
 
 import { LikeButton } from '&/components/shared/LikeButton';
 import { type AppNavProps } from '&/navigators/root-navigator';
 import { getPostById, type Post } from '&/queries/posts';
-import { getUserProfile, type UserProfile } from '&/queries/users';
+import { getUserProfile } from '&/queries/users';
+import { useUserStore } from '&/stores/user';
 import { downloadSupabaseMedia } from '&/utilities/helpers';
 
 interface PostProps {
-  navigation: AppNavProps<'Post'>;
   postId: string;
-  setViewedUser: (user: UserProfile) => void;
 }
 
-export function FeedPost({ navigation, postId, setViewedUser }: PostProps): JSX.Element {
+export function FeedPost({ postId }: PostProps): JSX.Element {
+  const setViewedUser = useUserStore(state => state.setViewedUser);
+  const navigation = useNavigation<AppNavProps<'Post'>>();
+
   const { data: post } = useQuery({
     queryKey: ['post', postId],
     queryFn: () => getPostById(postId),

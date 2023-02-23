@@ -1,22 +1,22 @@
 import { Dimensions, Image, StyleSheet, TouchableOpacity, View } from 'react-native';
 
+import { useNavigation } from '@react-navigation/core';
 import { useQuery } from '@tanstack/react-query';
 
 import { type AppNavProps } from '&/navigators/root-navigator';
 import { getAlbumsByAccountId, type Album } from '&/queries/albums';
-import { type UserProfile } from '&/queries/users';
+import { useAlbumStore } from '&/stores/album';
+import { useUserStore } from '&/stores/user';
 import { downloadSupabaseMedia } from '&/utilities/helpers';
 
-interface ImageProps {
-  navigation: AppNavProps<'Tabs' | 'Post'>;
-  setViewedAlbum: (album: Album) => void;
-  user: UserProfile;
-}
+export function ProfileAlbums(): JSX.Element {
+  const navigation = useNavigation<AppNavProps<'Post'>>();
+  const setViewedAlbum = useAlbumStore(state => state.setViewedAlbum);
+  const viewedUser = useUserStore(state => state.viewedUser);
 
-export function ProfileAlbums({ navigation, setViewedAlbum, user }: ImageProps): JSX.Element {
   const { data } = useQuery({
-    queryKey: ['albums', user.id],
-    queryFn: () => getAlbumsByAccountId(user.id),
+    queryKey: ['albums', viewedUser.id],
+    queryFn: () => getAlbumsByAccountId(viewedUser.id),
   });
 
   const goToAlbum = (album: Album): void => {

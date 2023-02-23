@@ -1,6 +1,7 @@
 import React, { Fragment } from 'react';
 import { Dimensions, Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
+import { useNavigation } from '@react-navigation/core';
 import { useQuery } from '@tanstack/react-query';
 
 import { type AppNavProps } from '&/navigators/root-navigator';
@@ -9,10 +10,11 @@ import { downloadSupabaseMedia } from '&/utilities/helpers';
 
 interface AlbumImagesProps {
   albumId: string;
-  navigation: AppNavProps<'Post'>;
 }
 
-export function AlbumImages({ albumId, navigation }: AlbumImagesProps): JSX.Element {
+export function AlbumImages({ albumId }: AlbumImagesProps): JSX.Element {
+  const navigation = useNavigation<AppNavProps<'Post'>>();
+
   const { data } = useQuery({
     queryKey: ['albumImages', albumId],
     queryFn: () => getPostsByAlbumId(albumId),

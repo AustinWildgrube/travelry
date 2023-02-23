@@ -9,21 +9,22 @@ import {
   View,
 } from 'react-native';
 
+import { useNavigation } from '@react-navigation/core';
 import { Controller, useForm } from 'react-hook-form';
 
 import { Input } from '&/components/atoms';
 import { useCurrentUser } from '&/contexts/AuthProvider';
 import { type AppNavProps } from '&/navigators/root-navigator';
 import { createPost, createPostMedia } from '&/queries/posts';
-import { type UserProfile } from '&/queries/users';
+import { useUserStore } from '&/stores/user';
 
 interface EditInputProps {
   image: string;
-  navigation: AppNavProps<'Tabs'>;
-  setViewedUser: (user: UserProfile) => void;
 }
 
-export function EditInputs({ image, navigation, setViewedUser }: EditInputProps): JSX.Element {
+export function EditInputs({ image }: EditInputProps): JSX.Element {
+  const setViewedUser = useUserStore(state => state.setViewedUser);
+  const navigation = useNavigation<AppNavProps<'Tabs'>>();
   const user = useCurrentUser();
 
   const {

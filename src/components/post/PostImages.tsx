@@ -1,20 +1,22 @@
 import { Dimensions, Image, Pressable, StyleSheet, Text, View } from 'react-native';
 
 import { Feather } from '@expo/vector-icons';
+import { useNavigation } from '@react-navigation/core';
 import CountryFlag from 'react-native-country-flag';
 import SwiperFlatList from 'react-native-swiper-flatlist';
 
-import { AppNavProps } from '&/navigators/root-navigator';
+import { type AppNavProps } from '&/navigators/root-navigator';
 import { type Post } from '&/queries/posts';
 import { downloadSupabaseMedia } from '&/utilities/helpers';
 
 interface PostImageProps {
-  navigation: AppNavProps<'Post'>;
   post: Post;
   startIndex: number;
 }
 
-export function PostImages({ navigation, post, startIndex }: PostImageProps): JSX.Element {
+export function PostImages({ post, startIndex }: PostImageProps): JSX.Element {
+  const navigation = useNavigation<AppNavProps<'Post'>>();
+
   return (
     <View style={styles.postTop}>
       <View style={styles.topNav}>

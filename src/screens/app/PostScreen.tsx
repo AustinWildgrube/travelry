@@ -2,14 +2,13 @@ import { useRef } from 'react';
 import { KeyboardAvoidingView, Pressable, StyleSheet, Text, View } from 'react-native';
 
 import BottomSheet from '@gorhom/bottom-sheet';
-import { useNavigation } from '@react-navigation/core';
 import { RouteProp } from '@react-navigation/native';
 import { useQuery } from '@tanstack/react-query';
 
 import { PostImages, PostInfo } from '&/components/post';
 import { PostComments } from '&/components/post/PostComments';
 import { CommentInput } from '&/components/shared/CommentInput';
-import { type AppNavProps, type AppStackParamList } from '&/navigators/root-navigator';
+import { type AppStackParamList } from '&/navigators/root-navigator';
 import { getPostById } from '&/queries/posts';
 import { getUserProfile } from '&/queries/users';
 
@@ -18,7 +17,6 @@ interface PostScreenProps {
 }
 
 export function PostScreen({ route }: PostScreenProps): JSX.Element {
-  const navigation = useNavigation<AppNavProps<'Post'>>();
   const bottomSheetRef = useRef<BottomSheet>(null);
   const { accountId, postId, startIndex } = route.params;
 
@@ -36,7 +34,7 @@ export function PostScreen({ route }: PostScreenProps): JSX.Element {
     <KeyboardAvoidingView behavior="height" keyboardVerticalOffset={75} style={styles.keyboard}>
       {!isLoadingPost && !isLoadingAccount && post && account && (
         <>
-          <PostImages navigation={navigation} post={post} startIndex={startIndex} />
+          <PostImages post={post} startIndex={startIndex} />
 
           <View style={styles.postBottom}>
             <PostInfo account={account} post={post} />

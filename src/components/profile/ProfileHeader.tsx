@@ -3,39 +3,37 @@ import { StyleSheet, Text, View } from 'react-native';
 import { useQuery } from '@tanstack/react-query';
 
 import { Avatar } from '&/components/atoms';
-import { type UserProfile } from '&/queries/users';
+import { useUserStore } from '&/stores/user';
 import { downloadSupabaseMedia } from '&/utilities/helpers';
 
-interface HeaderProps {
-  user: UserProfile;
-}
+export function ProfileHeader(): JSX.Element {
+  const viewedUser = useUserStore(state => state.viewedUser);
 
-export function ProfileHeader({ user }: HeaderProps): JSX.Element {
   const { data } = useQuery({
-    queryKey: ['avatar', user.id],
-    queryFn: () => downloadSupabaseMedia('avatars', user.avatar_url),
+    queryKey: ['avatar', viewedUser.id],
+    queryFn: () => downloadSupabaseMedia('avatars', viewedUser.avatar_url),
   });
 
   return (
     <View style={styles.container}>
-      <Avatar src={data} accessibilityLabel={`${user.full_name}'s profile image`} />
-      <Text style={styles.fullName}>{user.full_name}</Text>
-      <Text style={styles.bio}>{user.bio}</Text>
+      <Avatar src={data} accessibilityLabel={`${viewedUser.full_name}'s profile image`} />
+      <Text style={styles.fullName}>{viewedUser.full_name}</Text>
+      <Text style={styles.bio}>{viewedUser.bio}</Text>
 
       <View style={styles.statsContainer}>
         <View style={{ alignItems: 'center', width: '33%' }}>
           <Text style={styles.statText}>Trips</Text>
-          <Text style={styles.statNumber}>{user.account_stat.trip_count}</Text>
+          <Text style={styles.statNumber}>{viewedUser.account_stat.trip_count}</Text>
         </View>
 
         <View style={{ alignItems: 'center', width: '33%' }}>
           <Text style={styles.statText}>Followers</Text>
-          <Text style={styles.statNumber}>{user.account_stat.followers_count}</Text>
+          <Text style={styles.statNumber}>{viewedUser.account_stat.followers_count}</Text>
         </View>
 
         <View style={{ alignItems: 'center', width: '33%' }}>
           <Text style={styles.statText}>Following</Text>
-          <Text style={styles.statNumber}>{user.account_stat.following_count}</Text>
+          <Text style={styles.statNumber}>{viewedUser.account_stat.following_count}</Text>
         </View>
       </View>
     </View>
