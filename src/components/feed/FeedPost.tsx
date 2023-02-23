@@ -4,11 +4,10 @@ import { useNavigation } from '@react-navigation/core';
 import { useQuery } from '@tanstack/react-query';
 import { LinearGradient } from 'expo-linear-gradient';
 
+import { AccountButton } from '&/components/shared/AccountButton';
 import { LikeButton } from '&/components/shared/LikeButton';
 import { type AppNavProps } from '&/navigators/root-navigator';
 import { getPostById, type Post } from '&/queries/posts';
-import { getUserProfile } from '&/queries/users';
-import { useUserStore } from '&/stores/user';
 import { downloadSupabaseMedia } from '&/utilities/helpers';
 
 interface PostProps {
@@ -16,7 +15,6 @@ interface PostProps {
 }
 
 export function FeedPost({ postId }: PostProps): JSX.Element {
-  const setViewedUser = useUserStore(state => state.setViewedUser);
   const navigation = useNavigation<AppNavProps<'Post'>>();
 
   const { data: post } = useQuery({
@@ -29,16 +27,6 @@ export function FeedPost({ postId }: PostProps): JSX.Element {
       accountId: post.account.id,
       postId: post.id,
       startIndex: 0,
-    });
-  };
-
-  const goToAccount = async (accountId: string): Promise<void> => {
-    setViewedUser(await getUserProfile(accountId));
-    navigation.navigate('Tabs', {
-      screen: 'ProfileTab',
-      params: {
-        screen: 'Profile',
-      },
     });
   };
 
@@ -56,7 +44,7 @@ export function FeedPost({ postId }: PostProps): JSX.Element {
               end={{ x: 0, y: 0.7 }}
               style={styles.linearGradient}>
               <View style={styles.header}>
-                <Pressable onPress={() => goToAccount(post.account.id)} style={styles.headerInfo}>
+                <AccountButton accountId={post.account.id} style={styles.headerInfo}>
                   <Image
                     source={{ uri: downloadSupabaseMedia('avatars', post.account.avatar_url) }}
                     style={styles.accountAvatar}
@@ -66,7 +54,7 @@ export function FeedPost({ postId }: PostProps): JSX.Element {
                     <Text style={styles.accountName}>{post.account?.full_name}</Text>
                     <Text style={styles.location}>{post.location}</Text>
                   </View>
-                </Pressable>
+                </AccountButton>
 
                 <View style={styles.likeButton}>
                   <LikeButton likeCount={post.post_stat.likes_count} postId={post.id} />

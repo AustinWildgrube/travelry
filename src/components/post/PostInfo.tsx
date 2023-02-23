@@ -2,6 +2,7 @@ import { Image, Pressable, StyleSheet, Text, View } from 'react-native';
 
 import { Feather } from '@expo/vector-icons';
 
+import { AccountButton } from '&/components/shared/AccountButton';
 import { LikeButton } from '&/components/shared/LikeButton';
 import { type Post } from '&/queries/posts';
 import { type UserProfile } from '&/queries/users';
@@ -16,13 +17,15 @@ export function PostInfo({ account, post }: PostInfoProps): JSX.Element {
   return (
     <View style={styles.container}>
       <View style={styles.actionRow}>
-        <Image
-          source={{
-            uri: downloadSupabaseMedia('avatars', account.avatar_url),
-          }}
-          accessibilityLabel={`${account.full_name}'s profile image`}
-          style={styles.avatarImage}
-        />
+        <AccountButton accountId={account.id}>
+          <Image
+            source={{
+              uri: downloadSupabaseMedia('avatars', account.avatar_url),
+            }}
+            accessibilityLabel={`${account.full_name}'s profile image`}
+            style={styles.avatarImage}
+          />
+        </AccountButton>
 
         <View style={styles.actions}>
           <Pressable style={styles.actionButton}>
@@ -39,8 +42,12 @@ export function PostInfo({ account, post }: PostInfoProps): JSX.Element {
         </View>
       </View>
 
-      <Text style={styles.name}>{account.full_name}</Text>
+      <AccountButton accountId={account.id}>
+        <Text style={styles.name}>{account.full_name}</Text>
+      </AccountButton>
+
       <Text style={styles.description}>{post.caption}</Text>
+
       <Text style={styles.lapsedTime}>
         Posted {getRelativeTime(post.created_at)} &#x2022; <Text>{post.post_stat.likes_count} likes</Text>
       </Text>
