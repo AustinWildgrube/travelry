@@ -25,8 +25,7 @@ export function PostImages({ post, startIndex }: PostImageProps): JSX.Element {
         </Pressable>
 
         <View style={styles.location}>
-          <CountryFlag isoCode="fr" size={18} style={styles.flag} />
-          <Text style={styles.cityCountry}>Paris, France</Text>
+          <Text style={styles.cityCountry}>{post.location}</Text>
         </View>
       </View>
 
