@@ -1,37 +1,32 @@
 import { ReactNode } from 'react';
 
 import { NavigationContainer } from '@react-navigation/native';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { render } from '@testing-library/react-native';
-import { TamaguiProvider } from 'tamagui';
 
 import '@testing-library/jest-native/extend-expect';
 import '@testing-library/jest-dom/extend-expect';
 import '@testing-library/jest-dom';
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-
 import { AuthContext } from '&/contexts/AuthProvider';
 import { type Album } from '&/queries/albums';
 import { type Post } from '&/queries/posts';
 import { type UserProfile } from '&/queries/users';
 import { ThemeProvider } from '&/themes/ThemeProvider';
 
-import config from './tamagui.config';
-
-jest.mock('react-native/Libraries/Animated/NativeAnimatedHelper');
-
-jest.mock('@react-native-async-storage/async-storage', () =>
-  require('@react-native-async-storage/async-storage/jest/async-storage-mock'),
-);
-
-jest.mock('@expo/vector-icons', () => ({
-  Feather: '',
-}));
-
-jest.mock('@env', () => ({
-  SUPABASE_URL: '',
-  SUPABASE_ANON_KEY: '',
-  TAMAGUI_TARGET: 'native',
-}));
+// jest.mock('react-native/Libraries/Animated/NativeAnimatedHelper');
+//
+// jest.mock('@react-native-async-storage/async-storage', () =>
+//   require('@react-native-async-storage/async-storage/jest/async-storage-mock'),
+// );
+//
+// jest.mock('@expo/vector-icons', () => ({
+//   Feather: '',
+// }));
+//
+// jest.mock('@env', () => ({
+//   SUPABASE_URL: '',
+//   SUPABASE_ANON_KEY: '',
+// }));
 
 export const currentUser: UserProfile = {
   id: '1',
@@ -119,13 +114,11 @@ export const wrapRender = (component: ReactNode): any => {
 
   return render(
     <QueryClientProvider client={queryClient}>
-      <TamaguiProvider config={config}>
-        <ThemeProvider>
-          <AuthContext.Provider value={{ currentUser, loginWithEmailAndPassword, registerWithEmailAndPassword }}>
-            <NavigationContainer>{component}</NavigationContainer>
-          </AuthContext.Provider>
-        </ThemeProvider>
-      </TamaguiProvider>
+      <ThemeProvider>
+        <AuthContext.Provider value={{ currentUser, loginWithEmailAndPassword, registerWithEmailAndPassword }}>
+          <NavigationContainer>{component}</NavigationContainer>
+        </AuthContext.Provider>
+      </ThemeProvider>
     </QueryClientProvider>,
   );
 };

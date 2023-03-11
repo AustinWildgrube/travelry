@@ -3,6 +3,7 @@
     "name": "travelry",
     "slug": "travelry",
     "version": "0.0.1",
+    "scheme": "travelry",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "splash": {

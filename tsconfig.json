@@ -13,9 +13,12 @@
     "moduleResolution": "node",
     "baseUrl": "./",
     "paths": {
-      "@env": ["./src/types/env.d.ts"],
-      "&/*": ["./src/*"],
+      "@env": ["./types/env.d.ts"],
+      "&/*": ["./*"],
     },
+    "typeRoots": [
+      "expo-router/ts-declarations"
+    ],
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
     "skipLibCheck": false

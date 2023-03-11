@@ -1,8 +1,14 @@
 module.exports = function (api) {
-  api.cache(false);
+  api.cache(true);
   return {
     presets: ['babel-preset-expo', '@babel/preset-react'],
     plugins: [
+      [
+        '@babel/plugin-transform-react-jsx',
+        {
+          runtime: 'automatic',
+        },
+      ],
       [
         'module:react-native-dotenv',
         {
@@ -15,11 +21,13 @@ module.exports = function (api) {
         {
           root: ['./'],
           alias: {
-            '&': './src',
+            '&': './',
           },
         },
       ],
+      '@babel/plugin-proposal-export-namespace-from',
       'react-native-reanimated/plugin',
+      require.resolve('expo-router/babel'),
     ],
   };
 };
