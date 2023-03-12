@@ -44,6 +44,12 @@ export default function TabsLayout(): JSX.Element | null {
           href: null,
         }}
       />
+      <Tabs.Screen
+        name="profile/follows"
+        options={{
+          href: null,
+        }}
+      />
     </Tabs>
   );
 }

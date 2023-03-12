@@ -33,10 +33,10 @@ export default function UserId(): JSX.Element {
           />
 
           <ProfileAlbums accountId={account.id} />
+
           <Stack.Screen
             options={{
               headerTitle: `@${account.username}`,
-              headerBackVisible: true,
               headerRight: () => <ProfileFollowButton viewedUserId={userId} />,
             }}
           />

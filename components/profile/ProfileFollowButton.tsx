@@ -14,7 +14,7 @@ export function ProfileFollowButton({ viewedUserId }: ProfileFollowButtonProps):
   const loggedInUser = useCurrentUser();
 
   const { data: isFollowing } = useQuery({
-    queryKey: ['following', loggedInUser.id, viewedUserId],
+    queryKey: ['isFollowing', loggedInUser.id, viewedUserId],
     queryFn: () => isFollowingUser(loggedInUser.id, viewedUserId),
   });
 
@@ -22,7 +22,7 @@ export function ProfileFollowButton({ viewedUserId }: ProfileFollowButtonProps):
     mutationFn: () =>
       isFollowing === 0 ? followUser(loggedInUser.id, viewedUserId) : unfollowUser(loggedInUser.id, viewedUserId),
     onSuccess: async () => {
-      await queryClient.setQueryData(['following', loggedInUser.id, viewedUserId], isFollowing === 0 ? 1 : 0);
+      await queryClient.setQueryData(['isFollowing', loggedInUser.id, viewedUserId], isFollowing === 0 ? 1 : 0);
       await queryClient.invalidateQueries(['account', viewedUserId]);
     },
   });

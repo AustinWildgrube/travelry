@@ -1,8 +1,10 @@
-import { StyleSheet, Text, View } from 'react-native';
+import { Pressable, StyleSheet, Text, View } from 'react-native';
 
 import { useQuery } from '@tanstack/react-query';
+import { Link } from 'expo-router';
 
 import { Avatar } from '&/components/atoms';
+import { FollowsTarget } from '&/types/global';
 import { downloadSupabaseMedia } from '&/utilities/helpers';
 
 interface ProfileHeaderProps {
@@ -41,15 +43,29 @@ export function ProfileHeader({
           <Text style={styles.statNumber}>{trip_count}</Text>
         </View>
 
-        <View style={styles.stat}>
-          <Text style={styles.statText}>Followers</Text>
-          <Text style={styles.statNumber}>{followers_count}</Text>
-        </View>
+        <Link
+          href={{
+            pathname: '/profile/follows',
+            params: { fullName: full_name, id: id, target: FollowsTarget.FOLLOWERS },
+          }}
+          asChild>
+          <Pressable style={styles.stat}>
+            <Text style={styles.statText}>Followers</Text>
+            <Text style={styles.statNumber}>{followers_count}</Text>
+          </Pressable>
+        </Link>
 
-        <View style={styles.stat}>
-          <Text style={styles.statText}>Following</Text>
-          <Text style={styles.statNumber}>{following_count}</Text>
-        </View>
+        <Link
+          href={{
+            pathname: '/profile/follows',
+            params: { fullName: full_name, id: id, target: FollowsTarget.FOLLOWING },
+          }}
+          asChild>
+          <Pressable style={styles.stat}>
+            <Text style={styles.statText}>Following</Text>
+            <Text style={styles.statNumber}>{following_count}</Text>
+          </Pressable>
+        </Link>
       </View>
     </View>
   );

@@ -6,6 +6,11 @@ export type AccountStats = {
   trip_count: number;
 };
 
+export type UserFollowers = {
+  id: string;
+  account: UserProfileSlim;
+};
+
 export type UserProfileSlim = {
   id: string;
   username: string;
@@ -47,6 +52,52 @@ export const getUserProfile = async (id: string): Promise<UserProfile> => {
   }
 
   return data as UserProfile;
+};
+
+export const getUserFollowers = async (id: string): Promise<UserFollowers[]> => {
+  const { data, error } = await supabase
+    .from('follow')
+    .select(
+      `
+        id,
+        account!account_id (
+          id,
+          username,
+          full_name,
+          avatar_url
+        )
+      `,
+    )
+    .eq('target_account_id', id);
+
+  if (error) {
+    throw new Error(`${error.code}: getUserFollowers: ${error.message}`);
+  }
+
+  return data as UserFollowers[];
+};
+
+export const getUserFollowing = async (id: string): Promise<UserFollowers[]> => {
+  const { data, error } = await supabase
+    .from('follow')
+    .select(
+      `
+        id,
+        account!target_account_id (
+          id,
+          username,
+          full_name,
+          avatar_url
+        )
+      `,
+    )
+    .eq('account_id', id);
+
+  if (error) {
+    throw new Error(`${error.code}: getUserFollowing: ${error.message}`);
+  }
+
+  return data as UserFollowers[];
 };
 
 export const isFollowingUser = async (id: string, targetId: string): Promise<number | null> => {
