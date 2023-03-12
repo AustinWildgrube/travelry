@@ -7,7 +7,7 @@ import { Layout } from '&/components/atoms';
 import { FeedPost } from '&/components/feed';
 import { Post, getAllPosts } from '&/queries/posts';
 
-export default function Feed(): JSX.Element {
+export default function Index(): JSX.Element {
   const { data } = useQuery({
     queryKey: ['feedPosts'],
     queryFn: () => getAllPosts(),

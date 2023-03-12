@@ -21,7 +21,7 @@ export default function TabsLayout(): JSX.Element | null {
         }}
       />
       <Tabs.Screen
-        name="camera/index"
+        name="camera"
         options={{
           tabBarLabel: 'Camera',
           tabBarIcon: ({ color }) => <Feather name="camera" size={24} color={color} />,
