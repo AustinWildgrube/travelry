@@ -9,14 +9,13 @@ import { downloadSupabaseMedia } from '&/utilities/helpers';
 import { ProfileFollowButton } from './ProfileFollowButton';
 
 interface UserItemProps {
-  id: string;
   account: UserProfileSlim;
 }
 
-export function ProfileUserItem({ id, account }: UserItemProps): JSX.Element {
+export function ProfileUserItem({ account }: UserItemProps): JSX.Element {
   return (
     <View style={styles.itemContainer}>
-      <Link href={`/profile/${account.id}`} key={id} asChild>
+      <Link href={`/profile/${account.id}`} asChild>
         <Pressable style={styles.item}>
           <Avatar src={downloadSupabaseMedia('avatars', account.avatar_url)} size={48} style={styles.accountAvatar} />
 

@@ -23,7 +23,7 @@ export function ProfileFollowers({ userName, userId }: ProfileFollowersProps): J
           {followers && followers.length > 0 ? (
             <FlatList
               data={followers}
-              renderItem={({ item }) => <ProfileUserItem id={item.id} account={item.account} />}
+              renderItem={({ item }) => <ProfileUserItem account={item.account} />}
               keyExtractor={item => item.id}
               style={{ backgroundColor: 'white' }}
             />
