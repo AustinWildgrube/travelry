@@ -29,7 +29,7 @@ const styles = StyleSheet.create({
   layoutAndroid: {
     backgroundColor: '#fff',
     flex: 1,
-    marginsTop: 25,
+    marginTop: 25,
     marginHorizontal: 12,
   },
   layoutIOS: {

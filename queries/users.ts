@@ -54,6 +54,27 @@ export const getUserProfile = async (id: string): Promise<UserProfile> => {
   return data as UserProfile;
 };
 
+export const getUserFromSearch = async (search: string): Promise<UserProfileSlim[]> => {
+  const { data, error } = await supabase
+    .from('account')
+    .select(
+      `
+        id,
+        username,
+        full_name,
+        avatar_url
+    `,
+    )
+    .ilike('full_name', `${search}%`)
+    .ilike('username', `${search}%`);
+
+  if (error) {
+    throw new Error(`${error.code}: getUserFromSearch: ${error.message}`);
+  }
+
+  return data as UserProfileSlim[];
+};
+
 export const getUserFollowers = async (id: string): Promise<UserFollowers[]> => {
   const { data, error } = await supabase
     .from('follow')
