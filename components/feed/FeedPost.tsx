@@ -1,6 +1,5 @@
-import { Dimensions, ImageBackground, Pressable, StyleSheet, Text, View } from 'react-native';
+import { Dimensions, Image, Pressable, StyleSheet, Text, View } from 'react-native';
 
-import { LinearGradient } from 'expo-linear-gradient';
 import { useRouter } from 'expo-router';
 
 import { Avatar } from '&/components/atoms';
@@ -29,35 +28,26 @@ export function FeedPost({ post }: PostProps): JSX.Element {
 
   return (
     <Pressable onPress={() => goToPost()} style={styles.post} key={post.created_at}>
-      <ImageBackground
-        source={{ uri: downloadSupabaseMedia('posts', post.post_media[0].file_url) }}
-        imageStyle={styles.imageBackground}
-        style={styles.imageBackgroundContainer}>
-        <LinearGradient
-          colors={['white', 'rgba(255,255,255,0)']}
-          start={{ x: 0, y: 0.85 }}
-          end={{ x: 0, y: 0.7 }}
-          style={styles.linearGradient}>
-          <View style={styles.header}>
-            <Pressable onPress={() => router.push(`/profile/${post.account.id}`)} style={styles.headerLink}>
-              <Avatar
-                src={downloadSupabaseMedia('avatars', post.account.avatar_url)}
-                size={36}
-                style={styles.accountAvatar}
-              />
+      <Image source={{ uri: downloadSupabaseMedia('posts', post.post_media[0].file_url) }} style={styles.postImage} />
 
-              <View>
-                <Text style={styles.accountName}>{post.account.full_name}</Text>
-                <Text style={styles.location}>{post.location}</Text>
-              </View>
-            </Pressable>
+      <View style={styles.postInfo}>
+        <Pressable onPress={() => router.push(`/profile/${post.account.id}`)} style={styles.postAccount}>
+          <Avatar
+            src={downloadSupabaseMedia('avatars', post.account.avatar_url)}
+            size={36}
+            style={styles.accountAvatar}
+          />
 
-            <View style={styles.likeButton}>
-              <LikeButton likeCount={post.post_stat.likes_count} postId={post.id} />
-            </View>
+          <View>
+            <Text style={styles.accountName}>{post.account.full_name}</Text>
+            <Text style={styles.postLocation}>{post.location}</Text>
           </View>
-        </LinearGradient>
-      </ImageBackground>
+        </Pressable>
+
+        <View style={styles.likeButton}>
+          <LikeButton likeCount={post.post_stat.likes_count} postId={post.id} />
+        </View>
+      </View>
     </Pressable>
   );
 }
@@ -68,18 +58,12 @@ const width = Math.round(dimensions.width - 24);
 
 const styles = StyleSheet.create({
   post: {
-    marginBottom: 12,
-  },
-  imageBackground: {
-    borderRadius: 4,
-  },
-  imageBackgroundContainer: {
     backgroundColor: '#fff',
     borderRadius: 4,
-    elevation: 1,
-    height: height - 24,
-    justifyContent: 'flex-end',
-    marginBottom: 8,
+    elevation: 2,
+    marginHorizontal: 12,
+    marginTop: 21,
+    padding: 8,
     shadowColor: '#000',
     shadowOffset: {
       width: 0,
@@ -87,21 +71,21 @@ const styles = StyleSheet.create({
     },
     shadowOpacity: 0.18,
     shadowRadius: 1.0,
-    width: width - 2,
   },
-  linearGradient: {
+  postImage: {
     borderRadius: 4,
-    height: height,
-    padding: 8,
+    height: height / 1.5,
+    width: width - 16,
   },
-  header: {
-    alignItems: 'flex-end',
-    flex: 1,
+  postInfo: {
+    alignItems: 'center',
     flexDirection: 'row',
     justifyContent: 'space-between',
-    padding: 8,
+    marginBottom: 4,
+    marginTop: 12,
+    paddingRight: 8,
   },
-  headerLink: {
+  postAccount: {
     alignItems: 'flex-end',
     flexDirection: 'row',
   },
@@ -113,7 +97,7 @@ const styles = StyleSheet.create({
     fontSize: 14,
     fontWeight: '600',
   },
-  location: {
+  postLocation: {
     color: '#7C8089',
   },
   likeButton: {

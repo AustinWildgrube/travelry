@@ -1,6 +1,13 @@
 import { supabase } from '&/services/supabase-client';
+import { POSTS_PER_PAGE } from '&/utilities/constants';
 
 import { type UserProfileSlim } from './users';
+
+export type PostPaginated = {
+  data: Post[];
+  cursor: number;
+  count: number;
+};
 
 export type PostMedia = {
   id: string;
@@ -66,41 +73,6 @@ export const createPostMedia = async (accountId: string, postId: string, image: 
   }
 };
 
-export const getPostById = async (id: string): Promise<Post> => {
-  const { data, error } = await supabase
-    .from('post')
-    .select(
-      `
-        id,
-        caption,
-        created_at,
-        location,
-        account (
-          id,
-          username,
-          full_name,
-          avatar_url
-        ),
-        post_media (
-          id,
-          file_url
-        ),
-        post_stat (
-          id,
-          likes_count
-        )
-      `,
-    )
-    .eq('id', id)
-    .single();
-
-  if (error) {
-    throw new Error(`${error.code}: getPostById: ${error.message}`);
-  }
-
-  return data as Post;
-};
-
 // TODO: Only need ID from account so maybe change Post type?
 export const getPostsByAlbumId = async (id: string): Promise<Post[]> => {
   const { data, error } = await supabase
@@ -136,9 +108,11 @@ export const getPostsByAlbumId = async (id: string): Promise<Post[]> => {
   return data as Post[];
 };
 
-export const getAllPosts = async (): Promise<Post[]> => {
-  const { data, error } = await supabase.from('post').select(
-    `
+export const getAllPosts = async (page: number): Promise<PostPaginated> => {
+  const { data, count, error } = await supabase
+    .from('post')
+    .select(
+      `
       id,
       caption,
       created_at,
@@ -158,13 +132,21 @@ export const getAllPosts = async (): Promise<Post[]> => {
         likes_count
       )
     `,
-  );
+      {
+        count: 'exact',
+      },
+    )
+    .range((page - 1) * POSTS_PER_PAGE, page * POSTS_PER_PAGE - 1);
 
   if (error) {
     throw new Error(`${error.code}: getAllPosts: ${error.message}`);
   }
 
-  return data as Post[];
+  return {
+    data: data as Post[],
+    count: count!,
+    cursor: page,
+  };
 };
 
 // TODO: use if create post is unsuccessful
