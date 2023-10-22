@@ -1,0 +1,635 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`RegistrationForm should match the snapshot 1`] = `
+<View
+  style={
+    {
+      "flex": 1,
+    }
+  }
+>
+  <View
+    style={
+      {
+        "backgroundColor": "#ffffff",
+        "flex": 1,
+        "zIndex": 1,
+      }
+    }
+  >
+    <View
+      backdropComponent={[Function]}
+      backgroundStyle={
+        {
+          "backgroundColor": "#ffffff",
+        }
+      }
+      enablePanDownToClose={true}
+      handleIndicatorStyle={
+        {
+          "backgroundColor": "#242424",
+        }
+      }
+      index={-1}
+      onChange={[Function]}
+      snapPoints={
+        [
+          "90%",
+        ]
+      }
+    >
+      <RCTScrollView
+        keyboardDismissMode="on-drag"
+        showsVerticalScrollIndicator={true}
+        style={
+          {
+            "flex": 1,
+          }
+        }
+      >
+        <View>
+          <View
+            onLayout={[Function]}
+            style={
+              {
+                "flex": 1,
+                "padding": 12,
+              }
+            }
+          >
+            <View
+              style={
+                {
+                  "bottom": 0,
+                }
+              }
+            >
+              <Text
+                accessibilityRole="text"
+                style={
+                  {
+                    "color": "#242424",
+                    "fontFamily": "Inter_700Bold",
+                    "fontSize": 32,
+                    "fontWeight": "700",
+                    "lineHeight": 40,
+                    "marginTop": 8,
+                    "textAlign": "center",
+                  }
+                }
+              >
+                It’s Nice To Meet You
+              </Text>
+              <Text
+                accessibilityRole="text"
+                style={
+                  {
+                    "color": "#242424",
+                    "fontFamily": "Inter_400Regular",
+                    "fontSize": 16,
+                    "fontWeight": "400",
+                    "lineHeight": 20,
+                    "marginBottom": 24,
+                    "marginHorizontal": 24,
+                    "marginTop": 8,
+                    "textAlign": "center",
+                  }
+                }
+              >
+                We're looking forward to seeing the memories you'll make and share!
+              </Text>
+              <View
+                style={
+                  {
+                    "marginBottom": 12,
+                    "paddingHorizontal": 0,
+                    "width": "100%",
+                  }
+                }
+                testID="RNE__Input__view-wrapper"
+              >
+                <Text
+                  accessibilityRole="text"
+                  style={
+                    {
+                      "color": "#242424",
+                      "fontFamily": "Inter_600SemiBold",
+                      "fontSize": 14,
+                      "fontWeight": "600",
+                      "lineHeight": 20,
+                      "marginLeft": 4,
+                    }
+                  }
+                >
+                  Username
+                  <Text
+                    accessibilityRole="text"
+                    style={
+                      {
+                        "color": "#d46765",
+                        "fontFamily": "Inter_400Regular",
+                        "fontSize": 14,
+                        "fontWeight": "400",
+                        "lineHeight": 20,
+                      }
+                    }
+                  >
+                    *
+                  </Text>
+                </Text>
+                <View
+                  collapsable={false}
+                  style={
+                    {
+                      "alignItems": "center",
+                      "backgroundColor": "#fff",
+                      "borderBottomWidth": 2,
+                      "borderColor": "#d0d5dd",
+                      "borderRadius": 8,
+                      "borderStyle": "solid",
+                      "borderWidth": 2,
+                      "elevation": 2,
+                      "flexDirection": "row",
+                      "marginTop": 4,
+                      "shadowColor": "rgba(16, 24, 40, .04)",
+                      "shadowOffset": {
+                        "height": 2,
+                        "width": 0,
+                      },
+                      "shadowOpacity": 1,
+                      "shadowRadius": 2,
+                      "transform": [
+                        {
+                          "translateX": 0,
+                        },
+                      ],
+                    }
+                  }
+                >
+                  <TextInput
+                    autoCapitalize="none"
+                    editable={true}
+                    onBlur={[Function]}
+                    onChangeText={[Function]}
+                    placeholder="Username"
+                    placeholderTextColor="#86939e"
+                    style={
+                      {
+                        "color": "#242424",
+                        "flex": 1,
+                        "fontSize": 16,
+                        "fontWeight": "400",
+                        "minHeight": 40,
+                        "padding": 12,
+                      }
+                    }
+                    testID="RNE__Input__text-input"
+                    underlineColorAndroid="transparent"
+                  />
+                </View>
+                <Text
+                  style={
+                    {
+                      "color": "#8d9494",
+                      "fontSize": 12,
+                      "height": 0,
+                      "margin": 0,
+                      "marginBottom": 0,
+                      "padding": 0,
+                    }
+                  }
+                />
+              </View>
+              <View
+                style={
+                  {
+                    "marginBottom": 12,
+                    "paddingHorizontal": 0,
+                    "width": "100%",
+                  }
+                }
+                testID="RNE__Input__view-wrapper"
+              >
+                <Text
+                  accessibilityRole="text"
+                  style={
+                    {
+                      "color": "#242424",
+                      "fontFamily": "Inter_600SemiBold",
+                      "fontSize": 14,
+                      "fontWeight": "600",
+                      "lineHeight": 20,
+                      "marginLeft": 4,
+                    }
+                  }
+                >
+                  Email
+                  <Text
+                    accessibilityRole="text"
+                    style={
+                      {
+                        "color": "#d46765",
+                        "fontFamily": "Inter_400Regular",
+                        "fontSize": 14,
+                        "fontWeight": "400",
+                        "lineHeight": 20,
+                      }
+                    }
+                  >
+                    *
+                  </Text>
+                </Text>
+                <View
+                  collapsable={false}
+                  style={
+                    {
+                      "alignItems": "center",
+                      "backgroundColor": "#fff",
+                      "borderBottomWidth": 2,
+                      "borderColor": "#d0d5dd",
+                      "borderRadius": 8,
+                      "borderStyle": "solid",
+                      "borderWidth": 2,
+                      "elevation": 2,
+                      "flexDirection": "row",
+                      "marginTop": 4,
+                      "shadowColor": "rgba(16, 24, 40, .04)",
+                      "shadowOffset": {
+                        "height": 2,
+                        "width": 0,
+                      },
+                      "shadowOpacity": 1,
+                      "shadowRadius": 2,
+                      "transform": [
+                        {
+                          "translateX": 0,
+                        },
+                      ],
+                    }
+                  }
+                >
+                  <TextInput
+                    autoCapitalize="none"
+                    editable={true}
+                    inputMode="email"
+                    onBlur={[Function]}
+                    onChangeText={[Function]}
+                    placeholder="Email"
+                    placeholderTextColor="#86939e"
+                    style={
+                      {
+                        "color": "#242424",
+                        "flex": 1,
+                        "fontSize": 16,
+                        "fontWeight": "400",
+                        "minHeight": 40,
+                        "padding": 12,
+                      }
+                    }
+                    testID="RNE__Input__text-input"
+                    underlineColorAndroid="transparent"
+                  />
+                </View>
+                <Text
+                  style={
+                    {
+                      "color": "#8d9494",
+                      "fontSize": 12,
+                      "height": 0,
+                      "margin": 0,
+                      "marginBottom": 0,
+                      "padding": 0,
+                    }
+                  }
+                />
+              </View>
+              <View
+                style={
+                  {
+                    "marginBottom": 12,
+                    "paddingHorizontal": 0,
+                    "width": "100%",
+                  }
+                }
+                testID="RNE__Input__view-wrapper"
+              >
+                <Text
+                  accessibilityRole="text"
+                  style={
+                    {
+                      "color": "#242424",
+                      "fontFamily": "Inter_600SemiBold",
+                      "fontSize": 14,
+                      "fontWeight": "600",
+                      "lineHeight": 20,
+                      "marginLeft": 4,
+                    }
+                  }
+                >
+                  Password
+                  <Text
+                    accessibilityRole="text"
+                    style={
+                      {
+                        "color": "#d46765",
+                        "fontFamily": "Inter_400Regular",
+                        "fontSize": 14,
+                        "fontWeight": "400",
+                        "lineHeight": 20,
+                      }
+                    }
+                  >
+                    *
+                  </Text>
+                </Text>
+                <View
+                  collapsable={false}
+                  style={
+                    {
+                      "alignItems": "center",
+                      "backgroundColor": "#fff",
+                      "borderBottomWidth": 2,
+                      "borderColor": "#d0d5dd",
+                      "borderRadius": 8,
+                      "borderStyle": "solid",
+                      "borderWidth": 2,
+                      "elevation": 2,
+                      "flexDirection": "row",
+                      "marginTop": 4,
+                      "shadowColor": "rgba(16, 24, 40, .04)",
+                      "shadowOffset": {
+                        "height": 2,
+                        "width": 0,
+                      },
+                      "shadowOpacity": 1,
+                      "shadowRadius": 2,
+                      "transform": [
+                        {
+                          "translateX": 0,
+                        },
+                      ],
+                    }
+                  }
+                >
+                  <TextInput
+                    autoCapitalize="none"
+                    editable={true}
+                    onBlur={[Function]}
+                    onChangeText={[Function]}
+                    placeholder="Password"
+                    placeholderTextColor="#86939e"
+                    secureTextEntry={true}
+                    style={
+                      {
+                        "color": "#242424",
+                        "flex": 1,
+                        "fontSize": 16,
+                        "fontWeight": "400",
+                        "minHeight": 40,
+                        "padding": 12,
+                      }
+                    }
+                    testID="RNE__Input__text-input"
+                    underlineColorAndroid="transparent"
+                  />
+                </View>
+                <Text
+                  style={
+                    {
+                      "color": "#8d9494",
+                      "fontSize": 12,
+                      "height": 0,
+                      "margin": 0,
+                      "marginBottom": 0,
+                      "padding": 0,
+                    }
+                  }
+                />
+              </View>
+              <View
+                style={
+                  {
+                    "marginBottom": 12,
+                    "paddingHorizontal": 0,
+                    "width": "100%",
+                  }
+                }
+                testID="RNE__Input__view-wrapper"
+              >
+                <Text
+                  accessibilityRole="text"
+                  style={
+                    {
+                      "color": "#242424",
+                      "fontFamily": "Inter_600SemiBold",
+                      "fontSize": 14,
+                      "fontWeight": "600",
+                      "lineHeight": 20,
+                      "marginLeft": 4,
+                    }
+                  }
+                >
+                  Birthday
+                  <Text
+                    accessibilityRole="text"
+                    style={
+                      {
+                        "color": "#d46765",
+                        "fontFamily": "Inter_400Regular",
+                        "fontSize": 14,
+                        "fontWeight": "400",
+                        "lineHeight": 20,
+                      }
+                    }
+                  >
+                    *
+                  </Text>
+                </Text>
+                <View
+                  collapsable={false}
+                  style={
+                    {
+                      "alignItems": "center",
+                      "backgroundColor": "#fff",
+                      "borderBottomWidth": 2,
+                      "borderColor": "#d0d5dd",
+                      "borderRadius": 8,
+                      "borderStyle": "solid",
+                      "borderWidth": 2,
+                      "elevation": 2,
+                      "flexDirection": "row",
+                      "marginTop": 4,
+                      "shadowColor": "rgba(16, 24, 40, .04)",
+                      "shadowOffset": {
+                        "height": 2,
+                        "width": 0,
+                      },
+                      "shadowOpacity": 1,
+                      "shadowRadius": 2,
+                      "transform": [
+                        {
+                          "translateX": 0,
+                        },
+                      ],
+                    }
+                  }
+                >
+                  <TextInput
+                    onBlur={[Function]}
+                    onChangeText={[Function]}
+                    onPressOut={[Function]}
+                    placeholder="Birthday"
+                    placeholderTextColor="#86939e"
+                    style={
+                      {
+                        "color": "#242424",
+                        "flex": 1,
+                        "fontSize": 16,
+                        "fontWeight": "400",
+                        "minHeight": 40,
+                        "padding": 12,
+                      }
+                    }
+                    testID="RNE__Input__text-input"
+                    underlineColorAndroid="transparent"
+                    value=""
+                  />
+                </View>
+                <Text
+                  style={
+                    {
+                      "color": "#8d9494",
+                      "fontSize": 12,
+                      "margin": 5,
+                      "marginBottom": 0,
+                    }
+                  }
+                >
+                  Your birthday will not be shown publicly.
+                </Text>
+              </View>
+              <View
+                style={
+                  [
+                    {
+                      "overflow": "hidden",
+                    },
+                    {
+                      "borderRadius": 8,
+                    },
+                    undefined,
+                    false,
+                  ]
+                }
+                testID="RNE_BUTTON_WRAPPER"
+              >
+                <View
+                  accessibilityRole="button"
+                  accessibilityState={
+                    {
+                      "busy": false,
+                      "checked": undefined,
+                      "disabled": false,
+                      "expanded": undefined,
+                      "selected": undefined,
+                    }
+                  }
+                  accessibilityValue={
+                    {
+                      "max": undefined,
+                      "min": undefined,
+                      "now": undefined,
+                      "text": undefined,
+                    }
+                  }
+                  accessible={true}
+                  collapsable={false}
+                  focusable={true}
+                  onClick={[Function]}
+                  onResponderGrant={[Function]}
+                  onResponderMove={[Function]}
+                  onResponderRelease={[Function]}
+                  onResponderTerminate={[Function]}
+                  onResponderTerminationRequest={[Function]}
+                  onStartShouldSetResponder={[Function]}
+                  style={
+                    {
+                      "opacity": 1,
+                    }
+                  }
+                >
+                  <View
+                    style={
+                      {
+                        "alignItems": "center",
+                        "backgroundColor": "#84a98c",
+                        "borderBottomWidth": 4,
+                        "borderColor": "#6A8770",
+                        "borderRadius": 8,
+                        "borderStyle": "solid",
+                        "borderWidth": 1,
+                        "flexDirection": "row",
+                        "justifyContent": "center",
+                        "padding": 12,
+                        "paddingHorizontal": 14,
+                      }
+                    }
+                  >
+                    <Text
+                      style={
+                        {
+                          "color": "#fff",
+                          "fontSize": 18,
+                          "fontWeight": "600",
+                          "paddingVertical": 1,
+                          "textAlign": "center",
+                        }
+                      }
+                    >
+                      Register
+                    </Text>
+                  </View>
+                </View>
+              </View>
+            </View>
+          </View>
+        </View>
+      </RCTScrollView>
+      <View
+        style={
+          {
+            "alignItems": "center",
+            "paddingTop": 12,
+          }
+        }
+      >
+        <Text
+          accessibilityRole="text"
+          style={
+            {
+              "color": "#242424",
+              "fontFamily": "Inter_400Regular",
+              "fontSize": 12,
+              "fontWeight": "400",
+              "lineHeight": 20,
+              "marginBottom": 24,
+              "textAlign": "center",
+              "width": "75%",
+            }
+          }
+        >
+          By registering an account, you confirm that you agree to our Terms of Use and our Privacy Policy.
+        </Text>
+      </View>
+      <Modal
+        animationType="none"
+        hardwareAccelerated={false}
+        isVisible={false}
+        onHide={[Function]}
+        transparent={true}
+        visible={false}
+      />
+    </View>
+  </View>
+</View>
+`;

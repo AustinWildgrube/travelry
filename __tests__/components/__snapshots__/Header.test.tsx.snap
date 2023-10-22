@@ -1,0 +1,35 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Header should match the snapshot 1`] = `
+<View
+  style={
+    {
+      "flex": 1,
+    }
+  }
+>
+  <View
+    style={
+      {
+        "backgroundColor": "#ffffff",
+        "flex": 1,
+        "zIndex": 1,
+      }
+    }
+  >
+    <View
+      contentFit="contain"
+      source={1}
+      style={
+        {
+          "flex": 1,
+          "height": 50,
+          "width": 100,
+        }
+      }
+      testID="image"
+      transition={1000}
+    />
+  </View>
+</View>
+`;
